@@ -41,7 +41,6 @@ const KeyFeatures: React.FC = () => {
         trigger: sectionRef.current,
         start: "40% center",
         end: "bottom center",
-        toggleActions: "play none none reverse",
       }
     });
 
@@ -98,7 +97,7 @@ const KeyFeatures: React.FC = () => {
               <div 
                 className="absolute inset-0 w-18 h-18 -left-1 -top-1 rounded-full"
                 style={{
-                  background: 'linear-gradient(135deg, #2fd6a1 0%, #25a87e 50%, #059669 100%)',
+                  background: 'linear-gradient(135deg, #17d397 0%, #25a87e 40%, #059669 100%)',
                 }}
               />
               {/* Icon container */}

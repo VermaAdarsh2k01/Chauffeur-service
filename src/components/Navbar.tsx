@@ -2,10 +2,24 @@ import { useState } from 'react';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isServicesOpen, setIsServicesOpen] = useState(false);
+
+  const serviceDropdownItems = [
+    { name: 'Airport Package', href: '/services/airport-package' },
+    { name: 'Chauffeur Service', href: '/services/chauffeur' },
+    { name: 'Corporate Travel', href: '/services/corporate' },
+    { name: 'Airport Transfer', href: '/services/airport' },
+  ];
 
   const navLinks = [
     { name: 'About Us', href: '/about' },
-    { name: 'Services', href: '/cars' },
+    { 
+      name: 'Services', 
+      href: '#',
+      hasDropdown: true,
+      dropdownItems: serviceDropdownItems,
+      isDropdownTrigger: true
+    },
     { name: 'Contact', href: '/future' },
   ];
 
@@ -24,13 +38,60 @@ const Navbar = () => {
           <div className="hidden md:flex items-center space-x-8 ml-auto">
             <div className="flex items-center space-x-4">
               {navLinks.map((link) => (
-                <a
+                <div
                   key={link.name}
-                  href={link.href}
-                  className="text-gray-600 hover:text-gray-900 px-3 py-2 text-sm font-medium transition-colors"
+                  className="relative group"
+                  onMouseEnter={() => link.hasDropdown && setIsServicesOpen(true)}
+                  onMouseLeave={() => link.hasDropdown && setIsServicesOpen(false)}
                 >
-                  {link.name}
-                </a>
+                  {link.isDropdownTrigger ? (
+                    <button
+                      className="text-gray-600 hover:text-gray-900 px-3 py-2 text-sm font-medium transition-colors flex items-center"
+                      onClick={(e) => e.preventDefault()}
+                    >
+                      {link.name}
+                      <svg
+                        className="ml-1 h-4 w-4"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M19 9l-7 7-7-7"
+                        />
+                      </svg>
+                    </button>
+                  ) : (
+                    <a
+                      href={link.href}
+                      className="text-gray-600 hover:text-gray-900 px-3 py-2 text-sm font-medium transition-colors flex items-center"
+                    >
+                      {link.name}
+                    </a>
+                  )}
+                  {link.hasDropdown && (
+                    <div 
+                      className={`absolute top-full left-0 w-48 bg-white/95 backdrop-blur-sm rounded-md shadow-lg py-2 mt-1 transition-all duration-200 ease-in-out border border-gray-200 ${
+                        isServicesOpen
+                          ? 'opacity-100 transform translate-y-0 visible'
+                          : 'opacity-0 transform -translate-y-2 invisible'
+                      }`}
+                    >
+                      {link.dropdownItems?.map((item) => (
+                        <a
+                          key={item.name}
+                          href={item.href}
+                          className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                        >
+                          {item.name}
+                        </a>
+                      ))}
+                    </div>
+                  )}
+                </div>
               ))}
               <a
                 href="#download"
@@ -89,13 +150,51 @@ const Navbar = () => {
           <div className="md:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
               {navLinks.map((link) => (
-                <a
-                  key={link.name}
-                  href={link.href}
-                  className="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-gray-900 hover:bg-gray-50"
-                >
-                  {link.name}
-                </a>
+                <div key={link.name}>
+                  {link.isDropdownTrigger ? (
+                    <button
+                      onClick={() => setIsServicesOpen(!isServicesOpen)}
+                      className="w-full flex items-center justify-between px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-gray-900 hover:bg-gray-50"
+                  >
+                    <span>{link.name}</span>
+                    <svg
+                        className={`ml-1 h-4 w-4 transform transition-transform duration-200 ${
+                          isServicesOpen ? 'rotate-180' : ''
+                        }`}
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M19 9l-7 7-7-7"
+                        />
+                      </svg>
+                    </button>
+                  ) : (
+                    <a
+                      href={link.href}
+                      className="block w-full px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-gray-900 hover:bg-gray-50"
+                    >
+                      {link.name}
+                    </a>
+                  )}
+                  {link.hasDropdown && isServicesOpen && (
+                    <div className="mt-2 space-y-1 px-4 py-2 border border-gray-200 rounded-md mx-3">
+                      {link.dropdownItems?.map((item) => (
+                        <a
+                          key={item.name}
+                          href={item.href}
+                          className="block py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-md pl-4"
+                        >
+                          {item.name}
+                        </a>
+                      ))}
+                    </div>
+                  )}
+                </div>
               ))}
               <a
                 href="#download"

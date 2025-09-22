@@ -107,7 +107,7 @@ const TabNavigation = () => {
             
             <button
               onClick={handleSearch}
-              className="w-full bg-green-400 hover:bg-green-500 text-white px-6 py-2 rounded-full font-medium transition-colors"
+              className="w-full bg-[#059669] hover:scale-105 transform transition-all duration-300 text-white px-6 py-2 rounded-4xl font-medium"
             >
               Book Now
             </button>
@@ -151,11 +151,11 @@ const TabNavigation = () => {
             />
           </div>
           <div className="md:col-span-1">
-            <button
+          <button
               onClick={handleSearch}
-              className="w-full bg-green-400 hover:bg-green-500 text-white px-6 py-2 rounded-full font-medium transition-colors"
+              className="w-full bg-[#059669] hover:scale-105 transform transition-all duration-300 text-white px-6 py-2 rounded-4xl font-medium"
             >
-              Search
+              Book Now
             </button>
           </div>
         </div>
@@ -206,11 +206,11 @@ const TabNavigation = () => {
             />
           </div>
           <div className="md:col-span-1">
-            <button
+          <button
               onClick={handleSearch}
-              className="w-full bg-green-400 hover:bg-green-500 text-white px-6 py-2 rounded-full font-medium transition-colors"
+              className="w-full bg-[#059669] hover:scale-105 transform transition-all duration-300 text-white px-6 py-2 rounded-4xl font-medium"
             >
-              Search
+              Book Now
             </button>
           </div>
         </div>
@@ -252,11 +252,11 @@ const TabNavigation = () => {
             </select>
           </div>
           <div className="md:col-span-1">
-            <button
+          <button
               onClick={handleSearch}
-              className="w-full bg-green-400 hover:bg-green-500 text-white px-6 py-2 rounded-full font-medium transition-colors"
+              className="w-full bg-[#059669] hover:scale-105 transform transition-all duration-300 text-white px-6 py-2 rounded-4xl font-medium"
             >
-              Get Quote
+              Book Now
             </button>
           </div>
         </div>
@@ -299,11 +299,11 @@ const TabNavigation = () => {
             </select>
           </div>
           <div className="md:col-span-1">
-            <button
+           <button
               onClick={handleSearch}
-              className="w-full bg-green-400 hover:bg-green-500 text-white px-6 py-2 rounded-full font-medium transition-colors"
+              className="w-full bg-[#059669] hover:scale-105 transform transition-all duration-300 text-white px-6 py-2 rounded-4xl font-medium"
             >
-              Get Quote
+              Book Now
             </button>
           </div>
         </div>

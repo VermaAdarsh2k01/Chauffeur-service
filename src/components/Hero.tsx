@@ -55,7 +55,7 @@ const Hero = () => {
       <div className='h-full w-full'> 
         <div className='w-full h-[70%] grid grid-cols-2 gap-8'>
             <div ref={contentRef} className='flex flex-col justify-center w-[80%] ms-auto'>
-                <h1 className='xl:text-[4rem] font-bold leading-[1] mb-6' >
+                <h1 className='lg:text-[4rem] font-bold leading-[1] mb-6' >
                     Premium
                     <br />
                     Chauffeur Driven
