@@ -2,17 +2,20 @@
 import Hero from '../components/Hero';
 import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
+import VehicleFleet from '../components/VehicleFleet';
+import KeyFeatures from '../components/KeyFeatures';
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
 <Layout>
-	<Hero />
-	<div class="h-screen w-full bg-red-500">
-
+	<Hero client:load />
+	<div class="min-h-screen w-full  ">
+		<VehicleFleet client:load />
 	</div>
-	<div class="h-screen w-full bg-blue-500">
-
+	
+	<div class="h-screen w-full flex items-center justify-center">
+		<KeyFeatures client:load />
 	</div>
 </Layout>

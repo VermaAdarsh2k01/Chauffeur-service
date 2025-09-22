@@ -16,7 +16,7 @@ const Navbar = () => {
           {/* Logo */}
           <div className="flex-shrink-0">
             <a href="/" className="flex items-center">
-              <span className="text-xl font-bold">Unique</span>
+              <span className="text-xl font-bold">JK Travels</span>
             </a>
           </div>
 
@@ -36,7 +36,7 @@ const Navbar = () => {
                 href="#download"
                 className="bg-black text-white px-6 py-2 rounded-full text-sm font-medium hover:bg-gray-800 transition-colors ml-4"
               >
-                 Download App
+                 Request Enquiry
               </a>
             </div>
           </div>
@@ -101,7 +101,7 @@ const Navbar = () => {
                 href="#download"
                 className="block w-full text-center bg-black text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-gray-800 transition-colors mt-4"
               >
-                Download App
+                Request Enquiry
               </a>
             </div>
           </div>
