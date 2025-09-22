@@ -5,8 +5,9 @@ import { useGSAP } from '@gsap/react';
 // Register GSAP plugin
 gsap.registerPlugin(useGSAP);
 
+
 export function LogoMarquee({ className }: { className: string }) {
-  const containerRef = useRef<HTMLDivElement>(null);
+  const containerMarqueeRef = useRef<HTMLDivElement>(null);
   const marqueeRef = useRef<HTMLDivElement>(null);
 
   useGSAP(() => {
@@ -21,7 +22,7 @@ export function LogoMarquee({ className }: { className: string }) {
     const tl = gsap.timeline({ repeat: -1 })
       .to(marquee.parentElement, {
         x: -marquee.offsetWidth,
-        duration: 20,
+        duration: 10,
         ease: "none",
       });
 
@@ -34,17 +35,17 @@ export function LogoMarquee({ className }: { className: string }) {
       gsap.to(tl, { timeScale: 1, duration: 0.5 });
     };
 
-    const container = containerRef.current;
+    const container = containerMarqueeRef.current;
     if (container) {
       container.addEventListener('mouseenter', handleMouseEnter);
       container.addEventListener('mouseleave', handleMouseLeave);
     }
 
     // Cleanup is handled automatically by useGSAP
-  }, { scope: containerRef }); // Scope the animation to our container
+  }, { scope: containerMarqueeRef }); // Scope the animation to our container
 
   return (
-    <div ref={containerRef} className={`relative w-full overflow-hidden ${className}`}>
+    <div ref={containerMarqueeRef} className={`relative w-full overflow-hidden ${className}`}>
       {/* Gradient Overlays */}
       <div className="absolute w-24 h-full left-0 top-0 z-10 bg-gradient-to-r from-white to-transparent pointer-events-none" />
       <div className="absolute w-24 h-full right-0 top-0 z-10 bg-gradient-to-l from-white to-transparent pointer-events-none" />
@@ -52,21 +53,21 @@ export function LogoMarquee({ className }: { className: string }) {
       {/* Marquee Container */}
       <div className="flex">
         {/* First set of logos */}
-        <div ref={marqueeRef} className="flex items-center gap-16 px-4">
-          <div className="flex items-center justify-center">
-            <img src="/path/to/logo4.png" alt="Logo 4" className="h-12 w-auto" />
+        <div ref={marqueeRef} className="flex items-center gap-4 px-4">
+          <div className="flex items-center justify-center w-32">
+            <img src="/porsche.png" alt="Mercedes Logo" className="h-12 w-32 object-contain" />
           </div>
-          <div className="flex items-center justify-center">
-            <img src="/path/to/logo2.png" alt="Logo 2" className="h-12 w-auto" />
+          <div className="flex items-center justify-center w-32">
+            <img src="/merc.png" alt="Audi Logo" className="h-12 w-32 object-contain" />
           </div>
-          <div className="flex items-center justify-center">
-            <img src="/path/to/logo3.png" alt="Logo 3" className="h-12 w-auto" />
+          <div className="flex items-center justify-center w-32">
+            <img src="/bmw.png" alt="BMW Logo" className="h-12 w-32 object-contain" />
           </div>
-          <div className="flex items-center justify-center">
-            <img src="/path/to/logo3.png" alt="Logo 3" className="h-12 w-auto" />
+          <div className="flex items-center justify-center w-32">
+            <img src="/audi.png" alt="Porsche Logo" className="h-12 w-32 object-contain" />
           </div>
-          <div className="flex items-center justify-center">
-            <img src="/path/to/logo5.png" alt="Logo 5" className="h-12 w-auto" />
+          <div className="flex items-center justify-center w-32">
+            <img src="/toy.png" alt="Fortuner Logo" className="h-12 w-32 object-contain" />
           </div>
         </div>
       </div>

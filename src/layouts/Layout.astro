@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
 ---
 
 
@@ -19,6 +20,7 @@ import Navbar from '../components/Navbar';
 		<main class="">
 			<slot />
 		</main>
+		<Footer client:load />
 	</body>
 </html>
 

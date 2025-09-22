@@ -5,9 +5,8 @@ import Layout from '../layouts/Layout.astro';
 import VehicleFleet from '../components/VehicleFleet';
 import KeyFeatures from '../components/KeyFeatures';
 import ServiceHighlights from '../components/ServiceHighlights';
+import DownloadCTA from '../components/DownloadCTA';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
 <Layout>
@@ -16,7 +15,7 @@ import ServiceHighlights from '../components/ServiceHighlights';
 		<VehicleFleet client:load />
 	</div>
 
-	<div class="h-screen w-full flex items-center justify-center my-12">
+	<div class="min-h-screen w-full flex items-center justify-center ">
 		<ServiceHighlights client:load />
 	</div>
 	
@@ -24,5 +23,7 @@ import ServiceHighlights from '../components/ServiceHighlights';
 		<KeyFeatures client:load />
 	</div>
 
-	
+	<div class="w-full h-[70vh] px-6 my-12 ">
+		<DownloadCTA client:load />
+	</div>
 </Layout>

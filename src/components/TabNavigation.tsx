@@ -109,7 +109,7 @@ const TabNavigation = () => {
               onClick={handleSearch}
               className="w-full bg-green-400 hover:bg-green-500 text-white px-6 py-2 rounded-full font-medium transition-colors"
             >
-              Search
+              Book Now
             </button>
           </div>
         </div>
@@ -334,10 +334,10 @@ const TabNavigation = () => {
           <button
             key={tab.id}
             onClick={() => setActiveTab(tab.id)}
-            className={`flex-1 flex items-center justify-center gap-2 px-4 py-3 text-sm font-medium transition-colors border-b-2 ${
+            className={`flex-1 flex items-center justify-center gap-2 px-4 py-3 text-sm transition-colors border-b-2 ${
               activeTab === tab.id
-                ? 'text-[#059669] border-[#059669] bg-[#059669]/10'
-                : 'text-gray-600 border-transparent hover:text-gray-900 hover:bg-gray-50'
+                ? 'text-[#059669] border-[#059669] font-bold'
+                : 'text-gray-600 border-transparent hover:text-gray-900 font-medium'
             }`}
           >
             {tab.icon}
