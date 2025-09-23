@@ -37,7 +37,7 @@ const Hero = () => {
       tl.from(
         imageRef.current,
         {
-          x: 200,
+          x: 100,
           opacity: 0,
           duration: 1,
         },
@@ -61,7 +61,7 @@ const Hero = () => {
   return (
     <div
       ref={containerRef}
-      className="relative w-full min-h-screen mx-auto px-4 sm:px-6 lg:px-0 lg:pt-16 flex overflow-hidden"
+      className="relative w-full min-h-screen mx-auto px-4 py-2 sm:px-6 lg:px-0 lg:pt-16 flex overflow-hidden"
     >
       {/* Pattern Background */}
       <div className="absolute top-0 left-0 -z-10 w-[168%] h-full">
@@ -88,34 +88,37 @@ const Hero = () => {
           {/* Content Section */}
           <div
             ref={contentRef}
-            className="flex flex-col justify-center px-2 sm:px-4 lg:w-[80%] lg:ms-auto pt-16 pb-8 lg:pt-0 lg:pb-0"
+            className="flex flex-col justify-center px-2 sm:px-4 lg:w-[80%] lg:ms-auto pt-8 sm:pt-12 lg:pt-8 pb-4 sm:pb-6 lg:pb-0"
           >
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[4rem] font-bold leading-tight lg:leading-[1] mb-4 lg:mb-6 text-center lg:text-left">
+            <h1 className="text-4xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-tight lg:leading-[1.1] mb-3 lg:mb-4 text-center lg:text-left">
               Premium
               <br />
               Chauffeur Driven
               <br />
               Car Services
             </h1>
+            <p className="text-sm sm:text-base lg:text-lg text-gray-600 mb-4 lg:mb-6 text-center lg:text-left max-w-lg mx-auto lg:mx-0">
+              Experience luxury travel with our professional chauffeur services. Reliable, comfortable, and tailored to your needs.
+            </p>
             <div className="max-w-md mt-4 mx-auto lg:mx-0">
               <LogoMarquee className="" />
             </div>
           </div>
 
           {/* Image Section */}
-          <div className="relative overflow-hidden flex items-center justify-center lg:justify-end w-full h-64 sm:h-80 lg:h-full lg:m-12 order-first lg:order-last">
+          <div className="relative overflow-hidden flex items-center justify-center w-full h-fit sm:h-96 lg:h-full lg:m-12 order-first lg:order-last pt-24 sm:pt-6 lg:pt-0 pb-2 sm:pb-4 lg:pb-0">
             <img
               ref={imageRef}
               src="/hero2.png"
               alt="Premium Porsche Car"
-              className="w-full h-full lg:w-fit lg:h-full object-cover lg:object-left"
+              className="w-full h-full lg:w-auto lg:h-auto lg:max-w-full lg:max-h-full object-contain sm:object-cover lg:object-center"
             />
           </div>
         </div>
 
         {/* Form Section */}
         <div
-          className="w-full lg:h-[30%] flex items-center justify-center py-8 lg:py-0"
+          className="w-full lg:h-[30%] flex items-end justify-center py-4 sm:py-6 lg:py-0 lg:pb-16 xl:pt-12"
           ref={formNavigationRef}
         >
           <TabNavigation />

@@ -14,11 +14,11 @@ const Advantage: React.FC = () => {
                 <img 
                   src="/about-hero2.png"
                   alt="Team meeting"
-                  className="object-cover w-full md:w-1/2 xl:w-full rounded-2xl h-[55%]"
+                  className="object-cover w-full md:w-1/2 xl:w-full rounded-2xl h-[300px] md:h-[55%] xl:h-[55%]"
                   width={364}
                   height={300}
                 />
-                <div className="bg-gray-100 rounded-2xl flex flex-col p-8 w-full md:w-1/2 xl:w-full h-[40%]">
+                <div className="bg-gray-100 rounded-2xl flex flex-col p-8 w-full md:w-1/2 xl:w-full h-auto md:h-[40%] xl:h-[40%]">
                   <h3 className="text-6xl font-bold text-emerald-700 mb-2">10K+</h3>
                   <p className="mb-6">Premium Rides Completed</p>
                   <p>Experience luxury and comfort with our professional chauffeur service across the city.</p>
@@ -40,7 +40,7 @@ const Advantage: React.FC = () => {
                       {/* Logo */}
                       <div className="flex items-center gap-2 mb-4">
                         <img 
-                          src="/logo.png"
+                          src="/Logo.jpg"
                           alt="Company Logo"
                           className="w-8 h-8 object-contain"
                         />
@@ -62,7 +62,7 @@ const Advantage: React.FC = () => {
 
               {/* Right Column */}
               <div className="w-full xl:w-1/3 min-h-full flex flex-col md:flex-row xl:flex-col justify-between gap-6">
-                <div className="bg-gray-100 rounded-2xl flex flex-col p-8 w-full md:w-1/2 xl:w-full h-auto">
+                <div className="bg-gray-100 rounded-2xl flex flex-col p-8 w-full md:w-1/2 xl:w-full h-auto min-h-[200px]">
                    <h3 className="text-6xl font-bold text-emerald-700 mb-2">100%</h3>
                   <p className="mb-6">On-Time Arrivals</p>
                   <p>Our professional chauffeurs ensure punctual service with real-time tracking and route optimization.</p>
@@ -70,7 +70,7 @@ const Advantage: React.FC = () => {
                 <img 
                   src="/about-hero2.png"
                   alt="Customer service"
-                  className="object-cover w-full md:w-1/2 xl:w-full rounded-2xl h-[55%]"
+                  className="object-cover w-full md:w-1/2 xl:w-full rounded-2xl h-[300px] md:h-[55%] xl:h-[55%]"
                   width={364}
                   height={312}
                 />

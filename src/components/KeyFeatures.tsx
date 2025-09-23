@@ -43,7 +43,7 @@ const KeyFeatures: React.FC = () => {
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: sectionRef.current,
-        start: "40% center",
+        start: "20% center",
         end: "bottom center",
       },
     });
@@ -56,7 +56,6 @@ const KeyFeatures: React.FC = () => {
     tl.to(cards, {
       y: 0,
       opacity: 1,
-      duration: 0.8,
       stagger: 0.2,
       ease: "power3.out",
     }).to(
@@ -76,7 +75,7 @@ const KeyFeatures: React.FC = () => {
     };
   }, []);
   return (
-    <section ref={sectionRef} className="px-4 md:px-8 max-w-7xl mx-auto">
+    <section ref={sectionRef} className="px-4 md:px-8 max-w-7xl mx-auto py-16 section">
       {/* Header Section */}
       <div className="text-center mb-16">
         <p className="text-sm uppercase tracking-wider text-gray-500 mb-4">

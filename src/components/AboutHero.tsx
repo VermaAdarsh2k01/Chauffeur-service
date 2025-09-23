@@ -2,7 +2,7 @@ import React from 'react';
 
 const AboutHero = () => {
   return (
-    <section className="py-16 px-4 md:px-8 max-w-7xl mx-auto h-screen pt-24" >
+    <section className="py-16 px-4 md:px-8 max-w-7xl mx-auto min-h-[80vh] md:min-h-screen pt-24" >
       <div className="text-center mb-12">
         <h2 className="text-4xl md:text-5xl font-bold mb-6">Your Comfort is Our Priority</h2>
         <p className="text-lg text-gray-700 max-w-3xl mx-auto">

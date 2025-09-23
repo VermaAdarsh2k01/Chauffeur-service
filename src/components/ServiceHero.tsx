@@ -9,44 +9,6 @@ interface ServiceHeroProps {
   backgroundImage?: string;
 }
 
-interface MetricCardProps {
-  position: 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right';
-  icon: React.ReactNode;
-  label: string;
-  value: string;
-  colorScheme: 'green' | 'blue' | 'purple' | 'orange' | 'yellow';
-}
-
-const MetricCard: React.FC<MetricCardProps> = ({ position, icon, label, value, colorScheme }) => {
-  const positionClasses = {
-    'top-left': '-top-6 -left-12',
-    'top-right': '-top-4 -right-12',
-    'bottom-left': '-bottom-6 -left-12',
-    'bottom-right': '-bottom-8 -right-8'
-  };
-
-  const colorSchemes = {
-    green: 'bg-green-100 text-green-600',
-    blue: 'bg-blue-100 text-blue-600',
-    purple: 'bg-purple-100 text-purple-600',
-    orange: 'bg-orange-100 text-orange-600',
-    yellow: 'bg-yellow-100 text-yellow-600'
-  };
-
-  return (
-    <div className={`absolute ${positionClasses[position]} bg-white/25 backdrop-blur-lg rounded-2xl p-4 shadow-lg border border-gray-100 hover:scale-105 transition-transform duration-300`}>
-      <div className='flex items-center gap-3'>
-        <div className={`w-10 h-10 ${colorSchemes[colorScheme]} rounded-full flex items-center justify-center`}>
-          {icon}
-        </div>
-        <div>
-          <p className='text-sm text-gray-600'>{label}</p>
-          <p className='text-lg font-bold text-gray-900'>{value}</p>
-        </div>
-      </div>
-    </div>
-  );
-};
 
 const ServiceHero: React.FC<ServiceHeroProps> = ({ 
   title, 
@@ -82,7 +44,7 @@ const ServiceHero: React.FC<ServiceHeroProps> = ({
   }, { scope: containerRef });
 
   return (
-    <div ref={containerRef} className='relative w-full h-screen mx-auto px-4 sm:px-6 lg:px-0 lg:pt-16 flex overflow-hidden'>
+    <div ref={containerRef} className='relative w-full h-auto min-h-[60vh] lg:h-screen mx-auto px-4 sm:px-6 lg:px-0 pt-20 lg:pt-16 flex overflow-hidden'>
       
       {/* Custom Grid Pattern Background */}
         <div className='absolute top-0 left-0 -z-20 w-full h-full'>
@@ -117,80 +79,64 @@ const ServiceHero: React.FC<ServiceHeroProps> = ({
         <div className='absolute w-[40%] aspect-[0.571/1] bg-[#ffe74b] rounded-full blur-[200px] left-[436px] top-[340px]'></div>
       </div>
 
-      <div className='h-full w-full relative flex flex-col justify-center items-center'> 
-        <div ref={contentRef} className='text-center z-10 mb-8'>
+      <div className='h-full w-full relative flex flex-col justify-center items-center py-8 lg:py-0'> 
+        <div ref={contentRef} className='text-center z-10 mb-8 px-4 sm:px-6 lg:px-0'>
           {subtitle && (
-            <p className='text-lg text-gray-600  uppercase tracking-wider'>
+            <p className='hidden sm:block text-sm sm:text-base lg:text-lg text-gray-600 uppercase tracking-wider mb-2'>
               {subtitle}
             </p>
           )}
-          <h1 className='lg:text-[4rem] font-bold leading-[1] mb-6'>
+          <h1 className='text-4xl md:text-5xl font-bold mb-6'>
             {title}
           </h1>
           {description && (
-            <p className='text-lg text-gray-700 max-w-2xl leading-relaxed mx-auto'>
+            <p className='text-base sm:text-lg text-gray-700 max-w-xl sm:max-w-2xl leading-relaxed mx-auto px-2 sm:px-0'>
               {description}
             </p>
           )}
         </div>
-         <div className='relative w-full max-w-5xl h-64 lg:h-80  rounded-2xl'>
+         <div className='relative w-full lg:max-w-5xl h-fit lg:h-80 rounded-2xl'>
             <img 
               ref={imageRef}
               src={backgroundImage} 
               alt="Service Hero" 
-              className='w-[80%] mx-auto h-full object-contain '
+              className='w-full lg:w-[80%] mx-auto h-full object-contain'
             />
             
-            {/* Floating Metrics */}
-            {/* <MetricCard
-              position="top-left"
-              icon={
-                <svg className='w-5 h-5' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
-                  <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z' />
-                </svg>
-              }
-              label="Bookings Complete"
-              value="2,847"
-              colorScheme="green"
-            /> */}
-
-            <MetricCard
-              position="top-right"
-              icon={
-                <svg className='w-5 h-5' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
-                  <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M13 7h8m0 0v8m0-8l-8 8-4-4-6 6' />
-                </svg>
-              }
-              label="Customer Rating"
-              value="4.9/5"
-              colorScheme="yellow"
-            />
-
-            <MetricCard
-              position="bottom-left"
-              icon={
-                <svg className='w-5 h-5' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
-                  <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z' />
-                </svg>
-              }
-              label="On-Time Arrivals"
-              value="98%"
-              colorScheme="blue"
-            />
-
-            {/* <MetricCard
-              position="bottom-right"
-              icon={
-                <svg className='w-5 h-5' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
-                  <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z' />
-                </svg>
-              }
-              label="Happy Customers"
-              value="15K+"
-              colorScheme="orange"
-            /> */}
+            {/* Card Pattern Design Abstracts */}
+            <div className="absolute -top-8 -left-16 w-32 h-32 opacity-60 animate-pulse hidden lg:block">
+              <img 
+                src="/card-pattern-1-green.png" 
+                alt="Design Pattern 1" 
+                className="w-full h-full object-contain transform rotate-12 hover:rotate-15 transition-transform duration-700"
+              />
+            </div>
+            
+            <div className="absolute -top-4 -right-20 w-28 h-28 opacity-30 animate-pulse hidden lg:block" style={{animationDelay: '1s'}}>
+              <img 
+                src="/card-pattern-2-green.png" 
+                alt="Design Pattern 2" 
+                className="w-full h-full object-contain transform rotate-12 scale-y-[-1] hover:rotate-9 transition-transform duration-700"
+              />
+            </div>
+            
+            <div className="absolute -bottom-12 -left-20 w-24 h-24 opacity-40 animate-pulse hidden lg:block" style={{animationDelay: '2s'}}>
+              <img 
+                src="/card-pattern-2-green.png" 
+                alt="Design Pattern 1" 
+                className="w-full h-full object-contain transform rotate-45 hover:rotate-48 transition-transform duration-700"
+              />
+            </div>
+            
+            <div className="absolute -bottom-8 -right-16 w-36 h-36 opacity-30 animate-pulse hidden lg:block" style={{animationDelay: '0.5s'}}>
+              <img 
+                src="/card-pattern-1-green.png" 
+                alt="Design Pattern 2" 
+                className="w-full h-full object-contain transform -rotate-6 hover:-rotate-3 transition-transform duration-700"
+              />
+            </div>
           </div>
-          <div className='mt-8 text-white bg-black rounded-full font-semibold text-lg px-6 py-2'>
+          <div className='mt-12 lg:mt-8 text-white bg-black rounded-full font-semibold text-lg px-6 py-2'>
               Book Now
           </div>
       </div>

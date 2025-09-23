@@ -87,28 +87,30 @@ const ServiceCards: React.FC<ServiceCardsProps> = ({ data }) => {
           const isEven = index % 2 === 0;
           const imageOrder = data.length === 1 ? "order-1 lg:order-1" : (isEven ? "order-1 lg:order-1" : "order-1 lg:order-2");
           const contentOrder = data.length === 1 ? "order-2 lg:order-2" : (isEven ? "order-2 lg:order-2" : "order-2 lg:order-1");
+          const imageRounding = "rounded-[20px]";
+          const contentRounding = data.length === 1 ? "rounded-r-[20px]" : (isEven ? "rounded-r-[20px]" : "rounded-l-[20px]");
 
           return (
-            <div key={index} className="relative flex flex-col lg:flex-row items-center bg-[#F7F7F7] border border-gray-200 rounded-[20px] overflow-hidden shadow-lg min-h-[500px]">
-              {/* Background Pattern Images */}
-              <img
-                src="/card-pattern-1-green.png"
-                alt="pattern"
-                className="absolute bottom-0 left-0 w-[10%] opacity-30"
-                width={0}
-                height={0}
-              />
-              <img
-                src="/card-pattern-2-green.png"
-                alt="pattern"
-                className="absolute top-0 right-6 w-[10%] opacity-30"
-                width={0}
-                height={0}
-              />
-
+            <div key={index} className="relative flex flex-col lg:flex-row items-center rounded-[20px] overflow-hidden min-h-[500px]">
               {/* Image Side */}
-              <div className={`relative w-full lg:w-1/2 ${imageOrder} flex justify-center items-center p-8 z-10`}>
-                <div className="relative w-80 h-80 md:w-96 md:h-96 rounded-3xl overflow-hidden bg-white shadow-lg">
+              <div className={`relative w-full lg:w-1/2 ${imageOrder} flex justify-center items-center p-8 bg-[#F7F7F7] border border-gray-200 ${imageRounding}`}>
+                {/* Background Pattern Images */}
+                <img
+                  src="/card-pattern-1-green.png"
+                  alt="pattern"
+                  className="absolute bottom-0 left-0 w-[15%] opacity-30"
+                  width={0}
+                  height={0}
+                />
+                <img
+                  src="/card-pattern-2-green.png"
+                  alt="pattern"
+                  className="absolute top-0 right-6 w-[15%] opacity-30"
+                  width={0}
+                  height={0}
+                />
+                
+                <div className="relative w-80 h-80 md:w-96 md:h-96 rounded-3xl overflow-hidden bg-white shadow-lg z-10">
                   <img
                     src={card.image.src}
                     alt={card.image.alt}
@@ -128,14 +130,8 @@ const ServiceCards: React.FC<ServiceCardsProps> = ({ data }) => {
               </div>
 
               {/* Content Side */}
-              <div className={`relative w-full lg:w-1/2 ${contentOrder} p-6 md:p-10 lg:p-14 z-10`}>
-                <div className="space-y-6">
-                  {/* Color Indicator */}
-                  <div className="flex items-center gap-2">
-                    <div className="w-2 h-2 bg-yellow-400 rounded-full"></div>
-                    <div className="w-2 h-2 bg-red-400 rounded-full"></div>
-                    <div className="w-2 h-2 bg-green-400 rounded-full"></div>
-                  </div>
+              <div className={`relative w-full lg:w-1/2 ${contentOrder} p-6 md:p-10 lg:p-14 bg-white ${contentRounding}`}>
+                  <div className="space-y-6">
 
                   {/* Main Heading */}
                   <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
@@ -168,12 +164,12 @@ const ServiceCards: React.FC<ServiceCardsProps> = ({ data }) => {
                       className="inline-flex items-center gap-2 px-8 py-4 text-base font-semibold text-white bg-black rounded-full hover:bg-gray-800 transition-colors duration-200"
                     >
                       <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                       </svg>
                       {card.ctaButton.text}
                     </a>
+                    </div>
                   </div>
-                </div>
               </div>
             </div>
           );

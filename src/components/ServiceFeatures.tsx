@@ -98,80 +98,63 @@ const ServiceFeatures: React.FC<ServiceFeaturesProps> = ({ features, className =
   return (
     <div className={cn("w-full max-w-7xl mx-auto my-16 px-4 sm:px-6 lg:px-8", className)}>
       {/* Debug info - remove this after testing */}
-      <div className="text-center mb-10 text-black text-6xl font-semibold ">
+      <div className="text-center mb-10 text-black text-3xl lg:text-5xl font-semibold ">
         What We Offer in our Airport Package
       </div>
       
       {/* Button Container */}
-      <div className="flex flex-wrap justify-center gap-4 px-4 md:px-0 mb-8">
-        {features.map((item, i) => (
-          <button
-            key={i}
-            onClick={() => setActive(i)}
-            className={cn(
-              "min-w-[120px] px-6 py-3 text-sm md:text-base font-medium rounded-full transition-all duration-300 ease-in-out",
-              active === i
-                ? "bg-[#027d3d] text-white scale-105"
-                : "bg-white text-black border-2 border-gray-200 hover:scale-102 hover:border-gray-300"
-            )}
-          >
-            {item.button}
-          </button>
-        ))}
+      <div className="flex flex-wrap justify-center gap-2 px-4 md:px-0 mb-8">
+        <div className="bg-white/30 backdrop-blur-xl rounded-2xl p-3 border border-white/30 shadow-lg shadow-black/5 flex flex-wrap justify-center gap-2">
+          {features.map((item, i) => (
+            <button
+              key={i}
+              onClick={() => setActive(i)}
+              className={cn(
+                "relative px-4 py-3 text-sm md:text-base font-semibold rounded-xl transition-all duration-500 overflow-hidden backdrop-blur-sm border whitespace-nowrap",
+                active === i
+                  ? "bg-white/90 text-green-700 shadow-lg shadow-green-500/20 border-green-200/50 backdrop-blur-xl"
+                  : "text-gray-700 hover:text-green-600 hover:bg-white/40 hover:backdrop-blur-lg border-transparent hover:border-white/30"
+              )}
+            >
+              <span className="font-medium">{item.button}</span>
+              
+              {/* Active glassmorphism glow */}
+              {active === i && (
+                <div className="absolute inset-0 bg-gradient-to-r from-green-400/10 via-emerald-300/10 to-green-400/10 rounded-xl pointer-events-none" />
+              )}
+            </button>
+          ))}
+        </div>
       </div>
 
       {/* Content Container */}
-      <div className="relative mt-8 flex flex-col lg:flex-row items-center bg-[#F7F7F7] border border-gray-200 rounded-[20px] overflow-hidden shadow-lg min-h-[500px] lg:min-h-[500px]">
+      <div className="relative mt-8 flex flex-col lg:flex-row items-stretch bg-[#F7F7F7] border border-gray-200 rounded-[20px] overflow-hidden shadow-lg">
         {/* Background Pattern Images - Behind entire container */}
         <img
           src="/card-pattern-1-green.png"
           alt="pattern"
-          className="absolute bottom-0 left-0 w-[10%] opacity-30"
+          className="absolute bottom-0 left-0 w-[10%] opacity-30 hidden lg:block"
           width={0}
           height={0}
         />
         <img
           src="/card-pattern-2-green.png"
           alt="pattern"
-          className="absolute top-0 right-6 w-[10%] opacity-30"
+          className="absolute top-0 right-6 w-[10%] opacity-30 hidden lg:block"
           width={0}
           height={0}
         />
 
-        {/* Text Content */}
-        <div className="relative w-full lg:w-1/2 p-6 md:p-10 lg:p-14 transition-all duration-500 ease-in-out order-2 lg:order-1 z-10">
-          <div className="transition-opacity duration-500 ease-in-out">
-            <h3
-              dangerouslySetInnerHTML={{
-                __html: markdownify(features[active].title),
-              }}
-              className="text-2xl md:text-3xl lg:text-4xl mb-4 font-bold transform transition-transform duration-500 ease-in-out"
-            />
-            <p
-              dangerouslySetInnerHTML={{
-                __html: markdownify(features[active].content),
-              }}
-              className="text-base md:text-lg mb-6 text-gray-600 transform transition-transform duration-500 ease-in-out leading-relaxed"
-            />
-            <div className="transform transition-all duration-500 ease-in-out">
-              <Button
-                link={features[active].link.link}
-                label={features[active].link.label}
-              />
-            </div>
-          </div>
-        </div>
-
-        {/* Image Container */}
-        <div className="relative w-full lg:w-1/2 order-1 lg:order-2 flex justify-center items-center p-8 z-10">
+        {/* Image Container - Mobile First Order */}
+        <div className="relative w-full lg:w-1/2 order-1 flex justify-center items-center p-4 sm:p-6 lg:p-8 min-h-[280px] sm:min-h-[320px] lg:min-h-[500px]">
           {features.map((feature, i) => (
             <div
               key={i}
               className={cn(
-                "absolute w-80 h-80 md:w-96 md:h-96 transition-all duration-500 ease-in-out rounded-3xl overflow-hidden bg-white shadow-lg",
+                "w-full max-w-[280px] sm:max-w-[320px] md:max-w-[380px] lg:max-w-[400px] aspect-square transition-all duration-500 ease-in-out rounded-2xl lg:rounded-3xl overflow-hidden bg-white shadow-lg",
                 active === i
-                  ? "opacity-100 translate-x-0"
-                  : "opacity-0 translate-x-full"
+                  ? "opacity-100 scale-100"
+                  : "opacity-0 scale-95 absolute"
               )}
             >
               <img
@@ -183,19 +166,31 @@ const ServiceFeatures: React.FC<ServiceFeaturesProps> = ({ features, className =
               />
             </div>
           ))}
-          
-          {/* Metric Card - Bottom Left */}
-          {/* <MetricCard
-            position="bottom-left"
-            icon={
-              <svg className='w-5 h-5' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
-                <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M5 13l4 4L19 7' />
-              </svg>
-            }
-            label="Available Now"
-            value="24/7"
-            colorScheme="green"
-          /> */}
+        </div>
+
+        {/* Text Content - Mobile Second Order */}
+        <div className="relative w-full lg:w-1/2 p-4 sm:p-6 md:p-8 lg:p-14 transition-all duration-500 ease-in-out order-2 flex flex-col justify-center">
+          <div className="transition-opacity duration-500 ease-in-out">
+            <h3
+              dangerouslySetInnerHTML={{
+                __html: markdownify(features[active].title),
+              }}
+              className="text-xl sm:text-2xl md:text-3xl lg:text-4xl mb-3 sm:mb-4 font-bold transform transition-transform duration-500 ease-in-out"
+            />
+            <p
+              dangerouslySetInnerHTML={{
+                __html: markdownify(features[active].content),
+              }}
+              className="text-sm sm:text-base md:text-lg mb-4 sm:mb-6 text-gray-600 transform transition-transform duration-500 ease-in-out leading-relaxed"
+            />
+            <div className="transform transition-all duration-500 ease-in-out">
+              <Button
+                link={features[active].link.link}
+                label={features[active].link.label}
+                className="w-full sm:w-auto text-center justify-center sm:justify-start"
+              />
+            </div>
+          </div>
         </div>
       </div>
     </div>

@@ -64,22 +64,20 @@ const ContactForm: React.FC = () => {
   };
 
   return (
-    <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
+    <div className="bg-white rounded-2xl p-8 border border-gray-100">
       {/* Header */}
       <div className="mb-8">
-        <div className="flex items-center gap-2 mb-4">
-          <div className="w-2 h-2 bg-yellow-400 rounded-full"></div>
-          <div className="w-2 h-2 bg-red-400 rounded-full"></div>
-          <div className="w-2 h-2 bg-green-400 rounded-full"></div>
-        </div>
-        <h2 className="text-3xl font-bold text-gray-900 mb-2">Send us a Message</h2>
-        <p className="text-gray-600">Fill out the form below and we'll get back to you as soon as possible.</p>
+        <p className="text-sm uppercase tracking-wider text-gray-500 mb-4">
+          GET IN TOUCH
+        </p>
+        <h2 className="text-4xl font-bold text-gray-900 mb-4">Send us a Message</h2>
+        <p className="text-lg text-gray-600">Fill out the form below and we'll get back to you as soon as possible.</p>
       </div>
 
       {/* Success Message */}
       {submitMessage && (
-        <div className="mb-6 p-4 bg-green-100 border border-green-200 rounded-lg">
-          <p className="text-green-700">{submitMessage}</p>
+        <div className="mb-6 p-4 bg-emerald-100 border border-emerald-200 rounded-2xl">
+          <p className="text-emerald-700">{submitMessage}</p>
         </div>
       )}
 
@@ -98,7 +96,7 @@ const ContactForm: React.FC = () => {
               required
               value={formData.name}
               onChange={(e) => handleInputChange('name', e.target.value)}
-              className="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent outline-none transition-all"
+              className="w-full pl-12 pr-4 py-3 border border-gray-200 rounded-2xl focus:ring-2 focus:ring-emerald-500 focus:border-transparent outline-none transition-all bg-gray-50 hover:bg-white"
               placeholder="Enter your full name"
             />
           </div>
@@ -118,7 +116,7 @@ const ContactForm: React.FC = () => {
                 required
                 value={formData.email}
                 onChange={(e) => handleInputChange('email', e.target.value)}
-                className="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent outline-none transition-all"
+                className="w-full pl-12 pr-4 py-3 border border-gray-200 rounded-2xl focus:ring-2 focus:ring-emerald-500 focus:border-transparent outline-none transition-all bg-gray-50 hover:bg-white"
                 placeholder="your@email.com"
               />
             </div>
@@ -135,7 +133,7 @@ const ContactForm: React.FC = () => {
                 id="phone"
                 value={formData.phone}
                 onChange={(e) => handleInputChange('phone', e.target.value)}
-                className="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent outline-none transition-all"
+                className="w-full pl-12 pr-4 py-3 border border-gray-200 rounded-2xl focus:ring-2 focus:ring-emerald-500 focus:border-transparent outline-none transition-all bg-gray-50 hover:bg-white"
                 placeholder="+1 (555) 123-4567"
               />
             </div>
@@ -155,7 +153,7 @@ const ContactForm: React.FC = () => {
                 required
                 value={formData.service}
                 onChange={(e) => handleInputChange('service', e.target.value)}
-                className="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent outline-none transition-all appearance-none bg-white"
+                className="w-full pl-12 pr-4 py-3 border border-gray-200 rounded-2xl focus:ring-2 focus:ring-emerald-500 focus:border-transparent outline-none transition-all appearance-none bg-gray-50 hover:bg-white"
               >
                 <option value="">Select a service</option>
                 {services.map((service) => (
@@ -176,7 +174,7 @@ const ContactForm: React.FC = () => {
                 id="preferredDate"
                 value={formData.preferredDate}
                 onChange={(e) => handleInputChange('preferredDate', e.target.value)}
-                className="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent outline-none transition-all"
+                className="w-full pl-12 pr-4 py-3 border border-gray-200 rounded-2xl focus:ring-2 focus:ring-emerald-500 focus:border-transparent outline-none transition-all bg-gray-50 hover:bg-white"
               />
             </div>
           </div>
@@ -195,7 +193,7 @@ const ContactForm: React.FC = () => {
               rows={5}
               value={formData.message}
               onChange={(e) => handleInputChange('message', e.target.value)}
-              className="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent outline-none transition-all resize-vertical"
+              className="w-full pl-12 pr-4 py-3 border border-gray-200 rounded-2xl focus:ring-2 focus:ring-emerald-500 focus:border-transparent outline-none transition-all resize-vertical bg-gray-50 hover:bg-white"
               placeholder="Tell us about your transportation needs, preferred pickup location, number of passengers, special requirements, etc."
             />
           </div>
@@ -205,10 +203,10 @@ const ContactForm: React.FC = () => {
         <button
           type="submit"
           disabled={isSubmitting}
-          className={`w-full flex items-center justify-center gap-3 px-8 py-4 text-base font-semibold text-white rounded-full transition-all duration-300 ${
+          className={`w-full flex items-center justify-center gap-3 px-8 py-4 text-base font-semibold text-white rounded-2xl transition-all duration-300 ${
             isSubmitting 
               ? 'bg-gray-400 cursor-not-allowed' 
-              : 'bg-black hover:bg-gray-800 hover:scale-105 transform'
+              : 'bg-emerald-600 hover:bg-emerald-700 hover:-translate-y-1 transform shadow-lg hover:shadow-xl'
           }`}
         >
           {isSubmitting ? (

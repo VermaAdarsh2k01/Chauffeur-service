@@ -1,19 +1,25 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import ContactHero from "@/components/ContactHero";
 import ContactForm from "@/components/ContactForm";
 import ContactInfo from "@/components/ContactInfo";
 ---
 
 <Layout>
-    <ContactHero client:load 
-        title="Get in Touch"
-        subtitle="Contact Us"
-        description="Ready to experience premium car rental services? We're here to help you with all your transportation needs."
-    />
-    
-    <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+     <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 mt-16">
+        <!-- Page Header -->
+        <div class="text-center mb-16">
+            <p class="text-sm uppercase tracking-wider text-gray-500 mb-4">
+                CONTACT US
+            </p>
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+                Get in Touch
+            </h1>
+            <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                Ready to experience premium car rental services? We're here to help you with all your transportation needs.
+            </p>
+        </div>
+        
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
             <ContactForm client:load />
             <ContactInfo client:load />
         </div>

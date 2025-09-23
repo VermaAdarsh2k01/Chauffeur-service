@@ -430,14 +430,14 @@ const TabNavigation = () => {
       <div className="bg-white/30 backdrop-blur-2xl border border-white/40 rounded-3xl shadow-2xl shadow-black/5 overflow-hidden">
         {/* Tab Navigation */}
         <div className="p-3 sm:p-6 bg-gradient-to-r from-white/20 via-white/10 to-white/20 backdrop-blur-lg">
-          {/* Mobile: Horizontal scrollable tabs */}
+          {/* Mobile: Wrapped tabs */}
           <div className="sm:hidden">
-            <div className="flex gap-2 overflow-x-auto scrollbar-hide bg-white/30 backdrop-blur-xl rounded-2xl p-2 border border-white/30 shadow-lg shadow-black/5">
+            <div className="flex flex-wrap gap-2 bg-white/30 backdrop-blur-xl rounded-2xl p-2 border border-white/30 shadow-lg shadow-black/5">
               {tabs.map((tab) => (
                 <button
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id)}
-                  className={`flex-shrink-0 flex flex-col items-center justify-center gap-1 px-3 py-2 text-xs font-semibold rounded-xl transition-all duration-500 relative overflow-hidden backdrop-blur-sm min-w-[70px] ${
+                  className={`flex flex-col items-center justify-center gap-1 px-3 py-2 text-xs font-semibold rounded-xl transition-all duration-500 relative overflow-hidden backdrop-blur-sm min-w-[70px] flex-1 ${
                     activeTab === tab.id
                       ? "bg-white/90 text-green-700 shadow-lg shadow-green-500/20 border border-green-200/50 backdrop-blur-xl"
                       : "text-gray-700 hover:text-green-600 hover:bg-white/40 hover:backdrop-blur-lg border border-transparent hover:border-white/30"
