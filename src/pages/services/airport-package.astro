@@ -1,9 +1,61 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import ServiceHero from "@/components/ServiceHero";
+import ServiceFeatures from "@/components/ServiceFeatures";
+
+
+// Dummy data for testing - you can use this as an example
+const Feature = [
+  {
+    button: "Luxury Cars",
+    title: "Premium **Luxury** Fleet",
+    content: "Experience the ultimate in comfort and style with our premium luxury vehicles. Perfect for special occasions, business meetings, or when you simply want to travel in sophistication.",
+    image: "/vehicles/mercedes.jpg",
+    link: {
+      link: "/services/luxury-rentals",
+      label: "Book Luxury Car"
+    }
+  },
+  {
+    button: "Economy",
+    title: "Budget-Friendly **Economy** Options",
+    content: "Get the best value for your money with our reliable and fuel-efficient economy cars. Perfect for city driving, daily commutes, and budget-conscious travelers.",
+    image: "/vehicles/dzire.jpg",
+    link: {
+      link: "/services/economy-rentals",
+      label: "Book Economy Car"
+    }
+  },
+  {
+    button: "SUVs",
+    title: "Spacious **SUV** Collection",
+    content: "Need extra space for family trips or adventure? Our SUV collection offers comfort, safety, and ample storage for all your travel needs.",
+    image: "/vehicles/fortuner.jpg",
+    link: {
+      link: "/services/suv-rentals",
+      label: "Book SUV"
+    }
+  },
+  {
+    button: "Sports Cars",
+    title: "High-Performance **Sports** Cars",
+    content: "Feel the thrill of the road with our collection of high-performance sports cars. Perfect for those who appreciate speed, style, and cutting-edge automotive engineering.",
+    image: "/vehicles/porche.jpg",
+    link: {
+      link: "/services/sports-rentals",
+      label: "Book Sports Car"
+    }
+  },
+];
+
+
 ---
 
 <Layout>
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h1 class="text-4xl font-bold">Airport Package</h1>
-    </div>
+    <ServiceHero client:load
+    title="Airport Package"
+    subtitle="Premium Service"
+    description="Experience luxury and comfort"
+    />
+    <ServiceFeatures client:load features={Feature}/>
 </Layout>
