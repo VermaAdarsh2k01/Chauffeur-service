@@ -124,14 +124,14 @@ const ServiceFeatures: React.FC<ServiceFeaturesProps> = ({ features, className =
       <div className="relative mt-8 flex flex-col lg:flex-row items-center bg-[#F7F7F7] border border-gray-200 rounded-[20px] overflow-hidden shadow-lg min-h-[500px] lg:min-h-[500px]">
         {/* Background Pattern Images - Behind entire container */}
         <img
-          src="/card-pattern-1.png"
+          src="/card-pattern-1-green.png"
           alt="pattern"
           className="absolute bottom-0 left-0 w-[10%] opacity-30"
           width={0}
           height={0}
         />
         <img
-          src="/card-pattern-2.png"
+          src="/card-pattern-2-green.png"
           alt="pattern"
           className="absolute top-0 right-6 w-[10%] opacity-30"
           width={0}

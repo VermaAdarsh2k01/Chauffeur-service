@@ -2,8 +2,76 @@
 import Layout from '../../layouts/Layout.astro';
 import ServiceHero from "@/components/ServiceHero";
 import ServiceFeatures from "@/components/ServiceFeatures";
+import ServiceCards from "@/components/ServiceCards";
 
-
+const cards = [
+  {
+    heading: "Premium Airport Transfer Services",
+    description: "Experience luxury and comfort with our professional chauffeur services. We provide reliable, punctual, and premium transportation solutions for all your airport transfer needs.",
+    featurePoints: [
+      { text: "24/7 availability with professional drivers" },
+      { text: "Luxury fleet with premium amenities and comfort" }
+    ],
+    ctaButton: {
+      text: "Book Airport Transfer",
+      link: "/services/airport-transfer"
+    },
+    image: {
+      src: "/chauffeur.jpg",
+      alt: "Professional Airport Chauffeur Service"
+    },
+    metric: {
+      icon: "Clock",
+      label: "On-Time Rate",
+      value: "99%",
+      colorScheme: "green" as const
+    }
+  },
+  {
+    heading: "Corporate Travel Solutions",
+    description: "Reliable and professional transportation for your business needs. Our corporate packages ensure punctual arrivals and comfortable journeys for executives and teams.",
+    featurePoints: [
+      { text: "Dedicated account management for businesses" },
+      { text: "Fleet tracking and real-time updates" }
+    ],
+    ctaButton: {
+      text: "Get Corporate Quote",
+      link: "/services/corporate-travel"
+    },
+    image: {
+      src: "/vehicles/mercedes.jpg",
+      alt: "Corporate Mercedes Vehicle"
+    },
+    metric: {
+      icon: "Star",
+      label: "Client Rating",
+      value: "4.9/5",
+      colorScheme: "blue" as const
+    }
+  },
+  {
+    heading: "Special Event Transportation",
+    description: "Make your special occasions memorable with our premium event transportation services. Perfect for weddings, parties, and important celebrations.",
+    featurePoints: [
+      { text: "Customizable packages for any event size" },
+      { text: "Professional uniformed chauffeurs" }
+    ],
+    ctaButton: {
+      text: "Plan Event Transport",
+      link: "/services/event-transportation"
+    },
+    image: {
+      src: "/vehicles/porche.jpg",
+      alt: "Luxury Porsche for Special Events"
+    },
+    metric: {
+      icon: "Calendar",
+      label: "Events Served",
+      value: "500+",
+      colorScheme: "purple" as const
+    }
+  }
+];
 // Dummy data for testing - you can use this as an example
 const Feature = [
   {
@@ -58,4 +126,7 @@ const Feature = [
     description="Experience luxury and comfort"
     />
     <ServiceFeatures client:load features={Feature}/>
+
+    <ServiceCards client:load data={cards} />
+
 </Layout>

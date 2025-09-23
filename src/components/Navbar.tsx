@@ -20,7 +20,7 @@ const Navbar = () => {
       dropdownItems: serviceDropdownItems,
       isDropdownTrigger: true
     },
-    { name: 'Contact', href: '/future' },
+    { name: 'Contact', href: '/contact' },
   ];
 
   return (
