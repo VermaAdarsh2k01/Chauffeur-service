@@ -12,6 +12,7 @@ type Vehicle = {
   id: number;
   name: string;
   image: string;
+  description: string;
 };
 
 const vehicles: Vehicle[] = [
@@ -20,38 +21,51 @@ const vehicles: Vehicle[] = [
     id: 1,
     name: "BMW",
     image: "/vehicles/bmw.jpg",
+    description:
+      "Ultimate driving machine with precision engineering and luxury comfort",
   },
   {
     id: 2,
     name: "Porsche",
     image: "/vehicles/porche.jpg",
+    description:
+      "Iconic sports cars delivering pure driving pleasure and performance",
   },
   {
     id: 3,
     name: "Mercedes",
     image: "/vehicles/mercedes.jpg",
+    description:
+      "The best or nothing - premium luxury with innovative technology",
   },
   // Second row - 4 premium cars
   {
     id: 4,
     name: "Hyundai",
-
     image: "/vehicles/suv.jpg",
+    description:
+      "Modern design meets reliability with exceptional value and features",
   },
   {
     id: 5,
     name: "Audi",
     image: "/vehicles/audi.jpg",
+    description:
+      "Vorsprung durch Technik - where innovation meets sophisticated design",
   },
   {
     id: 6,
     name: "Toyota",
     image: "/vehicles/fortuner.jpg",
+    description:
+      "Let's go places with legendary reliability and rugged capability",
   },
   {
     id: 7,
     name: "Suzuki",
     image: "/vehicles/dzire.jpg",
+    description:
+      "Way of life with compact efficiency and practical functionality",
   },
 ];
 
@@ -109,7 +123,7 @@ export default function VehicleFleet() {
   const secondRow = vehicles.slice(3);
 
   return (
-    <section ref={sectionRef} className="py-16 px-4 md:px-6 lg:px-8 bg-white">
+    <section ref={sectionRef} className="px-4 md:px-6 lg:px-8 bg-white">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-12">
@@ -142,6 +156,9 @@ export default function VehicleFleet() {
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 <div className="absolute bottom-6 left-6 text-white">
                   <h3 className="text-2xl font-bold mb-2">{vehicle.name}</h3>
+                  <p className="text-sm text-gray-200 mb-3">
+                    {vehicle.description}
+                  </p>
                   <button className="px-4 py-2 bg-white text-black rounded-lg hover:bg-gray-200 transition-colors duration-200 text-sm font-semibold">
                     Book Now
                   </button>
@@ -170,6 +187,9 @@ export default function VehicleFleet() {
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 <div className="absolute bottom-6 left-6 text-white">
                   <h3 className="text-2xl font-bold mb-2">{vehicle.name}</h3>
+                  <p className="text-sm text-gray-200 mb-3">
+                    {vehicle.description}
+                  </p>
                   <button className="px-4 py-2 bg-white text-black rounded-lg hover:bg-gray-200 transition-colors duration-200 text-sm font-semibold">
                     Book Now
                   </button>

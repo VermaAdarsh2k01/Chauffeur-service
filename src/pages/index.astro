@@ -1,29 +1,29 @@
 ---
-import Hero from '../components/Hero';
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-import VehicleFleet from '../components/VehicleFleet';
-import KeyFeatures from '../components/KeyFeatures';
-import ServiceHighlights from '../components/ServiceHighlights';
-import DownloadCTA from '../components/DownloadCTA';
-
+import Hero from "../components/Hero";
+import Welcome from "../components/Welcome.astro";
+import Layout from "../layouts/Layout.astro";
+import VehicleFleet from "../components/VehicleFleet";
+import KeyFeatures from "../components/KeyFeatures";
+import ServiceHighlights from "../components/ServiceHighlights";
+import DownloadCTA from "../components/DownloadCTA";
 ---
 
 <Layout>
-	<Hero client:load />
-	<div class="min-h-screen w-full my-12">
-		<VehicleFleet client:load />
-	</div>
+  <Hero client:load />
 
-	<div class="min-h-screen w-full flex items-center justify-center ">
-		<ServiceHighlights client:load />
-	</div>
-	
-	<div class="min-h-screen w-full flex items-center justify-center my-12">
-		<KeyFeatures client:load />
-	</div>
+  <section class="py-10 sm:py-16 lg:py-20">
+    <VehicleFleet client:load />
+  </section>
 
-	<div class="w-full h-[70vh] px-6 my-12 ">
-		<DownloadCTA client:load />
-	</div>
+  <section class="py-10 sm:py-16 lg:py-20">
+    <ServiceHighlights client:load />
+  </section>
+
+  <section class="py-10 sm:py-16 lg:py-20">
+    <KeyFeatures client:load />
+  </section>
+
+  <section class="py-10 sm:py-16 lg:py-20 px-4 sm:px-6">
+    <DownloadCTA client:load />
+  </section>
 </Layout>
