@@ -79,38 +79,6 @@ export const homePage = defineType({
           }],
           validation: Rule => Rule.min(1).max(10),
           description: 'Logos that will scroll in the marquee'
-        }),
-        defineField({
-          name: 'backgroundPatterns',
-          title: 'Background Patterns',
-          type: 'object',
-          fields: [
-            defineField({
-              name: 'patternImage',
-              title: 'Pattern Background Image',
-              type: 'object',
-              fields: [
-                defineField({
-                  name: 'src',
-                  title: 'Image Source',
-                  type: 'image',
-                  description: 'Background pattern image (defaults to /patternBg.png if not provided)'
-                }),
-                defineField({
-                  name: 'alt',
-                  title: 'Alt Text',
-                  type: 'string'
-                })
-              ]
-            }),
-            defineField({
-              name: 'showGradients',
-              title: 'Show Gradient Effects',
-              type: 'boolean',
-              initialValue: true,
-              description: 'Toggle gradient background effects'
-            })
-          ]
         })
       ]
     }),
@@ -389,11 +357,7 @@ export const homePage = defineType({
                     { title: 'Clock', value: 'Clock' },
                     { title: 'Headphones', value: 'Headphones' },
                     { title: 'Sparkles', value: 'Sparkles' },
-                    { title: 'Shield', value: 'Shield' },
-                    { title: 'Car', value: 'Car' },
-                    { title: 'Users', value: 'Users' },
-                    { title: 'Award', value: 'Award' },
-                    { title: 'Star', value: 'Star' }
+                    { title: 'Shield', value: 'Shield' }
                   ]
                 },
                 validation: Rule => Rule.required()
@@ -413,6 +377,72 @@ export const homePage = defineType({
             ]
           }],
           validation: Rule => Rule.min(1).max(8)
+        })
+      ]
+    }),
+
+    // FAQ Section
+    defineField({
+      name: 'faq',
+      title: 'FAQ Section',
+      type: 'object',
+      fields: [
+        defineField({
+          name: 'sectionTitle',
+          title: 'Section Title',
+          type: 'string',
+          validation: Rule => Rule.required(),
+          initialValue: 'Frequently Asked Questions'
+        }),
+        defineField({
+          name: 'sectionSubtitle',
+          title: 'Section Subtitle',
+          type: 'text',
+          validation: Rule => Rule.required(),
+          initialValue: 'Find answers to common questions about our chauffeur services'
+        }),
+        defineField({
+          name: 'faqs',
+          title: 'FAQ Items',
+          type: 'array',
+          of: [{
+            type: 'object',
+            fields: [
+              defineField({
+                name: 'id',
+                title: 'FAQ ID',
+                type: 'string',
+                validation: Rule => Rule.required(),
+                description: 'Unique identifier for this FAQ item'
+              }),
+              defineField({
+                name: 'question',
+                title: 'Question',
+                type: 'string',
+                validation: Rule => Rule.required()
+              }),
+              defineField({
+                name: 'answer',
+                title: 'Answer',
+                type: 'text',
+                validation: Rule => Rule.required()
+              })
+            ],
+            preview: {
+              select: {
+                title: 'question',
+                subtitle: 'answer'
+              },
+              prepare(selection) {
+                const { title, subtitle } = selection
+                return {
+                  title: title,
+                  subtitle: subtitle ? `${subtitle.substring(0, 50)}...` : ''
+                }
+              }
+            }
+          }],
+          validation: Rule => Rule.min(1).max(20)
         })
       ]
     }),

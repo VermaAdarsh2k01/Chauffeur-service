@@ -4,8 +4,25 @@ import TabNavigation from "./TabNavigation";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 
-// Example logos - replace these with your actual logo paths
-const partnerLogos = [
+type HeroData = {
+  mainHeading?: string[];
+  description?: string;
+  heroImage?: {
+    src: string;
+    alt: string;
+  };
+  partnerLogos?: {
+    src: string;
+    alt: string;
+  }[];
+};
+
+interface HeroProps {
+  data?: HeroData;
+}
+
+// Default/fallback data
+const defaultPartnerLogos = [
   { src: "/path/to/logo1.png", alt: "Partner 1" },
   { src: "/path/to/logo2.png", alt: "Partner 2" },
   { src: "/path/to/logo3.png", alt: "Partner 3" },
@@ -13,7 +30,7 @@ const partnerLogos = [
   { src: "/path/to/logo5.png", alt: "Partner 5" },
 ];
 
-const Hero = () => {
+const Hero = ({ data }: HeroProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
   const imageRef = useRef<HTMLImageElement>(null);
@@ -58,6 +75,12 @@ const Hero = () => {
     { scope: containerRef }
   );
 
+  // Use dynamic data or fallback to defaults
+  const mainHeading = data?.mainHeading || ['Premium', 'Chauffeur Driven', 'Car Services'];
+  const description = data?.description || 'Experience luxury travel with our professional chauffeur services. Reliable, comfortable, and tailored to your needs.';
+  const heroImage = data?.heroImage || { src: '/hero2.png', alt: 'Premium Porsche Car' };
+  const partnerLogos = data?.partnerLogos || defaultPartnerLogos;
+
   return (
     <div
       ref={containerRef}
@@ -91,14 +114,15 @@ const Hero = () => {
             className="flex flex-col justify-center px-2 sm:px-4 lg:w-[80%] lg:ms-auto pt-8 sm:pt-12 lg:pt-8 pb-4 sm:pb-6 lg:pb-0"
           >
             <h1 className="text-4xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-tight lg:leading-[1.1] mb-3 lg:mb-4 text-center lg:text-left">
-              Premium
-              <br />
-              Chauffeur Driven
-              <br />
-              Car Services
+              {mainHeading.map((line, index) => (
+                <React.Fragment key={index}>
+                  {line}
+                  {index < mainHeading.length - 1 && <br />}
+                </React.Fragment>
+              ))}
             </h1>
             <p className="text-sm sm:text-base lg:text-lg text-gray-600 mb-4 lg:mb-6 text-center lg:text-left max-w-lg mx-auto lg:mx-0">
-              Experience luxury travel with our professional chauffeur services. Reliable, comfortable, and tailored to your needs.
+              {description}
             </p>
             <div className="max-w-md mt-4 mx-auto lg:mx-0">
               <LogoMarquee className="" />
@@ -109,8 +133,8 @@ const Hero = () => {
           <div className="relative overflow-hidden flex items-center justify-center w-full h-fit sm:h-96 lg:h-full lg:m-12 order-first lg:order-last pt-24 sm:pt-6 lg:pt-0 pb-2 sm:pb-4 lg:pb-0">
             <img
               ref={imageRef}
-              src="/hero2.png"
-              alt="Premium Porsche Car"
+              src={heroImage.src}
+              alt={heroImage.alt}
               className="w-full h-full lg:w-auto lg:h-auto lg:max-w-full lg:max-h-full object-contain sm:object-cover lg:object-center"
             />
           </div>

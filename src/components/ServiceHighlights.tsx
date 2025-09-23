@@ -7,7 +7,39 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
 }
-export default function ServiceHighlights() {
+
+type ServiceHighlightsData = {
+  subtitle?: string;
+  sectionTitle?: string;
+  highlights?: Array<{
+    title: string;
+    description: string;
+    type: 'image' | 'counter' | 'icon';
+    image?: {
+      src: string;
+      alt: string;
+    };
+    counterData?: {
+      counter1: {
+        value: number;
+        label: string;
+        suffix: string;
+      };
+      counter2: {
+        value: number;
+        label: string;
+        suffix: string;
+      };
+    };
+    backgroundColor?: string;
+  }>;
+};
+
+interface ServiceHighlightsProps {
+  data?: ServiceHighlightsData;
+}
+
+export default function ServiceHighlights({ data }: ServiceHighlightsProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const counter1Ref = useRef<HTMLDivElement>(null);
   const counter2Ref = useRef<HTMLDivElement>(null);
@@ -56,14 +88,19 @@ export default function ServiceHighlights() {
     },
     { scope: containerRef }
   );
+
+  // Use dynamic data or fallback to defaults
+  const subtitle = data?.subtitle || "We Believe in Premium Experience";
+  const sectionTitle = data?.sectionTitle || "We Believe in Premium Experience";
+
   return (
     <div className="py-0" ref={containerRef}>
       <div className="mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
         <h2 className="text-center text-base/7 font-semibold text-slate-700">
-          We Believe in Premium Experience
+          {subtitle}
         </h2>
         <p className="mx-auto mt-2 max-w-lg text-center text-2xl sm:text-4xl font-semibold tracking-tight text-balance text-black dark:text-white lg:text-5xl">
-          We Believe in Premium Experience
+          {sectionTitle}
         </p>
         <div className="mt-6 sm:mt-10 lg:mt-16 grid gap-4 sm:gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lg:grid-rows-2">
           <div className="relative lg:row-span-2">

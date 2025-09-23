@@ -3,7 +3,33 @@ import { Clock, Headphones, Sparkles, Shield } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-const features = [
+type Feature = {
+  Icon: React.ComponentType<{ size?: number; strokeWidth?: number; className?: string }>;
+  title: string;
+  description: string;
+  icon?: string;
+};
+
+type KeyFeaturesData = {
+  subtitle?: string;
+  sectionTitle?: string;
+  sectionDescription?: string;
+  features?: Omit<Feature, 'Icon'>[];
+};
+
+interface KeyFeaturesProps {
+  data?: KeyFeaturesData;
+}
+
+// Icon mapping for Sanity data
+const iconMap: Record<string, React.ComponentType<{ size?: number; strokeWidth?: number; className?: string }>> = {
+  clock: Clock,
+  headphones: Headphones,
+  sparkles: Sparkles,
+  shield: Shield,
+};
+
+const defaultFeatures: Feature[] = [
   {
     Icon: Clock,
     title: "24-hour Services",
@@ -29,7 +55,7 @@ if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
 }
 
-const KeyFeatures: React.FC = () => {
+const KeyFeatures: React.FC<KeyFeaturesProps> = ({ data }) => {
   const sectionRef = useRef<HTMLElement>(null);
   const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
   const iconsRef = useRef<(HTMLDivElement | null)[]>([]);
@@ -74,19 +100,32 @@ const KeyFeatures: React.FC = () => {
       tl.kill();
     };
   }, []);
+
+  // Use dynamic data or fallback to defaults
+  const subtitle = data?.subtitle || "Taking Care of Every Client";
+  const sectionTitle = data?.sectionTitle || "Key Features";
+  const sectionDescription = data?.sectionDescription || "We are all about our client's comfort and safety. That's why we provide the best service you can imagine.";
+  
+  // Transform Sanity features to include Icon component
+  const features: Feature[] = data?.features 
+    ? data.features.map(feature => ({
+        ...feature,
+        Icon: feature.icon ? iconMap[feature.icon.toLowerCase()] || Clock : Clock
+      }))
+    : defaultFeatures;
+
   return (
     <section ref={sectionRef} className="px-4 md:px-8 max-w-7xl mx-auto py-16 section">
       {/* Header Section */}
       <div className="text-center mb-16">
         <p className="text-sm uppercase tracking-wider text-gray-500 mb-4">
-          Taking Care of Every Client
+          {subtitle}
         </p>
         <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-          Key Features
+          {sectionTitle}
         </h2>
         <p className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
-          We are all about our client's comfort and safety. That's why we
-          provide the best service you can imagine.
+          {sectionDescription}
         </p>
       </div>
 

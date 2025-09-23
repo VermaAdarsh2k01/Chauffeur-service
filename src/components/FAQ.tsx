@@ -7,10 +7,17 @@ interface FAQItem {
   answer: string;
 }
 
+interface FAQData {
+  title?: string;
+  subtitle?: string;
+  questions?: FAQItem[];
+}
+
 interface FAQProps {
   faqs?: FAQItem[];
   title?: string;
   subtitle?: string;
+  data?: FAQData;
 }
 
 const FAQ: React.FC<FAQProps> = ({
@@ -47,8 +54,14 @@ const FAQ: React.FC<FAQProps> = ({
       question: "What happens if I return the car late?",
       answer: "Late returns are subject to additional charges based on our hourly rate. If you know you'll be late, please contact us as soon as possible to discuss options and potential extensions to avoid extra fees."
     }
-  ]
+  ],
+  data
 }) => {
+  // Use dynamic data or fallback to props/defaults
+  const displayTitle = data?.title || title;
+  const displaySubtitle = data?.subtitle || subtitle;
+  const displayFaqs = data?.questions || faqs;
+
   const [openItems, setOpenItems] = useState<Set<string>>(new Set());
 
   const toggleItem = (id: string) => {
@@ -66,16 +79,16 @@ const FAQ: React.FC<FAQProps> = ({
       {/* Header */}
       <div className="text-center mb-16">
         <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-          {title}
+          {displayTitle}
         </h2>
         <p className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
-          {subtitle}
+          {displaySubtitle}
         </p>
       </div>
 
       {/* FAQ Items */}
       <div className="space-y-1">
-        {faqs.map((faq, index) => {
+        {displayFaqs.map((faq, index) => {
           const isOpen = openItems.has(faq.id);
           
           return (

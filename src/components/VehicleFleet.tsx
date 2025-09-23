@@ -9,13 +9,27 @@ if (typeof window !== "undefined") {
 }
 
 type Vehicle = {
-  id: number;
+  id?: number;
   name: string;
-  image: string;
+  image: string | { src: string; alt: string };
   description: string;
+  buttonText?: string;
+  buttonLink?: string;
 };
 
-const vehicles: Vehicle[] = [
+type VehicleFleetData = {
+  subtitle?: string;
+  sectionTitle?: string;
+  sectionDescription?: string;
+  vehicles?: Vehicle[];
+};
+
+interface VehicleFleetProps {
+  data?: VehicleFleetData;
+}
+
+// Default/fallback data
+const defaultVehicles: Vehicle[] = [
   // First row - 3 luxury cars
   {
     id: 1,
@@ -69,7 +83,7 @@ const vehicles: Vehicle[] = [
   },
 ];
 
-export default function VehicleFleet() {
+export default function VehicleFleet({ data }: VehicleFleetProps) {
   const sectionRef = useRef<HTMLElement>(null);
   const imagesRef = useRef<(HTMLImageElement | null)[]>([]);
 
@@ -118,9 +132,30 @@ export default function VehicleFleet() {
     { scope: sectionRef }
   );
 
+  // Use dynamic data or fallback to default
+  const vehicles = data?.vehicles || defaultVehicles;
+  const subtitle = data?.subtitle || "ONLY THE BEST CARS";
+  const sectionTitle = data?.sectionTitle || "Our Vehicle Fleet";
+  const sectionDescription = data?.sectionDescription || "We provide our customers with the most incredible driving emotions. That's why we have only world-class cars in our fleet.";
+
+  // Add IDs to vehicles if they don't have them (for Sanity data)
+  const vehiclesWithIds = vehicles.map((vehicle, index) => ({
+    ...vehicle,
+    id: vehicle.id || index + 1,
+  }));
+
   // Split vehicles into two rows
-  const firstRow = vehicles.slice(0, 3);
-  const secondRow = vehicles.slice(3);
+  const firstRow = vehiclesWithIds.slice(0, 3);
+  const secondRow = vehiclesWithIds.slice(3);
+
+  // Helper function to get image source
+  const getImageSrc = (image: string | { src: string; alt: string }): string => {
+    return typeof image === 'string' ? image : image.src;
+  };
+
+  const getImageAlt = (image: string | { src: string; alt: string }, name: string): string => {
+    return typeof image === 'string' ? name : image.alt;
+  };
 
   return (
     <section ref={sectionRef} className="px-4 md:px-6 lg:px-8 bg-white">
@@ -128,12 +163,11 @@ export default function VehicleFleet() {
         {/* Header */}
         <div className="text-center mb-12">
           <h4 className="text-sm font-medium tracking-wider text-gray-500 uppercase mb-2">
-            ONLY THE BEST CARS
+            {subtitle}
           </h4>
-          <h2 className="text-4xl font-bold mb-4">Our Vehicle Fleet</h2>
+          <h2 className="text-4xl font-bold mb-4">{sectionTitle}</h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            We provide our customers with the most incredible driving emotions.
-            That's why we have only world-class cars in our fleet.
+            {sectionDescription}
           </p>
         </div>
 
@@ -148,8 +182,8 @@ export default function VehicleFleet() {
                 ref={(el: HTMLImageElement | null) => {
                   imagesRef.current[vehicle.id - 1] = el;
                 }}
-                src={vehicle.image}
-                alt={vehicle.name}
+                src={getImageSrc(vehicle.image)}
+                alt={getImageAlt(vehicle.image, vehicle.name)}
                 className="w-full h-full object-cover"
               />
               {/* Overlay content that appears on hover */}
@@ -160,7 +194,7 @@ export default function VehicleFleet() {
                     {vehicle.description}
                   </p>
                   <button className="px-4 py-2 bg-white text-black rounded-lg hover:bg-gray-200 transition-colors duration-200 text-sm font-semibold">
-                    Book Now
+                    {vehicle.buttonText || 'Book Now'}
                   </button>
                 </div>
               </div>
@@ -179,8 +213,8 @@ export default function VehicleFleet() {
                 ref={(el: HTMLImageElement | null) => {
                   imagesRef.current[vehicle.id - 1] = el;
                 }}
-                src={vehicle.image}
-                alt={vehicle.name}
+                src={getImageSrc(vehicle.image)}
+                alt={getImageAlt(vehicle.image, vehicle.name)}
                 className="w-full h-full object-cover"
               />
               {/* Overlay content that appears on hover */}
@@ -191,7 +225,7 @@ export default function VehicleFleet() {
                     {vehicle.description}
                   </p>
                   <button className="px-4 py-2 bg-white text-black rounded-lg hover:bg-gray-200 transition-colors duration-200 text-sm font-semibold">
-                    Book Now
+                    {vehicle.buttonText || 'Book Now'}
                   </button>
                 </div>
               </div>

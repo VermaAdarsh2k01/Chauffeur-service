@@ -7,25 +7,106 @@ import KeyFeatures from "../components/KeyFeatures";
 import ServiceHighlights from "../components/ServiceHighlights";
 import DownloadCTA from "../components/DownloadCTA";
 import FAQ from "../components/FAQ";
+import { sanityClient } from "../lib/sanity";
+
+// Fetch all homepage data in one query
+const query = `*[_type == "homePage"][0]{
+  title,
+  hero{
+    mainHeading,
+    description,
+    heroImage{
+      src,
+      alt
+    },
+    partnerLogos[]{
+      src,
+      alt
+    }
+  },
+  vehicleFleet{
+    subtitle,
+    sectionTitle,
+    sectionDescription,
+    vehicles[]{
+      name,
+      image{
+        src,
+        alt
+      },
+      description,
+      buttonText,
+      buttonLink
+    }
+  },
+  serviceHighlights{
+    subtitle,
+    sectionTitle,
+    highlights[]{
+      title,
+      description,
+      type,
+      image{
+        src,
+        alt
+      },
+      counterData{
+        counter1{
+          value,
+          label,
+          suffix
+        },
+        counter2{
+          value,
+          label,
+          suffix
+        }
+      },
+      backgroundColor
+    }
+  },
+  keyFeatures{
+    subtitle,
+    sectionTitle,
+    sectionDescription,
+    features[]{
+      icon,
+      title,
+      description
+    }
+  },
+  faq{
+    title,
+    subtitle,
+    questions[]{
+      id,
+      question,
+      answer
+    }
+  }
+}`;
+
+// Fetch the data
+const pageData = await sanityClient.fetch(query);
 ---
 
 <Layout>
-  <Hero client:load />
+  <Hero client:load data={pageData?.hero} />
 
   <section class="py-4 sm:py-16 lg:py-12">
-    <VehicleFleet client:load />
+    <VehicleFleet client:load data={pageData?.vehicleFleet} />
   </section>
 
   <section class="py-4 sm:py-16 lg:py-12">
-    <ServiceHighlights client:load />
+    <ServiceHighlights client:load data={pageData?.serviceHighlights} />
   </section>
 
   <section class="py-4 sm:py-16 lg:py-0">
-    <KeyFeatures client:load />
+    <KeyFeatures client:load data={pageData?.keyFeatures} />
   </section>
 
   <section class="py-4 sm:py-16 lg:py-12">
-    <FAQ client:load />
+    <FAQ client:load data={pageData?.faq} />
   </section>
 
   <section class="py-4 sm:py-16 lg:py-12 px-4 sm:px-6">

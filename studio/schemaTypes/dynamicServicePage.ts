@@ -143,7 +143,7 @@ export const dynamicServicePage = defineType({
                     name: 'link',
                     title: 'URL',
                     type: 'url',
-                    validation: Rule => Rule.required()
+                    
                   }),
                   defineField({
                     name: 'label',
@@ -217,7 +217,7 @@ export const dynamicServicePage = defineType({
                     name: 'link',
                     title: 'Button Link',
                     type: 'url',
-                    validation: Rule => Rule.required()
+                    
                   })
                 ]
               }),
