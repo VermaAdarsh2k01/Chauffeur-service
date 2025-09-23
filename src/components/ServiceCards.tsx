@@ -161,11 +161,8 @@ const ServiceCards: React.FC<ServiceCardsProps> = ({ data }) => {
                   <div className="pt-4">
                     <a
                       href={card.ctaButton.link}
-                      className="inline-flex items-center gap-2 px-8 py-4 text-base font-semibold text-white bg-black rounded-full hover:bg-gray-800 transition-colors duration-200"
+                      className="inline-flex items-center px-8 py-4 text-base font-semibold text-white bg-black rounded-full hover:bg-gray-800 transition-colors duration-200"
                     >
-                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                      </svg>
                       {card.ctaButton.text}
                     </a>
                     </div>

@@ -1,8 +1,39 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isServicesOpen, setIsServicesOpen] = useState(false);
+
+  // Track if we're on mobile to determine default Services dropdown state
+  const [isMobile, setIsMobile] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return window.innerWidth < 768;
+    }
+    return false;
+  });
+
+  // Update mobile state and reset Services dropdown when screen size changes
+  useEffect(() => {
+    const handleResize = () => {
+      const mobile = window.innerWidth < 768;
+      const wasMobile = isMobile;
+      
+      setIsMobile(mobile);
+      
+      // Only reset Services dropdown when transitioning between mobile/desktop
+      if (mobile !== wasMobile) {
+        setIsServicesOpen(mobile); // Open on mobile, closed on desktop
+      }
+    };
+
+    // Set initial state
+    const mobile = window.innerWidth < 768;
+    setIsMobile(mobile);
+    setIsServicesOpen(mobile);
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, [isMobile]);
 
   const serviceDropdownItems = [
     { name: 'Airport Package', href: '/services/airport-package' },
@@ -26,11 +57,15 @@ const Navbar = () => {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-sm border-b border-gray-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex items-center justify-between h-fit py-2">
           {/* Logo */}
           <div className="flex-shrink-0">
             <a href="/" className="flex items-center">
-              <span className="text-xl font-bold">JK Travels</span>
+              <img 
+                src="/Logo.jpg" 
+                alt="JK Travels" 
+                className="h-16 w-auto"
+              />
             </a>
           </div>
 
@@ -74,7 +109,7 @@ const Navbar = () => {
                   )}
                   {link.hasDropdown && (
                     <div 
-                      className={`absolute top-full left-0 w-48 bg-white/95 backdrop-blur-sm rounded-md shadow-lg py-2 mt-1 transition-all duration-200 ease-in-out border border-gray-200 ${
+                      className={`absolute top-full left-0 w-48 bg-white rounded-md shadow-lg py-2 mt-1 transition-all duration-200 ease-in-out border border-gray-200 ${
                         isServicesOpen
                           ? 'opacity-100 transform translate-y-0 visible'
                           : 'opacity-0 transform -translate-y-2 invisible'

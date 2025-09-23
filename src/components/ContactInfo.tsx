@@ -78,14 +78,14 @@ const ContactInfo: React.FC = () => {
       <div className="bg-white rounded-2xl p-8 border border-gray-100 relative overflow-hidden">
         {/* Background Pattern */}
         <img
-          src="/card-pattern-1.png"
+          src="/card-pattern-1-green.png"
           alt="pattern"
           className="absolute bottom-0 left-0 w-[15%] opacity-20"
           width={0}
           height={0}
         />
         <img
-          src="/card-pattern-2.png"
+          src="/card-pattern-2-green.png"
           alt="pattern"
           className="absolute top-0 right-6 w-[15%] opacity-20"
           width={0}
@@ -119,14 +119,14 @@ const ContactInfo: React.FC = () => {
         <img
           src="/card-pattern-1.png"
           alt="pattern"
-          className="absolute bottom-0 left-0 w-[15%] opacity-20"
+          className="absolute bottom-0 left-0 w-[15%] "
           width={0}
           height={0}
         />
         <img
           src="/card-pattern-2.png"
           alt="pattern"
-          className="absolute top-0 right-6 w-[15%] opacity-20"
+          className="absolute top-0 right-6 w-[15%] "
           width={0}
           height={0}
         />

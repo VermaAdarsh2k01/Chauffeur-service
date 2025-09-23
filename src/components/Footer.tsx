@@ -31,9 +31,16 @@ const Footer = () => {
           <div className="flex flex-col lg:flex-row justify-between gap-8 lg:gap-12 mb-12">
             {/* Logo and Description */}
             <div className="lg:w-1/3">
-              <h2 className="text-2xl font-semibold text-gray-800 mb-4">
-                JK Travels
-              </h2>
+              <div className="flex items-center gap-3 mb-4">
+                <img 
+                  src="/Logo.jpg" 
+                  alt="JK Travels Logo" 
+                  className="w-16 h-16 object-contain"
+                />
+                <h2 className="text-2xl font-semibold text-gray-800">
+                  JK Travels
+                </h2>
+              </div>
               <p className="text-gray-600 mb-6">
                 Experience luxury travel with our premium car rental and
                 professional chauffeur services. Making every journey
