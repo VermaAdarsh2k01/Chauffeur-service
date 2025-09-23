@@ -79,7 +79,8 @@ export default function ServiceHighlights() {
                     alt="Luxury car fleet"
                     src="/chauffeur.jpg"
                     className="w-full h-full object-cover object-center transform hover:scale-125"
-                  />
+                    loading="lazy"
+                    />
                 </div>
               </div>
             </div>
@@ -100,6 +101,7 @@ export default function ServiceHighlights() {
                   alt="24/7 Support illustration"
                   src="/support-illustration.png"
                   className="w-full max-lg:max-w-xs"
+                  loading="lazy"
                 />
               </div>
             </div>
@@ -150,6 +152,7 @@ export default function ServiceHighlights() {
                     alt="Digital platform interface"
                     src="/lang.jpg"
                     className="w-full h-full object-cover object-center transform hover:scale-125"
+                    loading="lazy"
                   />
                 </div>
               </div>

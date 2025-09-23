@@ -1,0 +1,131 @@
+---
+import KeyFeatures from "@/components/KeyFeatures";
+import Layout from "@/layouts/Layout.astro";    
+import AboutHero from "@/components/AboutHero";
+import CompanyValues from "@/components/CompanyValues";
+import Testimonial from "@/components/Testimonial";
+import FeatureSection from "@/components/FeatureSection";
+import Advantage from "@/components/Advantage";
+import 'aos/dist/aos.css';
+import DownloadCTA from "@/components/DownloadCTA";
+    
+const featureData = [
+  {
+    title: "Unlock powerful tools to manage your finances",
+    content: "Our platform provides detailed insights and easy to understand analytics that help you make better decisions.",
+    features: [
+      "Plan smarter with real-time data.",
+      "Reach your goals faster with detailed tracking."
+    ],
+    button: {
+      label: "Learn More",
+      link: "/features"
+    }
+  },
+  {
+    title: "Send & transfer money to any bank or wallet instantly",
+    content: "Our system offers real-time data and actionable reports, empowering you to make informed business choices.",
+    features: [
+      "Optimize Plans with Live Data",
+      "Strategize with Real-Time Insights"
+    ],
+    button: {
+      label: "Learn More",
+      link: "/features"
+    }
+  },
+  {
+    title: "Track every report individually for better data analysis",
+    content: "Our solution delivers comprehensive analytics, allowing you to easily track performance and make smarter decisions.",
+    features: [
+      "Make Decisions with Current Data",
+      "Real-Time Data for Smarter Moves"
+    ],
+    button: {
+      label: "Learn More",
+      link: "/features"
+    }
+  }
+];
+
+const testimonialData = [{
+  data: {
+    enable: true,
+    title: "What they say about Car Rentals?",
+    reviews: [
+      {
+        logo: "/images/companies/logo1.png",
+        content: "Reliable and trustworthy. They have earned my trust and loyalty. This company has consistently demonstrated reliability and trust.",
+        avatar: "/images/testimonials/avatar1.jpg",
+        name: "Henry Arthur",
+        designation: "Product Manager"
+      },
+      {
+        logo: "/images/companies/logo2.png",
+        content: "Outstanding customer support! They went above and beyond to help me resolve my issue. I felt valued as a customer, and their commitment.",
+        avatar: "/images/testimonials/avatar2.jpg",
+        name: "Marvin Black",
+        designation: "UI Designer"
+      },
+      {
+        logo: "/images/companies/logo3.png",
+        content: "Life-changing experience! I learned so much from their program. Participating in their program was a transformative experience for me.",
+        avatar: "/images/testimonials/avatar3.jpg",
+        name: "Juanita Flores",
+        designation: "Developer"
+      },
+      {
+        logo: "/images/companies/logo4.png",
+        content: "This is some great stuff. I'm grateful for their guidance. The expertise and knowledge demonstrated by this team were valuable to me.",
+        avatar: "/images/testimonials/avatar4.jpg",
+        name: "Shane Nguyen",
+        designation: "Product Designer"
+      },
+      {
+        logo: "/images/companies/logo5.png",
+        content: "Highly recommended! This product exceeded my expectations in every way. It has become an essential part of my daily life, and I'm impressed.",
+        avatar: "/images/testimonials/avatar5.jpg",
+        name: "Samuel Oliver",
+        designation: "Visual Designer"
+      },
+      {
+        logo: "/images/companies/logo6.png",
+        content: "Exceptional service! I couldn't be happier with the results. The team went above and beyond to meet my needs and deliver outstanding outcomes.",
+        avatar: "/images/testimonials/avatar6.jpg",
+        name: "Richard Philip",
+        designation: "Executive Designer"
+      },
+      {
+        logo: "/images/companies/logo7.png",
+        content: "It was a pleasure to work with them. They made the process seamless. Working with this team was a seamless and enjoyable experience.",
+        avatar: "/images/testimonials/avatar7.jpg",
+        name: "Esther Miles",
+        designation: "Service Designer"
+      },
+      {
+        logo: "/images/companies/logo8.png",
+        content: "Prompt delivery and top-notch quality. Impressed with the speed and accuracy. The efficiency and speed at which they delivered were impressive.",
+        avatar: "/images/testimonials/avatar8.jpg",
+        name: "Kristin Cooper",
+        designation: "Motion Designer"
+      },
+      {
+        logo: "/images/companies/logo9.png",
+        content: "Efficient and professional. I will definitely use their services again. The team made the entire process effortless and stress-free for me.",
+        avatar: "/images/testimonials/avatar9.jpg",
+        name: "Robert Lewis",
+        designation: "Design Specialist"
+      }
+    ]
+  }
+}];
+---
+
+<Layout>    
+    <AboutHero client:load/>
+    <!-- <FeatureSection client:load features={featureData}/> -->
+    <CompanyValues client:load/>
+    <Advantage client:load/>
+    <KeyFeatures client:load/>
+    <DownloadCTA client:load/>
+</Layout>

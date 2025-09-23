@@ -329,7 +329,7 @@ const TabNavigation = () => {
   return (
     <div className="w-full max-w-6xl mx-auto">
       {/* Tab Navigation */}
-      <div className="flex bg-white rounded-t-lg shadow-sm border-b">
+      <div className="flex bg-white rounded-t-lg shadow-sm border-b ">
         {tabs.map((tab) => (
           <button
             key={tab.id}
@@ -345,6 +345,7 @@ const TabNavigation = () => {
           </button>
         ))}
       </div>
+      
 
       {/* Form Content */}
       <div className="rounded-b-lg">

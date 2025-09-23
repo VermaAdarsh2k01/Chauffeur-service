@@ -48,7 +48,7 @@ export function LogoMarquee({ className }: { className: string }) {
     <div ref={containerMarqueeRef} className={`relative w-full overflow-hidden ${className}`}>
       {/* Gradient Overlays */}
       <div className="absolute w-24 h-full left-0 top-0 z-10 bg-gradient-to-r from-white to-transparent pointer-events-none" />
-      <div className="absolute w-24 h-full right-0 top-0 z-10 bg-gradient-to-l from-white to-transparent pointer-events-none" />
+      <div className="absolute w-24 h-full right-0 top-0 z-10 bg-gradient-to-l from-[#EEF7F0] to-transparent pointer-events-none" />
       
       {/* Marquee Container */}
       <div className="flex">

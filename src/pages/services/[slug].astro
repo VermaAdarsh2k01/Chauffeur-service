@@ -1,0 +1,19 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import { sanityClient } from "../../lib/sanity";
+
+const { slug } = Astro.params;
+
+const query = `*[_type == "dynamicServicePage" && slug.current == $slug][0]{
+  title,
+  slug,
+  content,
+}`;
+
+const page = await sanityClient.fetch(query, { slug });
+
+---
+
+<Layout>
+  
+</Layout>

@@ -91,7 +91,7 @@ const KeyFeatures: React.FC = () => {
           >
             <div 
               ref={(el: HTMLDivElement | null) => { iconsRef.current[index] = el }}
-              className="relative w-16 h-16 mb-8"
+              className="relative w-16 h-16 mb-8 "
             >
               {/* Background gradient circle */}
               <div 
@@ -102,9 +102,9 @@ const KeyFeatures: React.FC = () => {
               />
               {/* Icon container */}
               <div 
-                className="relative w-full h-full rounded-full bg-[#059669] flex items-center justify-center"
+                className="relative w-full h-full rounded-full bg-[#059669]  flex items-center justify-center"
                 style={{
-                  boxShadow: '0 2px 4px rgba(0, 0, 0, 0.05)',
+                  boxShadow: '4px 4px 4px rgba(0, 0, 0, 0.05)',
                 }}
               >
                 <feature.Icon size={28} strokeWidth={1.5} className="text-black" />
