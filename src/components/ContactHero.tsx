@@ -110,7 +110,7 @@ const ContactHero: React.FC<ContactHeroProps> = ({
         {/* Purple Gradient */}
         <div className='absolute w-[40%] aspect-[0.325/1] bg-[#a5a2ff] rounded-full blur-[200px] left-[138px] top-[31px] rotate-12'></div>
         {/* Green Gradient */}
-        <div className='absolute w-[40%] aspect-[0.572/1] bg-[#29c775] rounded-full blur-[200px] left-[222px] top-[208px]'></div>
+        <div className='absolute w-[40%] aspect-[0.572/1] bg-blue-500 rounded-full blur-[200px] left-[222px] top-[208px]'></div>
         {/* Yellow Gradient */}
         <div className='absolute w-[40%] aspect-[0.571/1] bg-[#ffe74b] rounded-full blur-[200px] left-[436px] top-[340px]'></div>
       </div>
@@ -146,7 +146,7 @@ const ContactHero: React.FC<ContactHeroProps> = ({
             icon={<Phone className='w-5 h-5' />}
             label="Call Us"
             value="24/7"
-            colorScheme="green"
+            colorScheme="blue"
           />
 
           <MetricCard

@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { cn } from "@/lib/utils";
 import { scrollToBookingForm } from "../utils/scrollUtils";
+import { Button } from "./ui/button";
+import { Search } from "lucide-react";
 
 interface MetricCardProps {
   position: 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right';
@@ -60,29 +62,6 @@ interface ServiceFeaturesProps {
   className?: string;
 }
 
-// Simple Button component since it doesn't exist in the project
-const Button: React.FC<{ link: string; label: string; className?: string }> = ({ 
-  link, 
-  label, 
-  className = "" 
-}) => {
-  const handleClick = (e: React.MouseEvent) => {
-    e.preventDefault();
-    scrollToBookingForm();
-  };
-
-  return (
-    <button
-      onClick={handleClick}
-      className={cn(
-        "inline-flex items-center px-6 py-3 text-base font-medium text-white bg-black rounded-full hover:bg-gray-800 transform hover:scale-105 transition-all duration-200",
-        className
-      )}
-    >
-      {label}
-    </button>
-  );
-};
 
 // Simple markdownify replacement - just returns the HTML string
 const markdownify = (content: string): string => {
@@ -124,15 +103,15 @@ const ServiceFeatures: React.FC<ServiceFeaturesProps> = ({ features, sectionTitl
               className={cn(
                 "relative px-4 py-3 text-sm md:text-base font-semibold rounded-xl transition-all duration-500 overflow-hidden backdrop-blur-sm border whitespace-nowrap",
                 active === i
-                  ? "bg-white/90 text-green-700 shadow-lg shadow-green-500/20 border-green-200/50 backdrop-blur-xl"
-                  : "text-gray-700 hover:text-green-600 hover:bg-white/40 hover:backdrop-blur-lg border-transparent hover:border-white/30"
+                  ? "bg-white/90 text-blue-900 shadow-lg shadow-blue-500/20 border-blue-200/50 backdrop-blur-xl"
+                  : "text-gray-700 hover:text-blue-900 hover:bg-white/40 hover:backdrop-blur-lg border-transparent hover:border-white/30"
               )}
             >
               <span className="font-medium">{item.button}</span>
               
               {/* Active glassmorphism glow */}
               {active === i && (
-                <div className="absolute inset-0 bg-gradient-to-r from-green-400/10 via-emerald-300/10 to-green-400/10 rounded-xl pointer-events-none" />
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-400/10 via-blue-300/10 to-blue-400/10 rounded-xl pointer-events-none" />
               )}
             </button>
           ))}
@@ -143,14 +122,14 @@ const ServiceFeatures: React.FC<ServiceFeaturesProps> = ({ features, sectionTitl
       <div className="relative mt-8 flex flex-col lg:flex-row items-stretch bg-[#F7F7F7] border border-gray-200 rounded-[20px] overflow-hidden shadow-lg">
         {/* Background Pattern Images - Behind entire container */}
         <img
-          src="/card-pattern-1-green.png"
+          src="/card-pattern-1.png"
           alt="pattern"
           className="absolute bottom-0 left-0 w-[10%] opacity-30 hidden lg:block"
           width={0}
           height={0}
         />
         <img
-          src="/card-pattern-2-green.png"
+          src="/card-pattern-2.png"
           alt="pattern"
           className="absolute top-0 right-6 w-[10%] opacity-30 hidden lg:block"
           width={0}
@@ -197,10 +176,23 @@ const ServiceFeatures: React.FC<ServiceFeaturesProps> = ({ features, sectionTitl
             />
             <div className="transform transition-all duration-500 ease-in-out">
               <Button
-                link={features[active].link.link}
-                label={features[active].link.label}
-                className="w-full sm:w-auto text-center justify-center sm:justify-start"
-              />
+                onClick={(e) => {
+                  e.preventDefault();
+                  scrollToBookingForm();
+                }}
+                variant="primary"
+                size="lg"
+                className="group overflow-hidden relative w-full sm:w-auto"
+              >
+                {/* Search icon - starts from left, slides in on hover */}
+                <Search 
+                  className="absolute left-1/2 top-1/2 w-4 h-4 transition-all duration-300 ease-in-out -translate-y-1/2 -translate-x-[calc(50%+200%)] group-hover:-translate-x-1/2 opacity-0 group-hover:opacity-100" 
+                />
+                {/* Text - slides out to the right on hover */}
+                <span className="block transition-all duration-300 ease-in-out group-hover:translate-x-[200%]">
+                  {features[active].link.label}
+                </span>
+              </Button>
             </div>
           </div>
         </div>

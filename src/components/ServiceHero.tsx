@@ -1,7 +1,9 @@
 import React, { useRef } from 'react';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
+import { Search } from 'lucide-react';
 import { scrollToBookingForm } from '../utils/scrollUtils';
+import { Button } from './ui/button';
 
 interface ServiceHeroProps {
   title: string;
@@ -24,6 +26,7 @@ const ServiceHero: React.FC<ServiceHeroProps> = ({
     if (!image) return '/hero2.png';
     return typeof image === 'string' ? image : image.src;
   };
+
   const containerRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
   const imageRef = useRef<HTMLImageElement>(null);
@@ -32,7 +35,6 @@ const ServiceHero: React.FC<ServiceHeroProps> = ({
     const tl = gsap.timeline({
       defaults: {
         ease: 'power3.out',
-        
       }
     });
 
@@ -43,9 +45,8 @@ const ServiceHero: React.FC<ServiceHeroProps> = ({
       duration: 1,
     });
 
-    // Image animation from right
+    // Simple fade in for the image container
     tl.from(imageRef.current, {
-      x: 200,
       opacity: 0,
       duration: 1,
     }, '-=0.5');
@@ -84,7 +85,7 @@ const ServiceHero: React.FC<ServiceHeroProps> = ({
         {/* Green Gradient */}
         <div className='absolute w-[40%] aspect-[0.572/1] bg-[#29c775] rounded-full blur-[200px] left-[222px] top-[208px]'></div>
         {/* Yellow Gradient */}
-        <div className='absolute w-[40%] aspect-[0.571/1] bg-[#ffe74b] rounded-full blur-[200px] left-[436px] top-[340px]'></div>
+        <div className='absolute w-[40%] aspect-[0.571/1] bg-blue-800 rounded-full blur-[200px] left-[436px] top-[340px]'></div>
       </div>
 
       <div className='h-full w-full relative flex flex-col justify-center items-center py-8 lg:py-0'> 
@@ -94,7 +95,7 @@ const ServiceHero: React.FC<ServiceHeroProps> = ({
               {subtitle}
             </p>
           )}
-          <h1 className='text-4xl md:text-5xl font-bold mb-6'>
+          <h1 className='text-4xl md:text-5xl font-bold mb-4'>
             {title}
           </h1>
           {description && (
@@ -103,53 +104,34 @@ const ServiceHero: React.FC<ServiceHeroProps> = ({
             </p>
           )}
         </div>
-         <div className='relative w-full lg:max-w-5xl h-fit lg:h-80 rounded-2xl'>
-            <img 
+         <div className='relative w-full lg:max-w-4xl mx-auto'>
+            {/* Simple rounded container */}
+            <div 
               ref={imageRef}
-              src={getImageSrc(backgroundImage)} 
-              alt="Service Hero" 
-              className='w-full lg:w-[80%] mx-auto h-full object-contain'
-            />
-            
-            {/* Card Pattern Design Abstracts */}
-            <div className="absolute -top-8 -left-16 w-32 h-32 opacity-60 animate-pulse hidden lg:block">
+              className='relative w-full h-64 lg:h-80 overflow-hidden rounded-full bg-gray-100'
+            >
               <img 
-                src="/card-pattern-1-green.png" 
-                alt="Design Pattern 1" 
-                className="w-full h-full object-contain transform rotate-12 hover:rotate-15 transition-transform duration-700"
-              />
-            </div>
-            
-            <div className="absolute -top-4 -right-20 w-28 h-28 opacity-30 animate-pulse hidden lg:block" style={{animationDelay: '1s'}}>
-              <img 
-                src="/card-pattern-2-green.png" 
-                alt="Design Pattern 2" 
-                className="w-full h-full object-contain transform rotate-12 scale-y-[-1] hover:rotate-9 transition-transform duration-700"
-              />
-            </div>
-            
-            <div className="absolute -bottom-12 -left-20 w-24 h-24 opacity-40 animate-pulse hidden lg:block" style={{animationDelay: '2s'}}>
-              <img 
-                src="/card-pattern-2-green.png" 
-                alt="Design Pattern 1" 
-                className="w-full h-full object-contain transform rotate-45 hover:rotate-48 transition-transform duration-700"
-              />
-            </div>
-            
-            <div className="absolute -bottom-8 -right-16 w-36 h-36 opacity-30 animate-pulse hidden lg:block" style={{animationDelay: '0.5s'}}>
-              <img 
-                src="/card-pattern-1-green.png" 
-                alt="Design Pattern 2" 
-                className="w-full h-full object-contain transform -rotate-6 hover:-rotate-3 transition-transform duration-700"
+                src={getImageSrc(backgroundImage)} 
+                alt="Service Hero" 
+                className='w-full h-full object-cover'
               />
             </div>
           </div>
-          <button 
+          <Button 
             onClick={scrollToBookingForm}
-            className='mt-12 lg:mt-8 text-white bg-black rounded-full font-semibold text-lg px-6 py-2 hover:bg-gray-800 cursor-pointer transform hover:scale-105 transition-all duration-200'
+            variant="primary"
+            size="lg"
+            className='mt-12 lg:mt-8'
           >
+            {/* Search icon - starts from left, slides in on hover */}
+            <Search 
+              className="absolute left-1/2 top-1/2 w-4 h-4 transition-all duration-300 ease-in-out -translate-y-1/2 -translate-x-[calc(50%+200%)] group-hover:-translate-x-1/2 opacity-0 group-hover:opacity-100" 
+            />
+            {/* Text - slides out to the right on hover */}
+            <span className="block transition-all duration-300 ease-in-out group-hover:translate-x-[200%]">
               {bookButtonText}
-          </button>
+            </span>
+          </Button>
       </div>
     </div>
   );

@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import PhoneEnquiryForm from './PhoneEnquiryForm';
+import { Button } from './ui/button';
 
 interface ServicePage {
   title: string;
@@ -92,7 +93,9 @@ const Navbar = ({ servicePages = [] }: NavbarProps) => {
                   onMouseLeave={() => link.hasDropdown && setIsServicesOpen(false)}
                 >
                   {link.isDropdownTrigger ? (
-                    <button
+                    <Button
+                      variant="ghost"
+                      size="lg"
                       className="text-gray-600 hover:text-gray-900 px-3 py-2 text-sm font-medium transition-colors flex items-center"
                       onClick={(e) => e.preventDefault()}
                     >
@@ -110,7 +113,7 @@ const Navbar = ({ servicePages = [] }: NavbarProps) => {
                           d="M19 9l-7 7-7-7"
                         />
                       </svg>
-                    </button>
+                    </Button>
                   ) : (
                     <a
                       href={link.href}
@@ -152,9 +155,11 @@ const Navbar = ({ servicePages = [] }: NavbarProps) => {
 
           {/* Mobile menu button */}
           <div className="md:hidden">
-            <button
+            <Button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="inline-flex items-center justify-center p-2 rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-100"
+              variant="ghost"
+              size="lg"
+              className="p-2"
               aria-expanded="false"
             >
               <span className="sr-only">Open main menu</span>
@@ -189,7 +194,7 @@ const Navbar = ({ servicePages = [] }: NavbarProps) => {
                   />
                 </svg>
               )}
-            </button>
+            </Button>
           </div>
         </div>
 
@@ -200,12 +205,14 @@ const Navbar = ({ servicePages = [] }: NavbarProps) => {
               {navLinks.map((link) => (
                 <div key={link.name}>
                   {link.isDropdownTrigger ? (
-                    <button
+                    <Button
                       onClick={() => setIsServicesOpen(!isServicesOpen)}
-                      className="w-full flex items-center justify-between px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-gray-900 hover:bg-gray-50"
-                  >
-                    <span>{link.name}</span>
-                    <svg
+                      variant="ghost"
+                      size="lg"
+                      className="w-full flex items-center justify-between px-3 py-2 text-base font-medium"
+                    >
+                      <span>{link.name}</span>
+                      <svg
                         className={`ml-1 h-4 w-4 transform transition-transform duration-200 ${
                           isServicesOpen ? 'rotate-180' : ''
                         }`}
@@ -220,7 +227,7 @@ const Navbar = ({ servicePages = [] }: NavbarProps) => {
                           d="M19 9l-7 7-7-7"
                         />
                       </svg>
-                    </button>
+                    </Button>
                   ) : (
                     <a
                       href={link.href}

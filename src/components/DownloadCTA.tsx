@@ -55,7 +55,7 @@ export default function DownloadCTA({ data }: DownloadCTAProps) {
           </p>
 
           
-            <BookingModal buttonClassName="inline-flex items-center px-6 sm:px-8 py-2.5 sm:py-3 bg-white text-black rounded-full font-semibold text-base sm:text-lg hover:bg-gray-100 transform hover:scale-105 transition-all duration-200">
+            <BookingModal buttonClassName="inline-flex items-center px-6 sm:px-8 py-2.5 sm:py-3 bg-white text-black rounded-2xl font-semibold text-base sm:text-lg hover:bg-gray-100 transform hover:scale-105 transition-all duration-200">
               {buttonText}
             </BookingModal>
 

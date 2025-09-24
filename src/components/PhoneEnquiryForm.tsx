@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Modal, ModalBody, ModalContent, ModalFooter, ModalTrigger } from './ui/animated-modal';
+import { Button } from './ui/button';
 import { Phone } from 'lucide-react';
 
 interface PhoneEnquiryFormProps {
@@ -51,23 +52,29 @@ const PhoneEnquiryForm = ({ isMobile = false }: PhoneEnquiryFormProps) => {
 
   return (
     <Modal>
-      <ModalTrigger className={`group bg-black text-white px-6 py-2.5 rounded-xl text-sm font-semibold transition-all duration-300 shadow-md hover:shadow-lg overflow-hidden relative ${
-        isMobile ? 'block w-full text-center px-4 py-3' : ''
-      }`}>
-        {!isMobile ? (
-          <>
-            {/* Phone icon - starts from left, slides in on hover */}
-            <Phone 
-              className="absolute left-1/2 top-1/2 w-4 h-4 transition-all duration-300 ease-in-out -translate-y-1/2 -translate-x-[calc(50%+200%)] group-hover:-translate-x-1/2 opacity-0 group-hover:opacity-100" 
-            />
-            {/* Text - slides out to the right on hover */}
-            <span className="block transition-all duration-300 ease-in-out group-hover:translate-x-[200%]">
-              Request Enquiry
-            </span>
-          </>
-        ) : (
-          'Request Enquiry'
-        )}
+      <ModalTrigger>
+        <Button
+          variant="primary"
+          size={isMobile ? "md" : "sm"}
+          className={`group overflow-hidden relative ${
+            isMobile ? 'w-full' : ''
+          }`}
+        >
+          {!isMobile ? (
+            <>
+              {/* Phone icon - starts from left, slides in on hover */}
+              <Phone 
+                className="absolute left-1/2 top-1/2 w-4 h-4 transition-all duration-300 ease-in-out -translate-y-1/2 -translate-x-[calc(50%+200%)] group-hover:-translate-x-1/2 opacity-0 group-hover:opacity-100" 
+              />
+              {/* Text - slides out to the right on hover */}
+              <span className="block transition-all duration-300 ease-in-out group-hover:translate-x-[200%]">
+                Request Enquiry
+              </span>
+            </>
+          ) : (
+            'Request Enquiry'
+          )}
+        </Button>
       </ModalTrigger>
       <ModalBody className="!max-w-[450px] !w-[90%] md:!w-[450px] !min-h-fit">
         <ModalContent>
@@ -101,13 +108,15 @@ const PhoneEnquiryForm = ({ isMobile = false }: PhoneEnquiryFormProps) => {
                   </p>
                 </div>
 
-                <button
+                <Button
                   type="submit"
+                  variant="primary"
+                  size="lg"
                   disabled={isSubmitting || phoneNumber.replace(/\D/g, '').length < 10}
-                  className="w-full bg-gradient-to-r from-green-600/90 to-emerald-600/90 backdrop-blur-md hover:from-green-700/90 hover:to-emerald-700/90 text-white px-6 py-3 rounded-xl font-semibold shadow-lg shadow-green-600/20 hover:shadow-xl hover:shadow-green-600/30 border border-green-500/20 hover:border-green-400/30 transform hover:-translate-y-1 hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none disabled:hover:scale-100"
+                  className="w-full"
                 >
                   {isSubmitting ? 'Submitting...' : 'Request Call Back'}
-                </button>
+                </Button>
 
                 <div className="bg-gray-50 p-4 rounded-lg">
                   <h3 className="font-semibold text-gray-900 mb-2">What happens next?</h3>
@@ -122,8 +131,8 @@ const PhoneEnquiryForm = ({ isMobile = false }: PhoneEnquiryFormProps) => {
             </>
           ) : (
             <div className="text-center py-8">
-              <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg className="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg className="w-8 h-8 text-blue-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                 </svg>
               </div>

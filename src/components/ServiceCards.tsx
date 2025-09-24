@@ -1,6 +1,7 @@
 import React from 'react';
-import { CheckCircle, Star, Calendar, TrendingUp, Users, Clock, Award, Shield, MapPin } from 'lucide-react';
+import { CheckCircle, Star, Calendar, TrendingUp, Users, Clock, Award, Shield, MapPin, Search } from 'lucide-react';
 import { scrollToBookingForm } from '../utils/scrollUtils';
+import { Button } from './ui/button';
 
 // Icon mapping function
 const getIcon = (iconName: string) => {
@@ -97,14 +98,14 @@ const ServiceCards: React.FC<ServiceCardsProps> = ({ data }) => {
               <div className={`relative w-full lg:w-1/2 ${imageOrder} flex justify-center items-center p-8 bg-[#F7F7F7] border border-gray-200 ${imageRounding}`}>
                 {/* Background Pattern Images */}
                 <img
-                  src="/card-pattern-1-green.png"
+                  src="/card-pattern-1.png"
                   alt="pattern"
                   className="absolute bottom-0 left-0 w-[15%] opacity-30"
                   width={0}
                   height={0}
                 />
                 <img
-                  src="/card-pattern-2-green.png"
+                  src="/card-pattern-2.png"
                   alt="pattern"
                   className="absolute top-0 right-6 w-[15%] opacity-30"
                   width={0}
@@ -148,8 +149,8 @@ const ServiceCards: React.FC<ServiceCardsProps> = ({ data }) => {
                   <div className="space-y-4">
                     {card.featurePoints.map((feature, featureIndex) => (
                       <div key={featureIndex} className="flex items-center gap-3">
-                        <div className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
-                          <svg className="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
+                          <svg className="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                           </svg>
                         </div>
@@ -160,15 +161,24 @@ const ServiceCards: React.FC<ServiceCardsProps> = ({ data }) => {
 
                   {/* CTA Button */}
                   <div className="pt-4">
-                    <button
+                    <Button
                       onClick={(e) => {
                         e.preventDefault();
                         scrollToBookingForm();
                       }}
-                      className="inline-flex items-center px-8 py-4 text-base font-semibold text-white bg-black rounded-full hover:bg-gray-800 transform hover:scale-105 transition-all duration-200"
+                      variant="primary"
+                      size="lg"
+                      className="group overflow-hidden relative"
                     >
-                      {card.ctaButton.text}
-                    </button>
+                      {/* Search icon - starts from left, slides in on hover */}
+                      <Search 
+                        className="absolute left-1/2 top-1/2 w-4 h-4 transition-all duration-300 ease-in-out -translate-y-1/2 -translate-x-[calc(50%+200%)] group-hover:-translate-x-1/2 opacity-0 group-hover:opacity-100" 
+                      />
+                      {/* Text - slides out to the right on hover */}
+                      <span className="block transition-all duration-300 ease-in-out group-hover:translate-x-[200%]">
+                        {card.ctaButton.text}
+                      </span>
+                    </Button>
                     </div>
                   </div>
               </div>

@@ -138,7 +138,7 @@ const KeyFeatures: React.FC<KeyFeaturesProps> = ({ data }) => {
               cardsRef.current[index] = el;
             }}
             className="bg-white rounded-2xl p-8 text-center transition-all duration-300 
-                       hover:shadow-xl border border-gray-100 hover:border-gray-200
+                       hover:shadow-xl border-2 border-gray-100 hover:border-gray-200
                        hover:-translate-y-2 min-h-[280px] flex flex-col justify-between"
           >
             {/* Icon */}
@@ -147,13 +147,13 @@ const KeyFeatures: React.FC<KeyFeaturesProps> = ({ data }) => {
                 ref={(el: HTMLDivElement | null) => {
                   iconsRef.current[index] = el;
                 }}
-                className="w-16 h-16 mx-auto bg-emerald-100 rounded-2xl flex items-center justify-center
-                           group-hover:bg-emerald-200 transition-colors duration-300"
+                className="w-16 h-16 mx-auto border-2 border-blue-800 rounded-2xl flex items-center justify-center
+                           group-hover:border-blue-800 transition-colors duration-300"
               >
                 <feature.Icon
                   size={28}
                   strokeWidth={1.5}
-                  className="text-emerald-600"
+                  className="text-blue-800"
                 />
               </div>
             </div>

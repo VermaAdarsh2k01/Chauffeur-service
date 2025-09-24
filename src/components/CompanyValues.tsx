@@ -88,12 +88,12 @@ const CompanyValues: React.FC<CompanyValuesProps> = ({ data }) => {
                 <div 
                   className="absolute inset-0 w-18 h-18 -left-1 -top-1 rounded-full"
                   style={{
-                    background: 'linear-gradient(135deg, #17d397 0%, #25a87e 40%, #059669 100%)',
+                    background: 'linear-gradient(135deg, #e6ecff 0%, #2f52ba 40%, #1c398e 100%)',
                   }}
                 />
                 {/* Icon container */}
                 <div 
-                  className="relative w-full h-full rounded-full bg-[#059669] flex items-center justify-center"
+                  className="relative w-full h-full rounded-full bg-blue-900 flex items-center justify-center"
                   style={{
                     boxShadow: '4px 4px 4px rgba(0, 0, 0, 0.05)',
                   }}

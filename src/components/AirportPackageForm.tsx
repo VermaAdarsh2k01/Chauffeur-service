@@ -16,6 +16,7 @@ import {
   Check,
   Building2,
 } from "lucide-react";
+import { Button } from "./ui/button";
 
 interface AirportFormData {
   airportFromLocation: string;
@@ -117,7 +118,7 @@ const AirportPackageForm = () => {
                   value="yes"
                   checked={airportPackageAdditional.flightBooked === "yes"}
                   onChange={(e) => handleAirportPackageChange("flightBooked", e.target.value)}
-                  className="w-4 h-4 text-green-600 border-gray-300 focus:ring-green-500"
+                  className="w-4 h-4 text-blue-800 border-gray-300 focus:ring-blue-800"
                 />
                 <span className="text-gray-800">Yes</span>
               </label>
@@ -128,7 +129,7 @@ const AirportPackageForm = () => {
                   value="no"
                   checked={airportPackageAdditional.flightBooked === "no"}
                   onChange={(e) => handleAirportPackageChange("flightBooked", e.target.value)}
-                  className="w-4 h-4 text-green-600 border-gray-300 focus:ring-green-500"
+                  className="w-4 h-4 text-blue-800 border-gray-300 focus:ring-blue-800"
                 />
                 <span className="text-gray-800">No</span>
               </label>
@@ -147,9 +148,9 @@ const AirportPackageForm = () => {
                     type="date"
                     value={airportPackageAdditional.flightDate}
                     onChange={(e) => handleAirportPackageChange("flightDate", e.target.value)}
-                    className="w-full pl-10 pr-4 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-400/60 focus:border-green-300/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 placeholder:text-gray-500 text-gray-800 shadow-sm"
+                    className="w-full pl-10 pr-4 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-800/60 focus:border-blue-800/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 placeholder:text-gray-500 text-gray-800 shadow-sm"
                   />
-                  <Calendar className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-green-600" />
+                  <Calendar className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-blue-800" />
                 </div>
               </div>
             ) : (
@@ -162,9 +163,9 @@ const AirportPackageForm = () => {
                     type="date"
                     value={airportPackageAdditional.tentativeDate}
                     onChange={(e) => handleAirportPackageChange("tentativeDate", e.target.value)}
-                    className="w-full pl-10 pr-4 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-400/60 focus:border-green-300/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 placeholder:text-gray-500 text-gray-800 shadow-sm"
+                    className="w-full pl-10 pr-4 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-800/60 focus:border-blue-800/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 placeholder:text-gray-500 text-gray-800 shadow-sm"
                   />
-                  <Calendar className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-green-600" />
+                  <Calendar className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-blue-800" />
                 </div>
               </div>
             )}
@@ -177,14 +178,14 @@ const AirportPackageForm = () => {
                 <select
                   value={airportPackageAdditional.terminal}
                   onChange={(e) => handleAirportPackageChange("terminal", e.target.value)}
-                  className="w-full pl-10 pr-10 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-400/60 focus:border-green-300/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 text-gray-800 appearance-none cursor-pointer"
+                  className="w-full pl-10 pr-10 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-800/60 focus:border-blue-800/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 text-gray-800 appearance-none cursor-pointer"
                 >
                   <option value="">Select Terminal</option>
                   <option value="T1">T1</option>
                   <option value="T2">T2</option>
                 </select>
-                <Plane className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-green-600" />
-                <ChevronDown className="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-green-600" />
+                <Plane className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-blue-800" />
+                <ChevronDown className="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-blue-800" />
               </div>
             </div>
           </div>
@@ -199,9 +200,9 @@ const AirportPackageForm = () => {
                 placeholder="Enter flight number (e.g., AI 101)"
                 value={airportPackageAdditional.flightNumber}
                 onChange={(e) => handleAirportPackageChange("flightNumber", e.target.value)}
-                className="w-full pl-10 pr-4 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-400/60 focus:border-green-300/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 placeholder:text-gray-500 text-gray-800 shadow-sm"
+                className="w-full pl-10 pr-4 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-800/60 focus:border-blue-800/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 placeholder:text-gray-500 text-gray-800 shadow-sm"
               />
-              <Plane className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-green-600" />
+              <Plane className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-blue-800" />
             </div>
           </div>
         </div>
@@ -216,15 +217,15 @@ const AirportPackageForm = () => {
               <select
                 value={airportPackageAdditional.pickupLocation}
                 onChange={(e) => handleAirportPackageChange("pickupLocation", e.target.value)}
-                className="w-full pl-10 pr-10 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-400/60 focus:border-green-300/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 text-gray-800 appearance-none cursor-pointer"
+                className="w-full pl-10 pr-10 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-800/60 focus:border-blue-800/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 text-gray-800 appearance-none cursor-pointer"
               >
                 <option value="">Select pickup location</option>
                 <option value="home">Home</option>
                 <option value="office">Office</option>
                 <option value="airport">Airport</option>
               </select>
-              <MapPin className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-green-600" />
-              <ChevronDown className="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-green-600" />
+              <MapPin className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-blue-800" />
+              <ChevronDown className="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-blue-800" />
             </div>
           </div>
 
@@ -236,15 +237,15 @@ const AirportPackageForm = () => {
               <select
                 value={airportPackageAdditional.dropLocation}
                 onChange={(e) => handleAirportPackageChange("dropLocation", e.target.value)}
-                className="w-full pl-10 pr-10 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-400/60 focus:border-green-300/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 text-gray-800 appearance-none cursor-pointer"
+                className="w-full pl-10 pr-10 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-800/60 focus:border-blue-800/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 text-gray-800 appearance-none cursor-pointer"
               >
                 <option value="">Select drop location</option>
                 <option value="home">Home</option>
                 <option value="office">Office</option>
                 <option value="airport">Airport</option>
               </select>
-              <MapPin className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-green-600" />
-              <ChevronDown className="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-green-600" />
+              <MapPin className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-blue-800" />
+              <ChevronDown className="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-blue-800" />
             </div>
           </div>
         </div>
@@ -263,9 +264,9 @@ const AirportPackageForm = () => {
                 placeholder="Enter number of passengers"
                 value={airportPackageAdditional.pax}
                 onChange={(e) => handleAirportPackageChange("pax", e.target.value)}
-                className="w-full pl-10 pr-4 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-400/60 focus:border-green-300/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 placeholder:text-gray-500 text-gray-800 shadow-sm"
+                className="w-full pl-10 pr-4 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-800/60 focus:border-blue-800/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 placeholder:text-gray-500 text-gray-800 shadow-sm"
               />
-              <Users className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-green-600" />
+              <Users className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-blue-800" />
             </div>
           </div>
 
@@ -280,9 +281,9 @@ const AirportPackageForm = () => {
                 placeholder="Enter baggage count"
                 value={airportPackageAdditional.baggage}
                 onChange={(e) => handleAirportPackageChange("baggage", e.target.value)}
-                className="w-full pl-10 pr-4 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-400/60 focus:border-green-300/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 placeholder:text-gray-500 text-gray-800 shadow-sm"
+                className="w-full pl-10 pr-4 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-800/60 focus:border-blue-800/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 placeholder:text-gray-500 text-gray-800 shadow-sm"
               />
-              <Luggage className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-green-600" />
+              <Luggage className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-blue-800" />
             </div>
           </div>
 
@@ -294,7 +295,7 @@ const AirportPackageForm = () => {
               <select
                 value={airportPackageAdditional.carPreference}
                 onChange={(e) => handleAirportPackageChange("carPreference", e.target.value)}
-                className="w-full pl-10 pr-10 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-400/60 focus:border-green-300/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 text-gray-800 appearance-none cursor-pointer"
+                className="w-full pl-10 pr-10 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-800/60 focus:border-blue-800/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 text-gray-800 appearance-none cursor-pointer"
               >
                 <option value="">Select car type</option>
                 <option value="muv">MUV</option>
@@ -303,8 +304,8 @@ const AirportPackageForm = () => {
                 <option value="luxury">Luxury Car</option>
                 <option value="suggest">Suggest the best for me</option>
               </select>
-              <Car className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-green-600" />
-              <ChevronDown className="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-green-600" />
+              <Car className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-blue-800" />
+              <ChevronDown className="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-blue-800" />
             </div>
           </div>
         </div>
@@ -320,9 +321,9 @@ const AirportPackageForm = () => {
               value={airportPackageAdditional.additionalNotes}
               onChange={(e) => handleAirportPackageChange("additionalNotes", e.target.value)}
               rows={3}
-              className="w-full pl-10 pr-4 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-400/60 focus:border-green-300/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 placeholder:text-gray-500 text-gray-800 shadow-sm resize-vertical"
+              className="w-full pl-10 pr-4 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-800/60 focus:border-blue-800/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 placeholder:text-gray-500 text-gray-800 shadow-sm resize-vertical"
             />
-            <MessageSquare className="absolute left-3 top-4 w-4 h-4 text-green-600" />
+            <MessageSquare className="absolute left-3 top-4 w-4 h-4 text-blue-800" />
           </div>
         </div>
 
@@ -339,9 +340,9 @@ const AirportPackageForm = () => {
                 value={airportPackageAdditional.firstName}
                 onChange={(e) => handleAirportPackageChange("firstName", e.target.value)}
                 required
-                className="w-full pl-10 pr-4 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-400/60 focus:border-green-300/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 placeholder:text-gray-500 text-gray-800 shadow-sm"
+                className="w-full pl-10 pr-4 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-800/60 focus:border-blue-800/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 placeholder:text-gray-500 text-gray-800 shadow-sm"
               />
-              <User className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-green-600" />
+              <User className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-blue-800" />
             </div>
           </div>
 
@@ -356,9 +357,9 @@ const AirportPackageForm = () => {
                 value={airportPackageAdditional.lastName}
                 onChange={(e) => handleAirportPackageChange("lastName", e.target.value)}
                 required
-                className="w-full pl-10 pr-4 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-400/60 focus:border-green-300/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 placeholder:text-gray-500 text-gray-800 shadow-sm"
+                className="w-full pl-10 pr-4 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-800/60 focus:border-blue-800/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 placeholder:text-gray-500 text-gray-800 shadow-sm"
               />
-              <User className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-green-600" />
+              <User className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-blue-800" />
             </div>
           </div>
         </div>
@@ -376,9 +377,9 @@ const AirportPackageForm = () => {
                 value={airportPackageAdditional.contact}
                 onChange={(e) => handleAirportPackageChange("contact", e.target.value)}
                 required
-                className="w-full pl-10 pr-4 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-400/60 focus:border-green-300/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 placeholder:text-gray-500 text-gray-800 shadow-sm"
+                className="w-full pl-10 pr-4 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-800/60 focus:border-blue-800/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 placeholder:text-gray-500 text-gray-800 shadow-sm"
               />
-              <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-green-600" />
+              <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-blue-800" />
             </div>
           </div>
 
@@ -393,9 +394,9 @@ const AirportPackageForm = () => {
                 value={airportPackageAdditional.email}
                 onChange={(e) => handleAirportPackageChange("email", e.target.value)}
                 required
-                className="w-full pl-10 pr-4 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-400/60 focus:border-green-300/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 placeholder:text-gray-500 text-gray-800 shadow-sm"
+                className="w-full pl-10 pr-4 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-800/60 focus:border-blue-800/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 placeholder:text-gray-500 text-gray-800 shadow-sm"
               />
-              <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-green-600" />
+              <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-blue-800" />
             </div>
           </div>
         </div>
@@ -407,10 +408,10 @@ const AirportPackageForm = () => {
               type="checkbox"
               checked={airportPackageAdditional.agreeTerms}
               onChange={(e) => handleAirportPackageChange("agreeTerms", e.target.checked)}
-              className="w-5 h-5 text-green-600 border-gray-300 rounded focus:ring-green-500 mt-0.5"
+              className="w-5 h-5 text-blue-800 border-gray-300 rounded focus:ring-blue-800 mt-0.5"
             />
             <span className="text-sm text-gray-800">
-              I agree to the <a href="/terms" className="text-green-600 hover:text-green-700 underline">Terms & Conditions</a>
+              I agree to the <a href="/terms" className="text-blue-800 hover:text-blue-900 underline">Terms & Conditions</a>
             </span>
           </label>
 
@@ -419,7 +420,7 @@ const AirportPackageForm = () => {
               type="checkbox"
               checked={airportPackageAdditional.agreeCommunication}
               onChange={(e) => handleAirportPackageChange("agreeCommunication", e.target.checked)}
-              className="w-5 h-5 text-green-600 border-gray-300 rounded focus:ring-green-500 mt-0.5"
+              className="w-5 h-5 text-blue-800 border-gray-300 rounded focus:ring-blue-800 mt-0.5"
             />
             <span className="text-sm text-gray-800">
               I agree to be contacted by your team via call, WhatsApp, SMS, and email for booking confirmations, updates, and promotional offers
@@ -429,14 +430,15 @@ const AirportPackageForm = () => {
 
         {/* Final Book Now Button */}
         <div className="flex justify-center pt-4">
-          <button
+          <Button
             onClick={handleFinalBookNow}
             disabled={!airportPackageAdditional.agreeTerms || !airportPackageAdditional.firstName || !airportPackageAdditional.lastName || !airportPackageAdditional.contact || !airportPackageAdditional.email}
-            className="bg-gradient-to-r from-green-600/90 to-emerald-600/90 backdrop-blur-md hover:from-green-700/90 hover:to-emerald-700/90 text-white px-8 py-3 rounded-xl font-semibold shadow-lg shadow-green-600/20 hover:shadow-xl hover:shadow-green-600/30 border border-green-500/20 hover:border-green-400/30 transform hover:-translate-y-1 hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none disabled:hover:scale-100"
+            variant="primary"
+            size="lg"
           >
             <Check className="w-4 h-4" />
             Complete Booking
-          </button>
+          </Button>
         </div>
       </div>
     );
@@ -460,9 +462,9 @@ const AirportPackageForm = () => {
                     placeholder="Airport"
                     value={formData.airportFromLocation}
                     onChange={(e) => handleInputChange("airportFromLocation", e.target.value)}
-                    className="w-full pl-10 pr-4 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-400/60 focus:border-green-300/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 placeholder:text-gray-500 text-gray-800 shadow-sm"
+                    className="w-full pl-10 pr-4 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-800/60 focus:border-blue-800/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 placeholder:text-gray-500 text-gray-800 shadow-sm"
                   />
-                  <Plane className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-green-600" />
+                  <Plane className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-blue-800" />
                 </div>
               </div>
               <div className="md:col-span-1">
@@ -475,9 +477,9 @@ const AirportPackageForm = () => {
                     placeholder="Hotel/Address"
                     value={formData.airportToLocation}
                     onChange={(e) => handleInputChange("airportToLocation", e.target.value)}
-                    className="w-full pl-10 pr-4 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-400/60 focus:border-green-300/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 placeholder:text-gray-500 text-gray-800 shadow-sm"
+                    className="w-full pl-10 pr-4 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-800/60 focus:border-blue-800/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 placeholder:text-gray-500 text-gray-800 shadow-sm"
                   />
-                  <MapPin className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-green-600" />
+                  <MapPin className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-blue-800" />
                 </div>
               </div>
               <div className="md:col-span-1">
@@ -489,20 +491,28 @@ const AirportPackageForm = () => {
                     type="datetime-local"
                     value={formData.airportDateTime}
                     onChange={(e) => handleInputChange("airportDateTime", e.target.value)}
-                    className="w-full pl-10 pr-4 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-400/60 focus:border-green-300/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 placeholder:text-gray-500 text-gray-800 shadow-sm"
+                    className="w-full pl-10 pr-4 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-800/60 focus:border-blue-800/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 placeholder:text-gray-500 text-gray-800 shadow-sm"
                   />
-                  <Calendar className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-green-600" />
+                  <Calendar className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-blue-800" />
                 </div>
               </div>
               {!showAdditionalFields && (
                 <div className="md:col-span-1 flex items-end">
-                  <button
+                  <Button
                     onClick={handleInitialBookNow}
-                    className="w-full bg-gradient-to-r from-green-600/90 to-emerald-600/90 backdrop-blur-md hover:from-green-700/90 hover:to-emerald-700/90 text-white px-6 py-3 rounded-xl font-semibold shadow-lg shadow-green-600/20 hover:shadow-xl hover:shadow-green-600/30 border border-green-500/20 hover:border-green-400/30 transform hover:-translate-y-1 hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2"
+                    variant="primary"
+                    size="md"
+                    className="w-[80%] group overflow-hidden relative"
                   >
-                    <Search className="w-4 h-4" />
-                    Book Now
-                  </button>
+                    {/* Search icon - starts from left, slides in on hover */}
+                    <Search 
+                      className="absolute left-1/2 top-1/2 w-4 h-4 transition-all duration-300 ease-in-out -translate-y-1/2 -translate-x-[calc(50%+200%)] group-hover:-translate-x-1/2 opacity-0 group-hover:opacity-100" 
+                    />
+                    {/* Text - slides out to the right on hover */}
+                    <span className="block transition-all duration-300 ease-in-out group-hover:translate-x-[200%]">
+                      Book Now
+                    </span>
+                  </Button>
                 </div>
               )}
             </div>

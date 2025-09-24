@@ -18,6 +18,7 @@ import {
   Luggage,
   Check,
 } from "lucide-react";
+import { Button } from "./ui/button";
 
 interface TabData {
   id: string;
@@ -423,9 +424,9 @@ const TabNavigation = () => {
                 onChange={(e) =>
                   handleInputChange("pickupLocation", e.target.value)
                 }
-                className="w-full pl-10 pr-4 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-400/60 focus:border-green-300/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 placeholder:text-gray-500 text-gray-800 shadow-sm"
+                className="w-full pl-10 pr-4 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-800/60 focus:border-blue-800/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 placeholder:text-gray-500 text-gray-800 shadow-sm"
               />
-              <MapPin className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-green-600" />
+              <MapPin className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-blue-800" />
             </div>
           </div>
 
@@ -441,9 +442,9 @@ const TabNavigation = () => {
                 onChange={(e) =>
                   handleInputChange("pickupDate", e.target.value)
                 }
-                className="w-full pl-10 pr-4 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-400/60 focus:border-green-300/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 placeholder:text-gray-500 text-gray-800 shadow-sm"
+                className="w-full pl-10 pr-4 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-800/60 focus:border-blue-800/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 placeholder:text-gray-500 text-gray-800 shadow-sm"
               />
-              <Calendar className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-green-600" />
+              <Calendar className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-blue-800" />
             </div>
           </div>
 
@@ -459,9 +460,9 @@ const TabNavigation = () => {
                 onChange={(e) =>
                   handleInputChange("pickupTime", e.target.value)
                 }
-                className="w-full pl-10 pr-4 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-400/60 focus:border-green-300/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 placeholder:text-gray-500 text-gray-800 shadow-sm"
+                className="w-full pl-10 pr-4 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-800/60 focus:border-blue-800/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 placeholder:text-gray-500 text-gray-800 shadow-sm"
               />
-              <Clock className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-green-600" />
+              <Clock className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-blue-800" />
             </div>
           </div>
 
@@ -477,22 +478,30 @@ const TabNavigation = () => {
                 onChange={(e) =>
                   handleInputChange("returnDate", e.target.value)
                 }
-                className="w-full pl-10 pr-4 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-400/60 focus:border-green-300/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 placeholder:text-gray-500 text-gray-800 shadow-sm"
+                className="w-full pl-10 pr-4 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-800/60 focus:border-blue-800/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 placeholder:text-gray-500 text-gray-800 shadow-sm"
               />
-              <Calendar className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-green-600" />
+              <Calendar className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-blue-800" />
             </div>
           </div>
 
           {/* Search Button - Hide when additional fields are shown */}
           {!showAdditionalFields && (
             <div className="sm:col-span-2 lg:col-span-1 flex items-end">
-              <button
+              <Button
                 onClick={handleInitialBookNow}
-                className="w-full bg-gradient-to-r from-green-600/90 to-emerald-600/90 backdrop-blur-md hover:from-green-700/90 hover:to-emerald-700/90 text-white px-6 py-3 rounded-xl font-semibold shadow-lg shadow-green-600/20 hover:shadow-xl hover:shadow-green-600/30 border border-green-500/20 hover:border-green-400/30 transform hover:-translate-y-1 hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2"
+                variant="primary"
+                size="md"
+                className="w-full group overflow-hidden relative"
               >
-                <Search className="w-4 h-4" />
-                Book Now
-              </button>
+                {/* Search icon - starts from left, slides in on hover */}
+                <Search 
+                  className="absolute left-1/2 top-1/2 w-4 h-4 transition-all duration-300 ease-in-out -translate-y-1/2 -translate-x-[calc(50%+200%)] group-hover:-translate-x-1/2 opacity-0 group-hover:opacity-100" 
+                />
+                {/* Text - slides out to the right on hover */}
+                <span className="block transition-all duration-300 ease-in-out group-hover:translate-x-[200%]">
+                  Book Now
+                </span>
+              </Button>
             </div>
           )}
         </div>
@@ -522,9 +531,9 @@ const TabNavigation = () => {
                 placeholder="Enter number of passengers"
                 value={localTravelAdditional.pax}
                 onChange={(e) => handleLocalTravelChange("pax", e.target.value)}
-                className="w-full pl-10 pr-4 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-400/60 focus:border-green-300/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 placeholder:text-gray-500 text-gray-800 shadow-sm"
+                className="w-full pl-10 pr-4 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-800/60 focus:border-blue-800/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 placeholder:text-gray-500 text-gray-800 shadow-sm"
               />
-              <Users className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-green-600" />
+              <Users className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-blue-800" />
             </div>
           </div>
 
@@ -539,9 +548,9 @@ const TabNavigation = () => {
                 placeholder="Enter baggage count"
                 value={localTravelAdditional.baggage}
                 onChange={(e) => handleLocalTravelChange("baggage", e.target.value)}
-                className="w-full pl-10 pr-4 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-400/60 focus:border-green-300/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 placeholder:text-gray-500 text-gray-800 shadow-sm"
+                className="w-full pl-10 pr-4 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-800/60 focus:border-blue-800/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 placeholder:text-gray-500 text-gray-800 shadow-sm"
               />
-              <Luggage className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-green-600" />
+              <Luggage className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-blue-800" />
             </div>
           </div>
 
@@ -553,7 +562,7 @@ const TabNavigation = () => {
               <select
                 value={localTravelAdditional.carPreference}
                 onChange={(e) => handleLocalTravelChange("carPreference", e.target.value)}
-                className="w-full pl-10 pr-10 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-400/60 focus:border-green-300/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 text-gray-800 appearance-none cursor-pointer"
+                className="w-full pl-10 pr-10 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-800/60 focus:border-blue-800/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 text-gray-800 appearance-none cursor-pointer"
               >
                 <option value="">Select car type</option>
                 <option value="muv">MUV</option>
@@ -562,8 +571,8 @@ const TabNavigation = () => {
                 <option value="luxury">Luxury Car</option>
                 <option value="suggest">Suggest the best for me</option>
               </select>
-              <Car className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-green-600" />
-              <ChevronDown className="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-green-600" />
+              <Car className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-blue-800" />
+              <ChevronDown className="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-blue-800" />
             </div>
           </div>
         </div>
@@ -582,7 +591,7 @@ const TabNavigation = () => {
                   value="yes"
                   checked={localTravelAdditional.airportPickup === "yes"}
                   onChange={(e) => handleLocalTravelChange("airportPickup", e.target.value)}
-                  className="w-4 h-4 text-green-600 border-gray-300 focus:ring-green-500"
+                  className="w-4 h-4 text-blue-800 border-gray-300 focus:ring-blue-800"
                 />
                 <span className="text-gray-800">Yes</span>
               </label>
@@ -593,7 +602,7 @@ const TabNavigation = () => {
                   value="no"
                   checked={localTravelAdditional.airportPickup === "no"}
                   onChange={(e) => handleLocalTravelChange("airportPickup", e.target.value)}
-                  className="w-4 h-4 text-green-600 border-gray-300 focus:ring-green-500"
+                  className="w-4 h-4 text-blue-800 border-gray-300 focus:ring-blue-800"
                 />
                 <span className="text-gray-800">No</span>
               </label>
@@ -613,9 +622,9 @@ const TabNavigation = () => {
                     placeholder="e.g., AI 101, 6E 234"
                     value={localTravelAdditional.flightNumber}
                     onChange={(e) => handleLocalTravelChange("flightNumber", e.target.value)}
-                    className="w-full pl-10 pr-4 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-400/60 focus:border-green-300/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 placeholder:text-gray-500 text-gray-800 shadow-sm"
+                    className="w-full pl-10 pr-4 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-800/60 focus:border-blue-800/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 placeholder:text-gray-500 text-gray-800 shadow-sm"
                   />
-                  <Plane className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-green-600" />
+                  <Plane className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-blue-800" />
                 </div>
               </div>
 
@@ -627,15 +636,15 @@ const TabNavigation = () => {
                   <select
                     value={localTravelAdditional.terminal}
                     onChange={(e) => handleLocalTravelChange("terminal", e.target.value)}
-                    className="w-full pl-10 pr-10 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-400/60 focus:border-green-300/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 text-gray-800 appearance-none cursor-pointer"
+                    className="w-full pl-10 pr-10 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-800/60 focus:border-blue-800/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 text-gray-800 appearance-none cursor-pointer"
                   >
                     <option value="">Select Terminal</option>
                     <option value="T1">T1</option>
                     <option value="T2">T2</option>
                     <option value="T3">T3</option>
                   </select>
-                  <Building2 className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-green-600" />
-                  <ChevronDown className="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-green-600" />
+                  <Building2 className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-blue-800" />
+                  <ChevronDown className="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-blue-800" />
                 </div>
               </div>
 
@@ -648,9 +657,9 @@ const TabNavigation = () => {
                     type="time"
                     value={localTravelAdditional.arrivalTime}
                     onChange={(e) => handleLocalTravelChange("arrivalTime", e.target.value)}
-                    className="w-full pl-10 pr-4 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-400/60 focus:border-green-300/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 placeholder:text-gray-500 text-gray-800 shadow-sm"
+                    className="w-full pl-10 pr-4 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-800/60 focus:border-blue-800/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 placeholder:text-gray-500 text-gray-800 shadow-sm"
                   />
-                  <Clock className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-green-600" />
+                  <Clock className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-blue-800" />
                 </div>
               </div>
             </div>
@@ -668,9 +677,9 @@ const TabNavigation = () => {
               value={localTravelAdditional.additionalNotes}
               onChange={(e) => handleLocalTravelChange("additionalNotes", e.target.value)}
               rows={3}
-              className="w-full pl-10 pr-4 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-400/60 focus:border-green-300/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 placeholder:text-gray-500 text-gray-800 shadow-sm resize-vertical"
+              className="w-full pl-10 pr-4 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-800/60 focus:border-blue-800/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 placeholder:text-gray-500 text-gray-800 shadow-sm resize-vertical"
             />
-            <MessageSquare className="absolute left-3 top-4 w-4 h-4 text-green-600" />
+            <MessageSquare className="absolute left-3 top-4 w-4 h-4 text-blue-800" />
           </div>
         </div>
 
@@ -687,9 +696,9 @@ const TabNavigation = () => {
                 value={localTravelAdditional.firstName}
                 onChange={(e) => handleLocalTravelChange("firstName", e.target.value)}
                 required
-                className="w-full pl-10 pr-4 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-400/60 focus:border-green-300/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 placeholder:text-gray-500 text-gray-800 shadow-sm"
+                className="w-full pl-10 pr-4 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-800/60 focus:border-blue-800/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 placeholder:text-gray-500 text-gray-800 shadow-sm"
               />
-              <User className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-green-600" />
+              <User className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-blue-800" />
             </div>
           </div>
 
@@ -704,9 +713,9 @@ const TabNavigation = () => {
                 value={localTravelAdditional.lastName}
                 onChange={(e) => handleLocalTravelChange("lastName", e.target.value)}
                 required
-                className="w-full pl-10 pr-4 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-400/60 focus:border-green-300/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 placeholder:text-gray-500 text-gray-800 shadow-sm"
+                className="w-full pl-10 pr-4 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-800/60 focus:border-blue-800/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 placeholder:text-gray-500 text-gray-800 shadow-sm"
               />
-              <User className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-green-600" />
+              <User className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-blue-800" />
             </div>
           </div>
         </div>
@@ -724,9 +733,9 @@ const TabNavigation = () => {
                 value={localTravelAdditional.contact}
                 onChange={(e) => handleLocalTravelChange("contact", e.target.value)}
                 required
-                className="w-full pl-10 pr-4 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-400/60 focus:border-green-300/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 placeholder:text-gray-500 text-gray-800 shadow-sm"
+                className="w-full pl-10 pr-4 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-800/60 focus:border-blue-800/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 placeholder:text-gray-500 text-gray-800 shadow-sm"
               />
-              <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-green-600" />
+              <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-blue-800" />
             </div>
           </div>
 
@@ -741,9 +750,9 @@ const TabNavigation = () => {
                 value={localTravelAdditional.email}
                 onChange={(e) => handleLocalTravelChange("email", e.target.value)}
                 required
-                className="w-full pl-10 pr-4 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-400/60 focus:border-green-300/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 placeholder:text-gray-500 text-gray-800 shadow-sm"
+                className="w-full pl-10 pr-4 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-800/60 focus:border-blue-800/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 placeholder:text-gray-500 text-gray-800 shadow-sm"
               />
-              <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-green-600" />
+              <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-blue-800" />
             </div>
           </div>
         </div>
@@ -755,10 +764,10 @@ const TabNavigation = () => {
               type="checkbox"
               checked={localTravelAdditional.agreeTerms}
               onChange={(e) => handleLocalTravelChange("agreeTerms", e.target.checked)}
-              className="w-5 h-5 text-green-600 border-gray-300 rounded focus:ring-green-500 mt-0.5"
+              className="w-5 h-5 text-blue-800 border-gray-300 rounded focus:ring-blue-800 mt-0.5"
             />
             <span className="text-sm text-gray-800">
-              I agree to the <a href="/terms" className="text-green-600 hover:text-green-700 underline">Terms & Conditions</a>
+              I agree to the <a href="/terms" className="text-blue-800 hover:text-blue-800 underline">Terms & Conditions</a>
             </span>
           </label>
 
@@ -767,7 +776,7 @@ const TabNavigation = () => {
               type="checkbox"
               checked={localTravelAdditional.agreeCommunication}
               onChange={(e) => handleLocalTravelChange("agreeCommunication", e.target.checked)}
-              className="w-5 h-5 text-green-600 border-gray-300 rounded focus:ring-green-500 mt-0.5"
+              className="w-5 h-5 text-blue-800 border-gray-300 rounded focus:ring-blue-800 mt-0.5"
             />
             <span className="text-sm text-gray-800">
               I agree to be contacted by your team via call, WhatsApp, SMS, and email for booking confirmations, updates, and promotional offers
@@ -777,14 +786,15 @@ const TabNavigation = () => {
 
         {/* Final Book Now Button */}
         <div className="flex justify-center pt-4">
-          <button
+          <Button
             onClick={handleFinalBookNow}
             disabled={!localTravelAdditional.agreeTerms || !localTravelAdditional.firstName || !localTravelAdditional.lastName || !localTravelAdditional.contact || !localTravelAdditional.email}
-            className="bg-gradient-to-r from-green-600/90 to-emerald-600/90 backdrop-blur-md hover:from-green-700/90 hover:to-emerald-700/90 text-white px-8 py-3 rounded-xl font-semibold shadow-lg shadow-green-600/20 hover:shadow-xl hover:shadow-green-600/30 border border-green-500/20 hover:border-green-400/30 transform hover:-translate-y-1 hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none disabled:hover:scale-100"
+            variant="primary"
+            size="lg"
           >
             <Check className="w-4 h-4" />
             Complete Booking
-          </button>
+          </Button>
         </div>
       </div>
     );
@@ -804,9 +814,9 @@ const TabNavigation = () => {
                 placeholder="Airport"
                 value={formData.airportFromLocation}
                 onChange={(e) => handleInputChange("airportFromLocation", e.target.value)}
-                className="w-full pl-10 pr-4 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-400/60 focus:border-green-300/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 placeholder:text-gray-500 text-gray-800 shadow-sm"
+                className="w-full pl-10 pr-4 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-800/60 focus:border-blue-800/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 placeholder:text-gray-500 text-gray-800 shadow-sm"
               />
-              <Plane className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-green-600" />
+              <Plane className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-blue-800" />
             </div>
           </div>
           <div className="md:col-span-1">
@@ -819,9 +829,9 @@ const TabNavigation = () => {
                 placeholder="Hotel/Address"
                 value={formData.airportToLocation}
                 onChange={(e) => handleInputChange("airportToLocation", e.target.value)}
-                className="w-full pl-10 pr-4 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-400/60 focus:border-green-300/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 placeholder:text-gray-500 text-gray-800 shadow-sm"
+                className="w-full pl-10 pr-4 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-800/60 focus:border-blue-800/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 placeholder:text-gray-500 text-gray-800 shadow-sm"
               />
-              <MapPin className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-green-600" />
+              <MapPin className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-blue-800" />
             </div>
           </div>
           <div className="md:col-span-1">
@@ -833,20 +843,28 @@ const TabNavigation = () => {
                 type="datetime-local"
                 value={formData.airportDateTime}
                 onChange={(e) => handleInputChange("airportDateTime", e.target.value)}
-                className="w-full pl-10 pr-4 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-400/60 focus:border-green-300/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 placeholder:text-gray-500 text-gray-800 shadow-sm"
+                className="w-full pl-10 pr-4 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-800/60 focus:border-blue-800/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 placeholder:text-gray-500 text-gray-800 shadow-sm"
               />
-              <Calendar className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-green-600" />
+              <Calendar className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-blue-800" />
             </div>
           </div>
           {!showAdditionalFields && (
             <div className="md:col-span-1 flex items-end">
-              <button
+              <Button
                 onClick={handleInitialBookNow}
-                className="w-full bg-gradient-to-r from-green-600/90 to-emerald-600/90 backdrop-blur-md hover:from-green-700/90 hover:to-emerald-700/90 text-white px-6 py-3 rounded-xl font-semibold shadow-lg shadow-green-600/20 hover:shadow-xl hover:shadow-green-600/30 border border-green-500/20 hover:border-green-400/30 transform hover:-translate-y-1 hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2"
+                variant="primary"
+                size="md"
+                className="w-full group overflow-hidden relative"
               >
-                <Search className="w-4 h-4" />
-                Book Now
-              </button>
+                {/* Search icon - starts from left, slides in on hover */}
+                <Search 
+                  className="absolute left-1/2 top-1/2 w-4 h-4 transition-all duration-300 ease-in-out -translate-y-1/2 -translate-x-[calc(50%+200%)] group-hover:-translate-x-1/2 opacity-0 group-hover:opacity-100" 
+                />
+                {/* Text - slides out to the right on hover */}
+                <span className="block transition-all duration-300 ease-in-out group-hover:translate-x-[200%]">
+                  Book Now
+                </span>
+              </Button>
             </div>
           )}
         </div>
@@ -876,7 +894,7 @@ const TabNavigation = () => {
                   value="yes"
                   checked={airportPackageAdditional.flightBooked === "yes"}
                   onChange={(e) => handleAirportPackageChange("flightBooked", e.target.value)}
-                  className="w-4 h-4 text-green-600 border-gray-300 focus:ring-green-500"
+                  className="w-4 h-4 text-blue-800 border-gray-300 focus:ring-blue-800"
                 />
                 <span className="text-gray-800">Yes</span>
               </label>
@@ -887,7 +905,7 @@ const TabNavigation = () => {
                   value="no"
                   checked={airportPackageAdditional.flightBooked === "no"}
                   onChange={(e) => handleAirportPackageChange("flightBooked", e.target.value)}
-                  className="w-4 h-4 text-green-600 border-gray-300 focus:ring-green-500"
+                  className="w-4 h-4 text-blue-800 border-gray-300 focus:ring-blue-800"
                 />
                 <span className="text-gray-800">No</span>
               </label>
@@ -906,9 +924,9 @@ const TabNavigation = () => {
                     type="date"
                     value={airportPackageAdditional.flightDate}
                     onChange={(e) => handleAirportPackageChange("flightDate", e.target.value)}
-                    className="w-full pl-10 pr-4 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-400/60 focus:border-green-300/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 placeholder:text-gray-500 text-gray-800 shadow-sm"
+                    className="w-full pl-10 pr-4 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-800/60 focus:border-blue-800/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 placeholder:text-gray-500 text-gray-800 shadow-sm"
                   />
-                  <Calendar className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-green-600" />
+                  <Calendar className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-blue-800" />
                 </div>
               </div>
             ) : (
@@ -921,9 +939,9 @@ const TabNavigation = () => {
                     type="date"
                     value={airportPackageAdditional.tentativeDate}
                     onChange={(e) => handleAirportPackageChange("tentativeDate", e.target.value)}
-                    className="w-full pl-10 pr-4 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-400/60 focus:border-green-300/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 placeholder:text-gray-500 text-gray-800 shadow-sm"
+                    className="w-full pl-10 pr-4 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-800/60 focus:border-blue-800/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 placeholder:text-gray-500 text-gray-800 shadow-sm"
                   />
-                  <Calendar className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-green-600" />
+                  <Calendar className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-blue-800" />
                 </div>
               </div>
             )}
@@ -936,14 +954,14 @@ const TabNavigation = () => {
                 <select
                   value={airportPackageAdditional.terminal}
                   onChange={(e) => handleAirportPackageChange("terminal", e.target.value)}
-                  className="w-full pl-10 pr-10 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-400/60 focus:border-green-300/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 text-gray-800 appearance-none cursor-pointer"
+                  className="w-full pl-10 pr-10 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-800/60 focus:border-blue-800/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 text-gray-800 appearance-none cursor-pointer"
                 >
                   <option value="">Select Terminal</option>
                   <option value="T1">T1</option>
                   <option value="T2">T2</option>
                 </select>
-                <Plane className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-green-600" />
-                <ChevronDown className="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-green-600" />
+                <Plane className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-blue-800" />
+                <ChevronDown className="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-blue-800" />
               </div>
             </div>
           </div>
@@ -958,9 +976,9 @@ const TabNavigation = () => {
                 placeholder="Enter flight number (e.g., AI 101)"
                 value={airportPackageAdditional.flightNumber}
                 onChange={(e) => handleAirportPackageChange("flightNumber", e.target.value)}
-                className="w-full pl-10 pr-4 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-400/60 focus:border-green-300/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 placeholder:text-gray-500 text-gray-800 shadow-sm"
+                className="w-full pl-10 pr-4 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-800/60 focus:border-blue-800/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 placeholder:text-gray-500 text-gray-800 shadow-sm"
               />
-              <Plane className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-green-600" />
+              <Plane className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-blue-800" />
             </div>
           </div>
         </div>
@@ -975,15 +993,15 @@ const TabNavigation = () => {
               <select
                 value={airportPackageAdditional.pickupLocation}
                 onChange={(e) => handleAirportPackageChange("pickupLocation", e.target.value)}
-                className="w-full pl-10 pr-10 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-400/60 focus:border-green-300/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 text-gray-800 appearance-none cursor-pointer"
+                className="w-full pl-10 pr-10 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-800/60 focus:border-blue-800/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 text-gray-800 appearance-none cursor-pointer"
               >
                 <option value="">Select pickup location</option>
                 <option value="home">Home</option>
                 <option value="office">Office</option>
                 <option value="airport">Airport</option>
               </select>
-              <MapPin className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-green-600" />
-              <ChevronDown className="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-green-600" />
+              <MapPin className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-blue-800" />
+              <ChevronDown className="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-blue-800" />
             </div>
           </div>
 
@@ -995,15 +1013,15 @@ const TabNavigation = () => {
               <select
                 value={airportPackageAdditional.dropLocation}
                 onChange={(e) => handleAirportPackageChange("dropLocation", e.target.value)}
-                className="w-full pl-10 pr-10 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-400/60 focus:border-green-300/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 text-gray-800 appearance-none cursor-pointer"
+                className="w-full pl-10 pr-10 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-800/60 focus:border-blue-800/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 text-gray-800 appearance-none cursor-pointer"
               >
                 <option value="">Select drop location</option>
                 <option value="home">Home</option>
                 <option value="office">Office</option>
                 <option value="airport">Airport</option>
               </select>
-              <MapPin className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-green-600" />
-              <ChevronDown className="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-green-600" />
+              <MapPin className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-blue-800" />
+              <ChevronDown className="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-blue-800" />
             </div>
           </div>
         </div>
@@ -1022,9 +1040,9 @@ const TabNavigation = () => {
                 placeholder="Enter number of passengers"
                 value={airportPackageAdditional.pax}
                 onChange={(e) => handleAirportPackageChange("pax", e.target.value)}
-                className="w-full pl-10 pr-4 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-400/60 focus:border-green-300/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 placeholder:text-gray-500 text-gray-800 shadow-sm"
+                className="w-full pl-10 pr-4 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-800/60 focus:border-blue-800/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 placeholder:text-gray-500 text-gray-800 shadow-sm"
               />
-              <Users className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-green-600" />
+              <Users className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-blue-800" />
             </div>
           </div>
 
@@ -1039,9 +1057,9 @@ const TabNavigation = () => {
                 placeholder="Enter baggage count"
                 value={airportPackageAdditional.baggage}
                 onChange={(e) => handleAirportPackageChange("baggage", e.target.value)}
-                className="w-full pl-10 pr-4 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-400/60 focus:border-green-300/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 placeholder:text-gray-500 text-gray-800 shadow-sm"
+                className="w-full pl-10 pr-4 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-800/60 focus:border-blue-800/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 placeholder:text-gray-500 text-gray-800 shadow-sm"
               />
-              <Luggage className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-green-600" />
+              <Luggage className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-blue-800" />
             </div>
           </div>
 
@@ -1053,7 +1071,7 @@ const TabNavigation = () => {
               <select
                 value={airportPackageAdditional.carPreference}
                 onChange={(e) => handleAirportPackageChange("carPreference", e.target.value)}
-                className="w-full pl-10 pr-10 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-400/60 focus:border-green-300/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 text-gray-800 appearance-none cursor-pointer"
+                className="w-full pl-10 pr-10 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-800/60 focus:border-blue-800/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 text-gray-800 appearance-none cursor-pointer"
               >
                 <option value="">Select car type</option>
                 <option value="muv">MUV</option>
@@ -1062,8 +1080,8 @@ const TabNavigation = () => {
                 <option value="luxury">Luxury Car</option>
                 <option value="suggest">Suggest the best for me</option>
               </select>
-              <Car className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-green-600" />
-              <ChevronDown className="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-green-600" />
+              <Car className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-blue-800" />
+              <ChevronDown className="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-blue-800" />
             </div>
           </div>
         </div>
@@ -1079,9 +1097,9 @@ const TabNavigation = () => {
               value={airportPackageAdditional.additionalNotes}
               onChange={(e) => handleAirportPackageChange("additionalNotes", e.target.value)}
               rows={3}
-              className="w-full pl-10 pr-4 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-400/60 focus:border-green-300/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 placeholder:text-gray-500 text-gray-800 shadow-sm resize-vertical"
+              className="w-full pl-10 pr-4 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-800/60 focus:border-blue-800/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 placeholder:text-gray-500 text-gray-800 shadow-sm resize-vertical"
             />
-            <MessageSquare className="absolute left-3 top-4 w-4 h-4 text-green-600" />
+            <MessageSquare className="absolute left-3 top-4 w-4 h-4 text-blue-800" />
           </div>
         </div>
 
@@ -1098,9 +1116,9 @@ const TabNavigation = () => {
                 value={airportPackageAdditional.firstName}
                 onChange={(e) => handleAirportPackageChange("firstName", e.target.value)}
                 required
-                className="w-full pl-10 pr-4 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-400/60 focus:border-green-300/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 placeholder:text-gray-500 text-gray-800 shadow-sm"
+                className="w-full pl-10 pr-4 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-800/60 focus:border-blue-800/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 placeholder:text-gray-500 text-gray-800 shadow-sm"
               />
-              <User className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-green-600" />
+              <User className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-blue-800" />
             </div>
           </div>
 
@@ -1115,9 +1133,9 @@ const TabNavigation = () => {
                 value={airportPackageAdditional.lastName}
                 onChange={(e) => handleAirportPackageChange("lastName", e.target.value)}
                 required
-                className="w-full pl-10 pr-4 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-400/60 focus:border-green-300/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 placeholder:text-gray-500 text-gray-800 shadow-sm"
+                className="w-full pl-10 pr-4 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-800/60 focus:border-blue-800/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 placeholder:text-gray-500 text-gray-800 shadow-sm"
               />
-              <User className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-green-600" />
+              <User className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-blue-800" />
             </div>
           </div>
         </div>
@@ -1135,9 +1153,9 @@ const TabNavigation = () => {
                 value={airportPackageAdditional.contact}
                 onChange={(e) => handleAirportPackageChange("contact", e.target.value)}
                 required
-                className="w-full pl-10 pr-4 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-400/60 focus:border-green-300/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 placeholder:text-gray-500 text-gray-800 shadow-sm"
+                className="w-full pl-10 pr-4 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-800/60 focus:border-blue-800/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 placeholder:text-gray-500 text-gray-800 shadow-sm"
               />
-              <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-green-600" />
+              <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-blue-800" />
             </div>
           </div>
 
@@ -1152,9 +1170,9 @@ const TabNavigation = () => {
                 value={airportPackageAdditional.email}
                 onChange={(e) => handleAirportPackageChange("email", e.target.value)}
                 required
-                className="w-full pl-10 pr-4 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-400/60 focus:border-green-300/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 placeholder:text-gray-500 text-gray-800 shadow-sm"
+                className="w-full pl-10 pr-4 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-800/60 focus:border-blue-800/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 placeholder:text-gray-500 text-gray-800 shadow-sm"
               />
-              <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-green-600" />
+              <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-blue-800" />
             </div>
           </div>
         </div>
@@ -1166,10 +1184,10 @@ const TabNavigation = () => {
               type="checkbox"
               checked={airportPackageAdditional.agreeTerms}
               onChange={(e) => handleAirportPackageChange("agreeTerms", e.target.checked)}
-              className="w-5 h-5 text-green-600 border-gray-300 rounded focus:ring-green-500 mt-0.5"
+              className="w-5 h-5 text-blue-800 border-gray-300 rounded focus:ring-blue-800 mt-0.5"
             />
             <span className="text-sm text-gray-800">
-              I agree to the <a href="/terms" className="text-green-600 hover:text-green-700 underline">Terms & Conditions</a>
+              I agree to the <a href="/terms" className="text-blue-800 hover:text-blue-800 underline">Terms & Conditions</a>
             </span>
           </label>
 
@@ -1178,7 +1196,7 @@ const TabNavigation = () => {
               type="checkbox"
               checked={airportPackageAdditional.agreeCommunication}
               onChange={(e) => handleAirportPackageChange("agreeCommunication", e.target.checked)}
-              className="w-5 h-5 text-green-600 border-gray-300 rounded focus:ring-green-500 mt-0.5"
+              className="w-5 h-5 text-blue-800 border-gray-300 rounded focus:ring-blue-800 mt-0.5"
             />
             <span className="text-sm text-gray-800">
               I agree to be contacted by your team via call, WhatsApp, SMS, and email for booking confirmations, updates, and promotional offers
@@ -1188,14 +1206,15 @@ const TabNavigation = () => {
 
         {/* Final Book Now Button */}
         <div className="flex justify-center pt-4">
-          <button
+          <Button
             onClick={handleFinalBookNow}
             disabled={!airportPackageAdditional.agreeTerms || !airportPackageAdditional.firstName || !airportPackageAdditional.lastName || !airportPackageAdditional.contact || !airportPackageAdditional.email}
-            className="bg-gradient-to-r from-green-600/90 to-emerald-600/90 backdrop-blur-md hover:from-green-700/90 hover:to-emerald-700/90 text-white px-8 py-3 rounded-xl font-semibold shadow-lg shadow-green-600/20 hover:shadow-xl hover:shadow-green-600/30 border border-green-500/20 hover:border-green-400/30 transform hover:-translate-y-1 hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none disabled:hover:scale-100"
+            variant="primary"
+            size="lg"
           >
             <Check className="w-4 h-4" />
             Complete Booking
-          </button>
+          </Button>
         </div>
       </div>
     );
@@ -1215,9 +1234,9 @@ const TabNavigation = () => {
                 placeholder="Enter pickup address"
                 value={formData.outstationPickupLocation}
                 onChange={(e) => handleInputChange("outstationPickupLocation", e.target.value)}
-                className="w-full pl-10 pr-4 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-400/60 focus:border-green-300/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 placeholder:text-gray-500 text-gray-800 shadow-sm"
+                className="w-full pl-10 pr-4 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-800/60 focus:border-blue-800/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 placeholder:text-gray-500 text-gray-800 shadow-sm"
               />
-              <MapPin className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-green-600" />
+              <MapPin className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-blue-800" />
             </div>
           </div>
           <div className="md:col-span-1">
@@ -1230,9 +1249,9 @@ const TabNavigation = () => {
                 placeholder="Enter drop address"
                 value={formData.outstationDropLocation}
                 onChange={(e) => handleInputChange("outstationDropLocation", e.target.value)}
-                className="w-full pl-10 pr-4 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-400/60 focus:border-green-300/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 placeholder:text-gray-500 text-gray-800 shadow-sm"
+                className="w-full pl-10 pr-4 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-800/60 focus:border-blue-800/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 placeholder:text-gray-500 text-gray-800 shadow-sm"
               />
-              <ArrowRightLeft className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-green-600" />
+              <ArrowRightLeft className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-blue-800" />
             </div>
           </div>
           <div className="md:col-span-1">
@@ -1242,9 +1261,9 @@ const TabNavigation = () => {
             <div className="relative">
               <input
                 type="date"
-                className="w-full pl-10 pr-4 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-400/60 focus:border-green-300/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 placeholder:text-gray-500 text-gray-800 shadow-sm"
+                className="w-full pl-10 pr-4 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-800/60 focus:border-blue-800/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 placeholder:text-gray-500 text-gray-800 shadow-sm"
               />
-              <Calendar className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-green-600" />
+              <Calendar className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-blue-800" />
             </div>
           </div>
           <div className="md:col-span-1">
@@ -1254,20 +1273,28 @@ const TabNavigation = () => {
             <div className="relative">
               <input
                 type="time"
-                className="w-full pl-10 pr-4 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-400/60 focus:border-green-300/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 placeholder:text-gray-500 text-gray-800 shadow-sm"
+                className="w-full pl-10 pr-4 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-800/60 focus:border-blue-800/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 placeholder:text-gray-500 text-gray-800 shadow-sm"
               />
-              <Clock className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-green-600" />
+              <Clock className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-blue-800" />
             </div>
           </div>
           {!showAdditionalFields && (
             <div className="md:col-span-1 flex items-end">
-              <button
+              <Button
                 onClick={handleInitialBookNow}
-                className="w-full bg-gradient-to-r from-green-600/90 to-emerald-600/90 backdrop-blur-md hover:from-green-700/90 hover:to-emerald-700/90 text-white px-6 py-3 rounded-xl font-semibold shadow-lg shadow-green-600/20 hover:shadow-xl hover:shadow-green-600/30 border border-green-500/20 hover:border-green-400/30 transform hover:-translate-y-1 hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2"
+                variant="primary"
+                size="md"
+                className="w-full group overflow-hidden relative"
               >
-                <Search className="w-4 h-4" />
-                Book Now
-              </button>
+                {/* Search icon - starts from left, slides in on hover */}
+                <Search 
+                  className="absolute left-1/2 top-1/2 w-4 h-4 transition-all duration-300 ease-in-out -translate-y-1/2 -translate-x-[calc(50%+200%)] group-hover:-translate-x-1/2 opacity-0 group-hover:opacity-100" 
+                />
+                {/* Text - slides out to the right on hover */}
+                <span className="block transition-all duration-300 ease-in-out group-hover:translate-x-[200%]">
+                  Book Now
+                </span>
+              </Button>
             </div>
           )}
         </div>
@@ -1297,9 +1324,9 @@ const TabNavigation = () => {
                 value={outstationAdditional.numberOfDays}
                 onChange={(e) => handleOutstationChange("numberOfDays", e.target.value)}
                 required
-                className="w-full pl-10 pr-4 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-400/60 focus:border-green-300/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 placeholder:text-gray-500 text-gray-800 shadow-sm"
+                className="w-full pl-10 pr-4 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-800/60 focus:border-blue-800/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 placeholder:text-gray-500 text-gray-800 shadow-sm"
               />
-              <Calendar className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-green-600" />
+              <Calendar className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-blue-800" />
             </div>
           </div>
 
@@ -1316,9 +1343,9 @@ const TabNavigation = () => {
                 value={outstationAdditional.pax}
                 onChange={(e) => handleOutstationChange("pax", e.target.value)}
                 required
-                className="w-full pl-10 pr-4 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-400/60 focus:border-green-300/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 placeholder:text-gray-500 text-gray-800 shadow-sm"
+                className="w-full pl-10 pr-4 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-800/60 focus:border-blue-800/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 placeholder:text-gray-500 text-gray-800 shadow-sm"
               />
-              <Users className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-green-600" />
+              <Users className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-blue-800" />
             </div>
           </div>
 
@@ -1333,9 +1360,9 @@ const TabNavigation = () => {
                 placeholder="Enter luggage count"
                 value={outstationAdditional.luggage}
                 onChange={(e) => handleOutstationChange("luggage", e.target.value)}
-                className="w-full pl-10 pr-4 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-400/60 focus:border-green-300/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 placeholder:text-gray-500 text-gray-800 shadow-sm"
+                className="w-full pl-10 pr-4 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-800/60 focus:border-blue-800/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 placeholder:text-gray-500 text-gray-800 shadow-sm"
               />
-              <Luggage className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-green-600" />
+              <Luggage className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-blue-800" />
             </div>
           </div>
         </div>
@@ -1351,9 +1378,9 @@ const TabNavigation = () => {
               value={outstationAdditional.additionalNotes}
               onChange={(e) => handleOutstationChange("additionalNotes", e.target.value)}
               rows={3}
-              className="w-full pl-10 pr-4 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-400/60 focus:border-green-300/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 placeholder:text-gray-500 text-gray-800 shadow-sm resize-vertical"
+              className="w-full pl-10 pr-4 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-800/60 focus:border-blue-800/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 placeholder:text-gray-500 text-gray-800 shadow-sm resize-vertical"
             />
-            <MessageSquare className="absolute left-3 top-4 w-4 h-4 text-green-600" />
+            <MessageSquare className="absolute left-3 top-4 w-4 h-4 text-blue-800" />
           </div>
         </div>
 
@@ -1370,9 +1397,9 @@ const TabNavigation = () => {
                 value={outstationAdditional.firstName}
                 onChange={(e) => handleOutstationChange("firstName", e.target.value)}
                 required
-                className="w-full pl-10 pr-4 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-400/60 focus:border-green-300/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 placeholder:text-gray-500 text-gray-800 shadow-sm"
+                className="w-full pl-10 pr-4 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-800/60 focus:border-blue-800/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 placeholder:text-gray-500 text-gray-800 shadow-sm"
               />
-              <User className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-green-600" />
+              <User className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-blue-800" />
             </div>
           </div>
 
@@ -1387,9 +1414,9 @@ const TabNavigation = () => {
                 value={outstationAdditional.lastName}
                 onChange={(e) => handleOutstationChange("lastName", e.target.value)}
                 required
-                className="w-full pl-10 pr-4 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-400/60 focus:border-green-300/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 placeholder:text-gray-500 text-gray-800 shadow-sm"
+                className="w-full pl-10 pr-4 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-800/60 focus:border-blue-800/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 placeholder:text-gray-500 text-gray-800 shadow-sm"
               />
-              <User className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-green-600" />
+              <User className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-blue-800" />
             </div>
           </div>
         </div>
@@ -1407,9 +1434,9 @@ const TabNavigation = () => {
                 value={outstationAdditional.contact}
                 onChange={(e) => handleOutstationChange("contact", e.target.value)}
                 required
-                className="w-full pl-10 pr-4 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-400/60 focus:border-green-300/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 placeholder:text-gray-500 text-gray-800 shadow-sm"
+                className="w-full pl-10 pr-4 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-800/60 focus:border-blue-800/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 placeholder:text-gray-500 text-gray-800 shadow-sm"
               />
-              <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-green-600" />
+              <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-blue-800" />
             </div>
           </div>
 
@@ -1424,9 +1451,9 @@ const TabNavigation = () => {
                 value={outstationAdditional.email}
                 onChange={(e) => handleOutstationChange("email", e.target.value)}
                 required
-                className="w-full pl-10 pr-4 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-400/60 focus:border-green-300/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 placeholder:text-gray-500 text-gray-800 shadow-sm"
+                className="w-full pl-10 pr-4 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-800/60 focus:border-blue-800/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 placeholder:text-gray-500 text-gray-800 shadow-sm"
               />
-              <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-green-600" />
+              <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-blue-800" />
             </div>
           </div>
         </div>
@@ -1438,10 +1465,10 @@ const TabNavigation = () => {
               type="checkbox"
               checked={outstationAdditional.agreeTerms}
               onChange={(e) => handleOutstationChange("agreeTerms", e.target.checked)}
-              className="w-5 h-5 text-green-600 border-gray-300 rounded focus:ring-green-500 mt-0.5"
+              className="w-5 h-5 text-blue-800 border-gray-300 rounded focus:ring-blue-800 mt-0.5"
             />
             <span className="text-sm text-gray-800">
-              I agree to the <a href="/terms" className="text-green-600 hover:text-green-700 underline">Terms & Conditions</a>
+              I agree to the <a href="/terms" className="text-blue-800 hover:text-blue-800 underline">Terms & Conditions</a>
             </span>
           </label>
 
@@ -1450,7 +1477,7 @@ const TabNavigation = () => {
               type="checkbox"
               checked={outstationAdditional.agreeCommunication}
               onChange={(e) => handleOutstationChange("agreeCommunication", e.target.checked)}
-              className="w-5 h-5 text-green-600 border-gray-300 rounded focus:ring-green-500 mt-0.5"
+              className="w-5 h-5 text-blue-800 border-gray-300 rounded focus:ring-blue-800 mt-0.5"
             />
             <span className="text-sm text-gray-800">
               I agree to be contacted by your team via call, WhatsApp, SMS, and email for booking confirmations, updates, and promotional offers
@@ -1463,7 +1490,7 @@ const TabNavigation = () => {
           <button
             onClick={handleFinalBookNow}
             disabled={!outstationAdditional.agreeTerms || !outstationAdditional.firstName || !outstationAdditional.lastName || !outstationAdditional.contact || !outstationAdditional.email || !outstationAdditional.numberOfDays || !outstationAdditional.pax}
-            className="bg-gradient-to-r from-green-600/90 to-emerald-600/90 backdrop-blur-md hover:from-green-700/90 hover:to-emerald-700/90 text-white px-8 py-3 rounded-xl font-semibold shadow-lg shadow-green-600/20 hover:shadow-xl hover:shadow-green-600/30 border border-green-500/20 hover:border-green-400/30 transform hover:-translate-y-1 hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none disabled:hover:scale-100"
+            className="bg-gradient-to-r from-blue-800/90 to-blue-900/90 backdrop-blur-md hover:from-blue-900/90 hover:to-blue-950/90 text-white px-8 py-3 rounded-xl font-semibold shadow-lg shadow-blue-800/20 hover:shadow-xl hover:shadow-blue-800/30 border border-blue-800/20 hover:border-blue-800/30 transform hover:-translate-y-1 hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none disabled:hover:scale-100"
           >
             <Check className="w-4 h-4" />
             Complete Booking
@@ -1485,9 +1512,9 @@ const TabNavigation = () => {
               <input
                 type="text"
                 placeholder="Wedding venue"
-                className="w-full pl-10 pr-4 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-400/60 focus:border-green-300/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 placeholder:text-gray-500 text-gray-800 shadow-sm"
+                className="w-full pl-10 pr-4 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-800/60 focus:border-blue-800/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 placeholder:text-gray-500 text-gray-800 shadow-sm"
               />
-              <Heart className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-green-600" />
+              <Heart className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-blue-800" />
             </div>
           </div>
           <div className="md:col-span-1">
@@ -1497,9 +1524,9 @@ const TabNavigation = () => {
             <div className="relative">
               <input
                 type="date"
-                className="w-full pl-10 pr-4 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-400/60 focus:border-green-300/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 placeholder:text-gray-500 text-gray-800 shadow-sm"
+                className="w-full pl-10 pr-4 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-800/60 focus:border-blue-800/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 placeholder:text-gray-500 text-gray-800 shadow-sm"
               />
-              <Calendar className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-green-600" />
+              <Calendar className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-blue-800" />
             </div>
           </div>
           <div className="md:col-span-1">
@@ -1512,19 +1539,27 @@ const TabNavigation = () => {
                 <option>2 Cars</option>
                 <option>3+ Cars</option>
               </select>
-              <Car className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-green-600" />
-              <ChevronDown className="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-green-600" />
+              <Car className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-blue-800" />
+              <ChevronDown className="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-blue-800" />
             </div>
           </div>
           {!showAdditionalFields && (
             <div className="md:col-span-1 flex items-end">
-              <button
+              <Button
                 onClick={handleInitialBookNow}
-                className="w-full bg-gradient-to-r from-green-600/90 to-emerald-600/90 backdrop-blur-md hover:from-green-700/90 hover:to-emerald-700/90 text-white px-6 py-3 rounded-xl font-semibold shadow-lg shadow-green-600/20 hover:shadow-xl hover:shadow-green-600/30 border border-green-500/20 hover:border-green-400/30 transform hover:-translate-y-1 hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2"
+                variant="primary"
+                size="md"
+                className="w-full group overflow-hidden relative"
               >
-                <Search className="w-4 h-4" />
-                Book Now
-              </button>
+                {/* Search icon - starts from left, slides in on hover */}
+                <Search 
+                  className="absolute left-1/2 top-1/2 w-4 h-4 transition-all duration-300 ease-in-out -translate-y-1/2 -translate-x-[calc(50%+200%)] group-hover:-translate-x-1/2 opacity-0 group-hover:opacity-100" 
+                />
+                {/* Text - slides out to the right on hover */}
+                <span className="block transition-all duration-300 ease-in-out group-hover:translate-x-[200%]">
+                  Book Now
+                </span>
+              </Button>
             </div>
           )}
         </div>
@@ -1552,9 +1587,9 @@ const TabNavigation = () => {
                 value={weddingsAdditional.fromDate}
                 onChange={(e) => handleWeddingsChange("fromDate", e.target.value)}
                 required
-                className="w-full pl-10 pr-4 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-400/60 focus:border-green-300/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 placeholder:text-gray-500 text-gray-800 shadow-sm"
+                className="w-full pl-10 pr-4 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-800/60 focus:border-blue-800/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 placeholder:text-gray-500 text-gray-800 shadow-sm"
               />
-              <Calendar className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-green-600" />
+              <Calendar className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-blue-800" />
             </div>
           </div>
 
@@ -1569,9 +1604,9 @@ const TabNavigation = () => {
                 onChange={(e) => handleWeddingsChange("toDate", e.target.value)}
                 min={weddingsAdditional.fromDate}
                 required
-                className="w-full pl-10 pr-4 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-400/60 focus:border-green-300/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 placeholder:text-gray-500 text-gray-800 shadow-sm"
+                className="w-full pl-10 pr-4 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-800/60 focus:border-blue-800/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 placeholder:text-gray-500 text-gray-800 shadow-sm"
               />
-              <Calendar className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-green-600" />
+              <Calendar className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-blue-800" />
             </div>
           </div>
         </div>
@@ -1590,9 +1625,9 @@ const TabNavigation = () => {
                 value={weddingsAdditional.firstName}
                 onChange={(e) => handleWeddingsChange("firstName", e.target.value)}
                 required
-                className="w-full pl-10 pr-4 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-400/60 focus:border-green-300/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 placeholder:text-gray-500 text-gray-800 shadow-sm"
+                className="w-full pl-10 pr-4 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-800/60 focus:border-blue-800/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 placeholder:text-gray-500 text-gray-800 shadow-sm"
               />
-              <User className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-green-600" />
+              <User className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-blue-800" />
             </div>
           </div>
 
@@ -1607,9 +1642,9 @@ const TabNavigation = () => {
                 value={weddingsAdditional.lastName}
                 onChange={(e) => handleWeddingsChange("lastName", e.target.value)}
                 required
-                className="w-full pl-10 pr-4 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-400/60 focus:border-green-300/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 placeholder:text-gray-500 text-gray-800 shadow-sm"
+                className="w-full pl-10 pr-4 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-800/60 focus:border-blue-800/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 placeholder:text-gray-500 text-gray-800 shadow-sm"
               />
-              <User className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-green-600" />
+              <User className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-blue-800" />
             </div>
           </div>
         </div>
@@ -1627,9 +1662,9 @@ const TabNavigation = () => {
                 value={weddingsAdditional.contact}
                 onChange={(e) => handleWeddingsChange("contact", e.target.value)}
                 required
-                className="w-full pl-10 pr-4 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-400/60 focus:border-green-300/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 placeholder:text-gray-500 text-gray-800 shadow-sm"
+                className="w-full pl-10 pr-4 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-800/60 focus:border-blue-800/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 placeholder:text-gray-500 text-gray-800 shadow-sm"
               />
-              <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-green-600" />
+              <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-blue-800" />
             </div>
           </div>
 
@@ -1644,9 +1679,9 @@ const TabNavigation = () => {
                 value={weddingsAdditional.email}
                 onChange={(e) => handleWeddingsChange("email", e.target.value)}
                 required
-                className="w-full pl-10 pr-4 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-400/60 focus:border-green-300/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 placeholder:text-gray-500 text-gray-800 shadow-sm"
+                className="w-full pl-10 pr-4 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-800/60 focus:border-blue-800/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 placeholder:text-gray-500 text-gray-800 shadow-sm"
               />
-              <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-green-600" />
+              <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-blue-800" />
             </div>
           </div>
         </div>
@@ -1658,10 +1693,10 @@ const TabNavigation = () => {
               type="checkbox"
               checked={weddingsAdditional.agreeTerms}
               onChange={(e) => handleWeddingsChange("agreeTerms", e.target.checked)}
-              className="w-5 h-5 text-green-600 border-gray-300 rounded focus:ring-green-500 mt-0.5"
+              className="w-5 h-5 text-blue-800 border-gray-300 rounded focus:ring-blue-800 mt-0.5"
             />
             <span className="text-sm text-gray-800">
-              I agree to the <a href="/terms" className="text-green-600 hover:text-green-700 underline">Terms & Conditions</a>
+              I agree to the <a href="/terms" className="text-blue-800 hover:text-blue-800 underline">Terms & Conditions</a>
             </span>
           </label>
 
@@ -1670,7 +1705,7 @@ const TabNavigation = () => {
               type="checkbox"
               checked={weddingsAdditional.agreeCommunication}
               onChange={(e) => handleWeddingsChange("agreeCommunication", e.target.checked)}
-              className="w-5 h-5 text-green-600 border-gray-300 rounded focus:ring-green-500 mt-0.5"
+              className="w-5 h-5 text-blue-800 border-gray-300 rounded focus:ring-blue-800 mt-0.5"
             />
             <span className="text-sm text-gray-800">
               I agree to be contacted by your team via call, WhatsApp, SMS, and email for booking confirmations, updates, and promotional offers
@@ -1683,7 +1718,7 @@ const TabNavigation = () => {
           <button
             onClick={handleFinalBookNow}
             disabled={!weddingsAdditional.agreeTerms || !weddingsAdditional.firstName || !weddingsAdditional.lastName || !weddingsAdditional.contact || !weddingsAdditional.email || !weddingsAdditional.fromDate || !weddingsAdditional.toDate}
-            className="bg-gradient-to-r from-green-600/90 to-emerald-600/90 backdrop-blur-md hover:from-green-700/90 hover:to-emerald-700/90 text-white px-8 py-3 rounded-xl font-semibold shadow-lg shadow-green-600/20 hover:shadow-xl hover:shadow-green-600/30 border border-green-500/20 hover:border-green-400/30 transform hover:-translate-y-1 hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none disabled:hover:scale-100"
+            className="bg-gradient-to-r from-blue-800/90 to-blue-900/90 backdrop-blur-md hover:from-blue-900/90 hover:to-blue-950/90 text-white px-8 py-3 rounded-xl font-semibold shadow-lg shadow-blue-800/20 hover:shadow-xl hover:shadow-blue-800/30 border border-blue-800/20 hover:border-blue-800/30 transform hover:-translate-y-1 hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none disabled:hover:scale-100"
           >
             <Check className="w-4 h-4" />
             Complete Booking
@@ -1705,9 +1740,9 @@ const TabNavigation = () => {
               <input
                 type="text"
                 placeholder="Enter company name"
-                className="w-full pl-10 pr-4 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-400/60 focus:border-green-300/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 placeholder:text-gray-500 text-gray-800 shadow-sm"
+                className="w-full pl-10 pr-4 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-800/60 focus:border-blue-800/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 placeholder:text-gray-500 text-gray-800 shadow-sm"
               />
-              <Building2 className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-green-600" />
+              <Building2 className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-blue-800" />
             </div>
           </div>
           <div className="md:col-span-1">
@@ -1720,8 +1755,8 @@ const TabNavigation = () => {
                 <option>Employee Shuttle</option>
                 <option>Event Transport</option>
               </select>
-              <Users className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-green-600" />
-              <ChevronDown className="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-green-600" />
+              <Users className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-blue-800" />
+              <ChevronDown className="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-blue-800" />
             </div>
           </div>
           <div className="md:col-span-1">
@@ -1734,19 +1769,27 @@ const TabNavigation = () => {
                 <option>Weekly</option>
                 <option>Monthly</option>
               </select>
-              <Clock className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-green-600" />
-              <ChevronDown className="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-green-600" />
+              <Clock className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-blue-800" />
+              <ChevronDown className="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-blue-800" />
             </div>
           </div>
           {!showAdditionalFields && (
             <div className="md:col-span-1 flex items-end">
-              <button
+              <Button
                 onClick={handleInitialBookNow}
-                className="w-full bg-gradient-to-r from-green-600/90 to-emerald-600/90 backdrop-blur-md hover:from-green-700/90 hover:to-emerald-700/90 text-white px-6 py-3 rounded-xl font-semibold shadow-lg shadow-green-600/20 hover:shadow-xl hover:shadow-green-600/30 border border-green-500/20 hover:border-green-400/30 transform hover:-translate-y-1 hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2"
+                variant="primary"
+                size="md"
+                className="w-full group overflow-hidden relative"
               >
-                <Search className="w-4 h-4" />
-                Book Now
-              </button>
+                {/* Search icon - starts from left, slides in on hover */}
+                <Search 
+                  className="absolute left-1/2 top-1/2 w-4 h-4 transition-all duration-300 ease-in-out -translate-y-1/2 -translate-x-[calc(50%+200%)] group-hover:-translate-x-1/2 opacity-0 group-hover:opacity-100" 
+                />
+                {/* Text - slides out to the right on hover */}
+                <span className="block transition-all duration-300 ease-in-out group-hover:translate-x-[200%]">
+                  Book Now
+                </span>
+              </Button>
             </div>
           )}
         </div>
@@ -1773,7 +1816,7 @@ const TabNavigation = () => {
                 value={corporateAdditional.industry}
                 onChange={(e) => handleCorporateChange("industry", e.target.value)}
                 required
-                className="w-full pl-10 pr-10 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-400/60 focus:border-green-300/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 text-gray-800 appearance-none cursor-pointer"
+                className="w-full pl-10 pr-10 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-800/60 focus:border-blue-800/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 text-gray-800 appearance-none cursor-pointer"
               >
                 <option value="">Select industry</option>
                 <option value="IT">IT</option>
@@ -1787,8 +1830,8 @@ const TabNavigation = () => {
                 <option value="Retail">Retail</option>
                 <option value="Other">Other</option>
               </select>
-              <Building2 className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-green-600" />
-              <ChevronDown className="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-green-600" />
+              <Building2 className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-blue-800" />
+              <ChevronDown className="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-blue-800" />
             </div>
           </div>
 
@@ -1803,9 +1846,9 @@ const TabNavigation = () => {
                 value={corporateAdditional.companyEmail}
                 onChange={(e) => handleCorporateChange("companyEmail", e.target.value)}
                 required
-                className="w-full pl-10 pr-4 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-400/60 focus:border-green-300/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 placeholder:text-gray-500 text-gray-800 shadow-sm"
+                className="w-full pl-10 pr-4 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-800/60 focus:border-blue-800/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 placeholder:text-gray-500 text-gray-800 shadow-sm"
               />
-              <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-green-600" />
+              <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-blue-800" />
             </div>
           </div>
         </div>
@@ -1823,9 +1866,9 @@ const TabNavigation = () => {
                 value={corporateAdditional.firstName}
                 onChange={(e) => handleCorporateChange("firstName", e.target.value)}
                 required
-                className="w-full pl-10 pr-4 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-400/60 focus:border-green-300/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 placeholder:text-gray-500 text-gray-800 shadow-sm"
+                className="w-full pl-10 pr-4 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-800/60 focus:border-blue-800/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 placeholder:text-gray-500 text-gray-800 shadow-sm"
               />
-              <User className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-green-600" />
+              <User className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-blue-800" />
             </div>
           </div>
 
@@ -1840,9 +1883,9 @@ const TabNavigation = () => {
                 value={corporateAdditional.lastName}
                 onChange={(e) => handleCorporateChange("lastName", e.target.value)}
                 required
-                className="w-full pl-10 pr-4 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-400/60 focus:border-green-300/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 placeholder:text-gray-500 text-gray-800 shadow-sm"
+                className="w-full pl-10 pr-4 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-800/60 focus:border-blue-800/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 placeholder:text-gray-500 text-gray-800 shadow-sm"
               />
-              <User className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-green-600" />
+              <User className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-blue-800" />
             </div>
           </div>
         </div>
@@ -1859,9 +1902,9 @@ const TabNavigation = () => {
               value={corporateAdditional.contact}
               onChange={(e) => handleCorporateChange("contact", e.target.value)}
               required
-              className="w-full pl-10 pr-4 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-400/60 focus:border-green-300/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 placeholder:text-gray-500 text-gray-800 shadow-sm"
+              className="w-full pl-10 pr-4 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-800/60 focus:border-blue-800/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 placeholder:text-gray-500 text-gray-800 shadow-sm"
             />
-            <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-green-600" />
+            <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-blue-800" />
           </div>
         </div>
 
@@ -1872,10 +1915,10 @@ const TabNavigation = () => {
               type="checkbox"
               checked={corporateAdditional.agreeTerms}
               onChange={(e) => handleCorporateChange("agreeTerms", e.target.checked)}
-              className="w-5 h-5 text-green-600 border-gray-300 rounded focus:ring-green-500 mt-0.5"
+              className="w-5 h-5 text-blue-800 border-gray-300 rounded focus:ring-blue-800 mt-0.5"
             />
             <span className="text-sm text-gray-800">
-              I agree to the <a href="/terms" className="text-green-600 hover:text-green-700 underline">Terms & Conditions</a>
+              I agree to the <a href="/terms" className="text-blue-800 hover:text-blue-800 underline">Terms & Conditions</a>
             </span>
           </label>
 
@@ -1884,7 +1927,7 @@ const TabNavigation = () => {
               type="checkbox"
               checked={corporateAdditional.agreeCommunication}
               onChange={(e) => handleCorporateChange("agreeCommunication", e.target.checked)}
-              className="w-5 h-5 text-green-600 border-gray-300 rounded focus:ring-green-500 mt-0.5"
+              className="w-5 h-5 text-blue-800 border-gray-300 rounded focus:ring-blue-800 mt-0.5"
             />
             <span className="text-sm text-gray-800">
               I agree to be contacted by your team via call, WhatsApp, SMS, and email for booking confirmations, updates, and promotional offers
@@ -1897,7 +1940,7 @@ const TabNavigation = () => {
           <button
             onClick={handleFinalBookNow}
             disabled={!corporateAdditional.agreeTerms || !corporateAdditional.firstName || !corporateAdditional.lastName || !corporateAdditional.contact || !corporateAdditional.companyEmail || !corporateAdditional.industry}
-            className="bg-gradient-to-r from-green-600/90 to-emerald-600/90 backdrop-blur-md hover:from-green-700/90 hover:to-emerald-700/90 text-white px-8 py-3 rounded-xl font-semibold shadow-lg shadow-green-600/20 hover:shadow-xl hover:shadow-green-600/30 border border-green-500/20 hover:border-green-400/30 transform hover:-translate-y-1 hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none disabled:hover:scale-100"
+            className="bg-gradient-to-r from-blue-800/90 to-blue-900/90 backdrop-blur-md hover:from-blue-900/90 hover:to-blue-950/90 text-white px-8 py-3 rounded-xl font-semibold shadow-lg shadow-blue-800/20 hover:shadow-xl hover:shadow-blue-800/30 border border-blue-800/20 hover:border-blue-800/30 transform hover:-translate-y-1 hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none disabled:hover:scale-100"
           >
             <Check className="w-4 h-4" />
             Complete Booking
@@ -1937,14 +1980,14 @@ const TabNavigation = () => {
                   onClick={() => handleTabChange(tab.id)}
                   className={`flex flex-col items-center justify-center gap-1 px-3 py-2 text-xs font-semibold rounded-xl transition-all duration-500 relative overflow-hidden backdrop-blur-sm min-w-[70px] flex-1 ${
                     activeTab === tab.id
-                      ? "bg-white/90 text-green-700 shadow-lg shadow-green-500/20 border border-green-200/50 backdrop-blur-xl"
-                      : "text-gray-700 hover:text-green-600 hover:bg-white/40 hover:backdrop-blur-lg border border-transparent hover:border-white/30"
+                      ? "bg-white/90 text-blue-800 shadow-lg shadow-blue-800/20 border border-blue-800/50 backdrop-blur-xl"
+                      : "text-gray-700 hover:text-blue-800 hover:bg-white/40 hover:backdrop-blur-lg border border-transparent hover:border-white/30"
                   }`}
                 >
                   <span
                     className={`transition-all duration-500 ${
                       activeTab === tab.id
-                        ? "scale-110 text-green-600"
+                        ? "scale-110 text-blue-800"
                         : "scale-100"
                     }`}
                   >
@@ -1959,7 +2002,7 @@ const TabNavigation = () => {
 
                   {/* Active glassmorphism glow */}
                   {activeTab === tab.id && (
-                    <div className="absolute inset-0 bg-gradient-to-r from-green-400/10 via-emerald-300/10 to-green-400/10 rounded-xl pointer-events-none" />
+                    <div className="absolute inset-0 bg-gradient-to-r from-blue-800/10 via-blue-700/10 to-blue-800/10 rounded-xl pointer-events-none" />
                   )}
                 </button>
               ))}
@@ -1974,14 +2017,14 @@ const TabNavigation = () => {
                 onClick={() => setActiveTab(tab.id)}
                 className={`flex-1 flex items-center justify-center gap-2 px-4 py-3 text-sm font-semibold rounded-xl transition-all duration-500 relative overflow-hidden backdrop-blur-sm ${
                   activeTab === tab.id
-                    ? "bg-white/90 text-green-700 shadow-lg shadow-green-500/20 border border-green-200/50 backdrop-blur-xl"
-                    : "text-gray-700 hover:text-green-600 hover:bg-white/40 hover:backdrop-blur-lg border border-transparent hover:border-white/30"
+                    ? "bg-white/90 text-blue-800 shadow-lg shadow-blue-800/20 border border-blue-800/50 backdrop-blur-xl"
+                    : "text-gray-700 hover:text-blue-800 hover:bg-white/40 hover:backdrop-blur-lg border border-transparent hover:border-white/30"
                 }`}
               >
                 <span
                   className={`transition-all duration-500 ${
                     activeTab === tab.id
-                      ? "scale-110 text-green-600"
+                      ? "scale-110 text-blue-800"
                       : "scale-100"
                   }`}
                 >
@@ -1993,7 +2036,7 @@ const TabNavigation = () => {
 
                 {/* Active glassmorphism glow */}
                 {activeTab === tab.id && (
-                  <div className="absolute inset-0 bg-gradient-to-r from-green-400/10 via-emerald-300/10 to-green-400/10 rounded-xl pointer-events-none" />
+                  <div className="absolute inset-0 bg-gradient-to-r from-blue-800/10 via-blue-700/10 to-blue-800/10 rounded-xl pointer-events-none" />
                 )}
               </button>
             ))}

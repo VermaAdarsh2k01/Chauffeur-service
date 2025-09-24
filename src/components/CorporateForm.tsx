@@ -10,6 +10,7 @@ import {
   Mail,
   Check,
 } from "lucide-react";
+import { Button } from "./ui/button";
 
 interface CorporateFormData {
   corporateCompanyName: string;
@@ -88,7 +89,7 @@ const CorporateForm = () => {
                 value={corporateAdditional.industry}
                 onChange={(e) => handleCorporateChange("industry", e.target.value)}
                 required
-                className="w-full pl-10 pr-10 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-400/60 focus:border-green-300/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 text-gray-800 appearance-none cursor-pointer"
+                className="w-full pl-10 pr-10 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-800/60 focus:border-blue-800/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 text-gray-800 appearance-none cursor-pointer"
               >
                 <option value="">Select industry</option>
                 <option value="IT">IT</option>
@@ -102,8 +103,8 @@ const CorporateForm = () => {
                 <option value="Retail">Retail</option>
                 <option value="Other">Other</option>
               </select>
-              <Building2 className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-green-600" />
-              <ChevronDown className="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-green-600" />
+              <Building2 className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-blue-800" />
+              <ChevronDown className="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-blue-800" />
             </div>
           </div>
 
@@ -118,9 +119,9 @@ const CorporateForm = () => {
                 value={corporateAdditional.companyEmail}
                 onChange={(e) => handleCorporateChange("companyEmail", e.target.value)}
                 required
-                className="w-full pl-10 pr-4 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-400/60 focus:border-green-300/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 placeholder:text-gray-500 text-gray-800 shadow-sm"
+                className="w-full pl-10 pr-4 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-800/60 focus:border-blue-800/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 placeholder:text-gray-500 text-gray-800 shadow-sm"
               />
-              <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-green-600" />
+              <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-blue-800" />
             </div>
           </div>
         </div>
@@ -138,9 +139,9 @@ const CorporateForm = () => {
                 value={corporateAdditional.firstName}
                 onChange={(e) => handleCorporateChange("firstName", e.target.value)}
                 required
-                className="w-full pl-10 pr-4 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-400/60 focus:border-green-300/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 placeholder:text-gray-500 text-gray-800 shadow-sm"
+                className="w-full pl-10 pr-4 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-800/60 focus:border-blue-800/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 placeholder:text-gray-500 text-gray-800 shadow-sm"
               />
-              <User className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-green-600" />
+              <User className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-blue-800" />
             </div>
           </div>
 
@@ -155,9 +156,9 @@ const CorporateForm = () => {
                 value={corporateAdditional.lastName}
                 onChange={(e) => handleCorporateChange("lastName", e.target.value)}
                 required
-                className="w-full pl-10 pr-4 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-400/60 focus:border-green-300/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 placeholder:text-gray-500 text-gray-800 shadow-sm"
+                className="w-full pl-10 pr-4 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-800/60 focus:border-blue-800/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 placeholder:text-gray-500 text-gray-800 shadow-sm"
               />
-              <User className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-green-600" />
+              <User className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-blue-800" />
             </div>
           </div>
         </div>
@@ -174,9 +175,9 @@ const CorporateForm = () => {
               value={corporateAdditional.contact}
               onChange={(e) => handleCorporateChange("contact", e.target.value)}
               required
-              className="w-full pl-10 pr-4 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-400/60 focus:border-green-300/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 placeholder:text-gray-500 text-gray-800 shadow-sm"
+              className="w-full pl-10 pr-4 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-800/60 focus:border-blue-800/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 placeholder:text-gray-500 text-gray-800 shadow-sm"
             />
-            <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-green-600" />
+            <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-blue-800" />
           </div>
         </div>
 
@@ -187,10 +188,10 @@ const CorporateForm = () => {
               type="checkbox"
               checked={corporateAdditional.agreeTerms}
               onChange={(e) => handleCorporateChange("agreeTerms", e.target.checked)}
-              className="w-5 h-5 text-green-600 border-gray-300 rounded focus:ring-green-500 mt-0.5"
+              className="w-5 h-5 text-blue-800 border-gray-300 rounded focus:ring-green-500 mt-0.5"
             />
             <span className="text-sm text-gray-800">
-              I agree to the <a href="/terms" className="text-green-600 hover:text-green-700 underline">Terms & Conditions</a>
+              I agree to the <a href="/terms" className="text-blue-800 hover:text-green-700 underline">Terms & Conditions</a>
             </span>
           </label>
 
@@ -199,7 +200,7 @@ const CorporateForm = () => {
               type="checkbox"
               checked={corporateAdditional.agreeCommunication}
               onChange={(e) => handleCorporateChange("agreeCommunication", e.target.checked)}
-              className="w-5 h-5 text-green-600 border-gray-300 rounded focus:ring-green-500 mt-0.5"
+              className="w-5 h-5 text-blue-800 border-gray-300 rounded focus:ring-green-500 mt-0.5"
             />
             <span className="text-sm text-gray-800">
               I agree to be contacted by your team via call, WhatsApp, SMS, and email for booking confirmations, updates, and promotional offers
@@ -209,14 +210,15 @@ const CorporateForm = () => {
 
         {/* Final Book Now Button */}
         <div className="flex justify-center pt-4">
-          <button
+          <Button
             onClick={handleFinalBookNow}
             disabled={!corporateAdditional.agreeTerms || !corporateAdditional.firstName || !corporateAdditional.lastName || !corporateAdditional.contact || !corporateAdditional.companyEmail || !corporateAdditional.industry}
-            className="bg-gradient-to-r from-green-600/90 to-emerald-600/90 backdrop-blur-md hover:from-green-700/90 hover:to-emerald-700/90 text-white px-8 py-3 rounded-xl font-semibold shadow-lg shadow-green-600/20 hover:shadow-xl hover:shadow-green-600/30 border border-green-500/20 hover:border-green-400/30 transform hover:-translate-y-1 hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none disabled:hover:scale-100"
+            variant="primary"
+            size="lg"
           >
             <Check className="w-4 h-4" />
             Complete Booking
-          </button>
+          </Button>
         </div>
       </div>
     );
@@ -240,9 +242,9 @@ const CorporateForm = () => {
                     placeholder="Enter company name"
                     value={formData.corporateCompanyName}
                     onChange={(e) => handleInputChange("corporateCompanyName", e.target.value)}
-                    className="w-full pl-10 pr-4 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-400/60 focus:border-green-300/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 placeholder:text-gray-500 text-gray-800 shadow-sm"
+                    className="w-full pl-10 pr-4 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-800/60 focus:border-blue-800/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 placeholder:text-gray-500 text-gray-800 shadow-sm"
                   />
-                  <Building2 className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-green-600" />
+                  <Building2 className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-blue-800" />
                 </div>
               </div>
               <div className="md:col-span-1">
@@ -253,15 +255,15 @@ const CorporateForm = () => {
                   <select 
                     value={formData.corporateServiceType}
                     onChange={(e) => handleInputChange("corporateServiceType", e.target.value)}
-                    className="w-full pl-10 pr-10 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-400/60 focus:border-green-300/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 text-gray-800 appearance-none cursor-pointer"
+                    className="w-full pl-10 pr-10 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-800/60 focus:border-blue-800/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 text-gray-800 appearance-none cursor-pointer"
                   >
                     <option value="">Select service type</option>
                     <option value="Executive Transport">Executive Transport</option>
                     <option value="Employee Shuttle">Employee Shuttle</option>
                     <option value="Event Transport">Event Transport</option>
                   </select>
-                  <Users className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-green-600" />
-                  <ChevronDown className="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-green-600" />
+                  <Users className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-blue-800" />
+                  <ChevronDown className="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-blue-800" />
                 </div>
               </div>
               <div className="md:col-span-1">
@@ -272,26 +274,34 @@ const CorporateForm = () => {
                   <select 
                     value={formData.corporateDuration}
                     onChange={(e) => handleInputChange("corporateDuration", e.target.value)}
-                    className="w-full pl-10 pr-10 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-400/60 focus:border-green-300/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 text-gray-800 appearance-none cursor-pointer"
+                    className="w-full pl-10 pr-10 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-800/60 focus:border-blue-800/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 text-gray-800 appearance-none cursor-pointer"
                   >
                     <option value="">Select duration</option>
                     <option value="Daily">Daily</option>
                     <option value="Weekly">Weekly</option>
                     <option value="Monthly">Monthly</option>
                   </select>
-                  <Clock className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-green-600" />
-                  <ChevronDown className="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-green-600" />
+                  <Clock className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-blue-800" />
+                  <ChevronDown className="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-blue-800" />
                 </div>
               </div>
               {!showAdditionalFields && (
                 <div className="md:col-span-1 flex items-end">
-                  <button
+                  <Button
                     onClick={handleInitialBookNow}
-                    className="w-full bg-gradient-to-r from-green-600/90 to-emerald-600/90 backdrop-blur-md hover:from-green-700/90 hover:to-emerald-700/90 text-white px-6 py-3 rounded-xl font-semibold shadow-lg shadow-green-600/20 hover:shadow-xl hover:shadow-green-600/30 border border-green-500/20 hover:border-green-400/30 transform hover:-translate-y-1 hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2"
+                    variant="primary"
+                    size="md"
+                    className="w-full group overflow-hidden relative"
                   >
-                    <Search className="w-4 h-4" />
-                    Book Now
-                  </button>
+                    {/* Search icon - starts from left, slides in on hover */}
+                    <Search 
+                      className="absolute left-1/2 top-1/2 w-4 h-4 transition-all duration-300 ease-in-out -translate-y-1/2 -translate-x-[calc(50%+200%)] group-hover:-translate-x-1/2 opacity-0 group-hover:opacity-100" 
+                    />
+                    {/* Text - slides out to the right on hover */}
+                    <span className="block transition-all duration-300 ease-in-out group-hover:translate-x-[200%]">
+                      Book Now
+                    </span>
+                  </Button>
                 </div>
               )}
             </div>

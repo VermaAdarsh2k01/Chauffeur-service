@@ -45,7 +45,7 @@ const ServiceForm = ({ formType }: ServiceFormProps) => {
 
   return (
     <div className="w-full">
-      <div className="mb-6">
+      <div className="mb-6 text-center">
         <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">
           Book Your Service
         </h2>

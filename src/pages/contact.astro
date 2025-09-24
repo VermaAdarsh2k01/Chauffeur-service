@@ -2,6 +2,67 @@
 import Layout from '../layouts/Layout.astro';
 import ContactForm from "@/components/ContactForm";
 import ContactInfo from "@/components/ContactInfo";
+import { sanityClient } from "../lib/sanity";
+
+// Fetch contact page data from Sanity
+const query = `*[_type == "contact"][0]{
+  title,
+  contactDetails[]{
+    iconName,
+    title,
+    info,
+    subInfo
+  },
+  whyChooseUs{
+    title,
+    features[]{
+      iconName,
+      title,
+      description
+    }
+  },
+  locationAndSocial{
+    sectionTitle,
+    location{
+      address,
+      city,
+      mapsUrl
+    },
+    socialMediaText,
+    socialLinks[]{
+      platform,
+      url,
+      iconName
+    }
+  },
+  backgroundImages{
+    pattern1Green{
+      "src": pattern1Green.asset->url,
+      alt
+    },
+    pattern2Green{
+      "src": pattern2Green.asset->url,
+      alt
+    },
+    pattern1{
+      "src": pattern1.asset->url,
+      alt
+    },
+    pattern2{
+      "src": pattern2.asset->url,
+      alt
+    }
+  }
+}`;
+
+// Fetch the contact data with error handling
+let contactData;
+try {
+  contactData = await sanityClient.fetch(query);
+} catch (error) {
+  console.warn('Failed to fetch contact data from Sanity:', error);
+  contactData = null;
+}
 ---
 
 <Layout>
@@ -21,7 +82,7 @@ import ContactInfo from "@/components/ContactInfo";
         
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
             <ContactForm client:load />
-            <ContactInfo client:load />
+            <ContactInfo client:load data={contactData} />
         </div>
     </div>
 </Layout>

@@ -112,13 +112,13 @@ const Hero = ({ data }: HeroProps) => {
       </div>
 
       {/* Gradient Background */}
-      <div className="absolute w-full lg:w-[71%] aspect-[0.618/1] opacity-20 top-0 lg:-bottom-[36px] right-[14%] -z-10 rotate-[-157deg]">
+      <div className="absolute w-full lg:w-[71%] aspect-[0.618/1] opacity-20 top-0 lg:-bottom-[36px] -right-[8%] -z-10 rotate-[-157deg]">
         {/* Purple Gradient */}
         <div className="absolute w-[40%] aspect-[0.325/1] bg-[#a5a2ff] rounded-full blur-[200px] left-[138px] top-[31px] rotate-12"></div>
         {/* Green Gradient */}
         <div className="absolute w-[40%] aspect-[0.572/1] bg-[#29c775] rounded-full blur-[200px] left-[222px] top-[208px]"></div>
         {/* Yellow Gradient */}
-        <div className="absolute w-[40%] aspect-[0.571/1] bg-[#ffe74b] rounded-full blur-[200px] left-[436px] top-[340px]"></div>
+        <div className="absolute w-[40%] aspect-[0.571/1] bg-blue-800 rounded-full blur-[200px] left-[436px] top-[340px]"></div>
       </div>
 
       <div className="h-full w-full relative flex flex-col">
@@ -140,7 +140,7 @@ const Hero = ({ data }: HeroProps) => {
             <p className="text-sm sm:text-base lg:text-lg text-gray-600 mb-4 lg:mb-6 text-center lg:text-left max-w-lg mx-auto lg:mx-0">
               {description}
             </p>
-            <div className="max-w-md mt-4 mx-auto lg:mx-0">
+            <div className="max-w-sm mt-4 mx-auto lg:mx-0">
               <LogoMarquee className="" />
             </div>
           </div>

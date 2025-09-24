@@ -88,7 +88,7 @@ const Advantage: React.FC<AdvantageProps> = ({ data }) => {
                   height={300}
                 />
                 <div className="bg-gray-100 rounded-2xl flex flex-col p-8 w-full md:w-1/2 xl:w-full h-auto md:h-[40%] xl:h-[40%]">
-                  <h3 className="text-6xl font-bold text-emerald-700 mb-2">{leftStatistic.value}</h3>
+                  <h3 className="text-6xl font-bold text-blue-900 mb-2">{leftStatistic.value}</h3>
                   <p className="mb-6">{leftStatistic.label}</p>
                   <p>{leftStatistic.description}</p>
                 </div>
@@ -132,7 +132,7 @@ const Advantage: React.FC<AdvantageProps> = ({ data }) => {
               {/* Right Column */}
               <div className="w-full xl:w-1/3 min-h-full flex flex-col md:flex-row xl:flex-col justify-between gap-6">
                 <div className="bg-gray-100 rounded-2xl flex flex-col p-8 w-full md:w-1/2 xl:w-full h-auto min-h-[200px]">
-                   <h3 className="text-6xl font-bold text-emerald-700 mb-2">{rightStatistic.value}</h3>
+                   <h3 className="text-6xl font-bold text-blue-900 mb-2">{rightStatistic.value}</h3>
                   <p className="mb-6">{rightStatistic.label}</p>
                   <p>{rightStatistic.description}</p>
                 </div>

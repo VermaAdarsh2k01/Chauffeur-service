@@ -9,7 +9,7 @@ export const scrollToElement = (elementId: string, offset: number = 100): void =
     const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
     const offsetPosition = elementPosition - offset;
 
-    window.scrollTo({
+  window.scrollTo({
       top: offsetPosition,
       behavior: 'smooth'
     });

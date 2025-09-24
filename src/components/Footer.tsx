@@ -58,7 +58,7 @@ const Footer = () => {
                     clipRule="evenodd"
                   />
                 </svg>
-                <span className="text-sm">Mumbai, India</span>
+                <span className="text-sm">Santa Cruz, Mumbai,  India</span>
               </div>
               <div className="flex items-center gap-2 text-gray-600">
                 <svg
