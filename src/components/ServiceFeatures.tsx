@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { cn } from "@/lib/utils";
+import { scrollToBookingForm } from "../utils/scrollUtils";
 
 interface MetricCardProps {
   position: 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right';
@@ -65,16 +66,21 @@ const Button: React.FC<{ link: string; label: string; className?: string }> = ({
   label, 
   className = "" 
 }) => {
+  const handleClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    scrollToBookingForm();
+  };
+
   return (
-    <a
-      href={link}
+    <button
+      onClick={handleClick}
       className={cn(
-        "inline-flex items-center px-6 py-3 text-base font-medium text-white bg-black rounded-full hover:bg-gray-800 transition-colors duration-200",
+        "inline-flex items-center px-6 py-3 text-base font-medium text-white bg-black rounded-full hover:bg-gray-800 transform hover:scale-105 transition-all duration-200",
         className
       )}
     >
       {label}
-    </a>
+    </button>
   );
 };
 

@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
+import { scrollToBookingForm } from '../utils/scrollUtils';
 
 interface ServiceHeroProps {
   title: string;
@@ -143,9 +144,12 @@ const ServiceHero: React.FC<ServiceHeroProps> = ({
               />
             </div>
           </div>
-          <div className='mt-12 lg:mt-8 text-white bg-black rounded-full font-semibold text-lg px-6 py-2'>
+          <button 
+            onClick={scrollToBookingForm}
+            className='mt-12 lg:mt-8 text-white bg-black rounded-full font-semibold text-lg px-6 py-2 hover:bg-gray-800 cursor-pointer transform hover:scale-105 transition-all duration-200'
+          >
               {bookButtonText}
-          </div>
+          </button>
       </div>
     </div>
   );

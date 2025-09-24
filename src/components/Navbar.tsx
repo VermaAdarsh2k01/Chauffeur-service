@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import PhoneEnquiryForm from './PhoneEnquiryForm';
 
 interface ServicePage {
   title: string;
@@ -145,12 +146,7 @@ const Navbar = ({ servicePages = [] }: NavbarProps) => {
                   )}
                 </div>
               ))}
-              <a
-                href="#download"
-                className="bg-black text-white px-6 py-2 rounded-full text-sm font-medium hover:bg-gray-800 transition-colors ml-4"
-              >
-                 Request Enquiry
-              </a>
+              <PhoneEnquiryForm />
             </div>
           </div>
 
@@ -254,12 +250,9 @@ const Navbar = ({ servicePages = [] }: NavbarProps) => {
                   )}
                 </div>
               ))}
-              <a
-                href="#download"
-                className="block w-full text-center bg-black text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-gray-800 transition-colors mt-4"
-              >
-                Request Enquiry
-              </a>
+              <div className="mt-4">
+                <PhoneEnquiryForm isMobile={true} />
+              </div>
             </div>
           </div>
         )}

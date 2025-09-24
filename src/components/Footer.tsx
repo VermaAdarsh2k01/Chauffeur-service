@@ -129,11 +129,6 @@ const Footer = () => {
                       Our Fleet
                     </a>
                   </li>
-                  <li>
-                    <a href="/" className="text-gray-600 hover:text-gray-800">
-                      Testimonials
-                    </a>
-                  </li>
                 </ul>
               </div>
 
@@ -165,11 +160,6 @@ const Footer = () => {
                       className="text-gray-600 hover:text-gray-800"
                     >
                       Customer Support
-                    </a>
-                  </li>
-                  <li>
-                    <a href="/" className="text-gray-600 hover:text-gray-800">
-                      FAQ
                     </a>
                   </li>
                 </ul>

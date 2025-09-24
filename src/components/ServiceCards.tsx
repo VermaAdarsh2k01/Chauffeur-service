@@ -1,5 +1,6 @@
 import React from 'react';
 import { CheckCircle, Star, Calendar, TrendingUp, Users, Clock, Award, Shield, MapPin } from 'lucide-react';
+import { scrollToBookingForm } from '../utils/scrollUtils';
 
 // Icon mapping function
 const getIcon = (iconName: string) => {
@@ -159,12 +160,15 @@ const ServiceCards: React.FC<ServiceCardsProps> = ({ data }) => {
 
                   {/* CTA Button */}
                   <div className="pt-4">
-                    <a
-                      href={card.ctaButton.link}
-                      className="inline-flex items-center px-8 py-4 text-base font-semibold text-white bg-black rounded-full hover:bg-gray-800 transition-colors duration-200"
+                    <button
+                      onClick={(e) => {
+                        e.preventDefault();
+                        scrollToBookingForm();
+                      }}
+                      className="inline-flex items-center px-8 py-4 text-base font-semibold text-white bg-black rounded-full hover:bg-gray-800 transform hover:scale-105 transition-all duration-200"
                     >
                       {card.ctaButton.text}
-                    </a>
+                    </button>
                     </div>
                   </div>
               </div>

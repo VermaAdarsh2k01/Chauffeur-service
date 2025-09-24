@@ -2,6 +2,7 @@ import React, { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import BookingModal from './BookingModal';
 
 // Register ScrollTrigger only on the client side
 if (typeof window !== "undefined") {
@@ -193,9 +194,9 @@ export default function VehicleFleet({ data }: VehicleFleetProps) {
                   <p className="text-sm text-gray-200 mb-3">
                     {vehicle.description}
                   </p>
-                  <button className="px-4 py-2 bg-white text-black rounded-lg hover:bg-gray-200 transition-colors duration-200 text-sm font-semibold">
+                  <BookingModal vehicleName={vehicle.name}>
                     {vehicle.buttonText || 'Book Now'}
-                  </button>
+                  </BookingModal>
                 </div>
               </div>
             </div>
@@ -224,9 +225,9 @@ export default function VehicleFleet({ data }: VehicleFleetProps) {
                   <p className="text-sm text-gray-200 mb-3">
                     {vehicle.description}
                   </p>
-                  <button className="px-4 py-2 bg-white text-black rounded-lg hover:bg-gray-200 transition-colors duration-200 text-sm font-semibold">
+                  <BookingModal vehicleName={vehicle.name}>
                     {vehicle.buttonText || 'Book Now'}
-                  </button>
+                  </BookingModal>
                 </div>
               </div>
             </div>

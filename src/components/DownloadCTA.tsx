@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import BookingModal from './BookingModal';
 
 type DownloadCTAData = {
   backgroundImage?: {
@@ -53,24 +54,11 @@ export default function DownloadCTA({ data }: DownloadCTAProps) {
             {description}
           </p>
 
-          {buttonLink ? (
-            <motion.a
-              href={buttonLink}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="inline-flex items-center px-6 sm:px-8 py-2.5 sm:py-3 bg-white text-black rounded-full font-semibold text-base sm:text-lg transition-colors hover:bg-gray-100"
-            >
+          
+            <BookingModal buttonClassName="inline-flex items-center px-6 sm:px-8 py-2.5 sm:py-3 bg-white text-black rounded-full font-semibold text-base sm:text-lg hover:bg-gray-100 transform hover:scale-105 transition-all duration-200">
               {buttonText}
-            </motion.a>
-          ) : (
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="inline-flex items-center px-6 sm:px-8 py-2.5 sm:py-3 bg-white text-black rounded-full font-semibold text-base sm:text-lg transition-colors hover:bg-gray-100"
-            >
-              {buttonText}
-            </motion.button>
-          )}
+            </BookingModal>
+
         </motion.div>
       </div>
     </section>
