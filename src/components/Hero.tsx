@@ -8,11 +8,11 @@ type HeroData = {
   mainHeading?: string[];
   description?: string;
   heroImage?: {
-    src: string;
+    src: string | { asset: { _ref: string } };
     alt: string;
   };
   partnerLogos?: {
-    src: string;
+    src: string | { asset: { _ref: string } };
     alt: string;
   }[];
 };
@@ -35,6 +35,21 @@ const Hero = ({ data }: HeroProps) => {
   const contentRef = useRef<HTMLDivElement>(null);
   const imageRef = useRef<HTMLImageElement>(null);
   const formNavigationRef = useRef<HTMLDivElement>(null);
+
+  // Helper function to get image source
+  const getImageSrc = (image: string | { asset: { _ref: string } } | undefined): string => {
+    if (!image) return '/hero2.png'; // fallback
+    return typeof image === 'string' ? image : '/hero2.png'; // fallback if Sanity object
+  };
+
+  // Helper function to process partner logos
+  const processPartnerLogos = (logos: HeroData['partnerLogos']): Array<{ src: string; alt: string }> => {
+    if (!logos || logos.length === 0) return defaultPartnerLogos;
+    return logos.map(logo => ({
+      src: getImageSrc(logo.src),
+      alt: logo.alt
+    }));
+  };
   useGSAP(
     () => {
       const tl = gsap.timeline({
@@ -78,8 +93,9 @@ const Hero = ({ data }: HeroProps) => {
   // Use dynamic data or fallback to defaults
   const mainHeading = data?.mainHeading || ['Premium', 'Chauffeur Driven', 'Car Services'];
   const description = data?.description || 'Experience luxury travel with our professional chauffeur services. Reliable, comfortable, and tailored to your needs.';
-  const heroImage = data?.heroImage || { src: '/hero2.png', alt: 'Premium Porsche Car' };
-  const partnerLogos = data?.partnerLogos || defaultPartnerLogos;
+  const heroImageSrc = getImageSrc(data?.heroImage?.src);
+  const heroImageAlt = data?.heroImage?.alt || 'Premium Porsche Car';
+  const partnerLogos = processPartnerLogos(data?.partnerLogos);
 
   return (
     <div
@@ -133,8 +149,8 @@ const Hero = ({ data }: HeroProps) => {
           <div className="relative overflow-hidden flex items-center justify-center w-full h-fit sm:h-96 lg:h-full lg:m-12 order-first lg:order-last pt-24 sm:pt-6 lg:pt-0 pb-2 sm:pb-4 lg:pb-0">
             <img
               ref={imageRef}
-              src={heroImage.src}
-              alt={heroImage.alt}
+              src={heroImageSrc}
+              alt={heroImageAlt}
               className="w-full h-full lg:w-auto lg:h-auto lg:max-w-full lg:max-h-full object-contain sm:object-cover lg:object-center"
             />
           </div>

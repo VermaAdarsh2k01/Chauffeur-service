@@ -16,11 +16,11 @@ const query = `*[_type == "homePage"][0]{
     mainHeading,
     description,
     heroImage{
-      src,
+      "src": src.asset->url,
       alt
     },
     partnerLogos[]{
-      src,
+      "src": src.asset->url,
       alt
     }
   },
@@ -31,7 +31,7 @@ const query = `*[_type == "homePage"][0]{
     vehicles[]{
       name,
       image{
-        src,
+        "src": src.asset->url,
         alt
       },
       description,
@@ -47,7 +47,7 @@ const query = `*[_type == "homePage"][0]{
       description,
       type,
       image{
-        src,
+        "src": src.asset->url,
         alt
       },
       counterData{

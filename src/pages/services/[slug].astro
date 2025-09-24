@@ -3,23 +3,78 @@ import Layout from "@/layouts/Layout.astro";
 import { sanityClient } from "../../lib/sanity";
 import ServiceHero from "@/components/ServiceHero";
 import ServiceFeatures from "@/components/ServiceFeatures";
+import ServiceCards from "@/components/ServiceCards";
+import DownloadCTA from "@/components/DownloadCTA";
 
 const { slug } = Astro.params;
 
 const query = `*[_type == "dynamicServicePage" && slug.current == $slug][0]{
   title,
   slug,
-  content,
-  features[] {
-    button,
+  serviceHero{
     title,
-    content,
-    image,
-    link
+    subtitle,
+    description,
+    backgroundImage{
+      "src": src.asset->url,
+      alt
+    },
+    bookButtonText
+  },
+  serviceFeatures{
+    sectionTitle,
+    features[]{
+      button,
+      title,
+      content,
+      image{
+        "src": src.asset->url,
+        alt
+      },
+      link{
+        link,
+        label
+      }
+    }
+  },
+  serviceCards{
+    data[]{
+      heading,
+      description,
+      featurePoints[]{
+        text
+      },
+      ctaButton{
+        text,
+        link
+      },
+      image{
+        "src": src.asset->url,
+        alt
+      },
+      metric{
+        icon,
+        label,
+        value,
+        colorScheme
+      }
+    }
+  },
+  downloadCTA{
+    backgroundImage{
+      "src": src.asset->url,
+      alt
+    },
+    heading,
+    description,
+    ctaButton{
+      text,
+      link
+    }
   }
 }`;
 
-// Dummy data for testing - you can use this as an example
+// Fallback data in case Sanity data is not available
 const Feature = [
   {
     button: "Luxury Cars",
@@ -73,17 +128,53 @@ const Feature = [
   }
 ];
 
+// Debug: Log the slug parameter
+console.log('Slug parameter:', slug);
 
+// Fetch page data with error handling
+let page;
+try {
+  // First, let's check if any pages exist at all
+  const allPages = await sanityClient.fetch(`*[_type == "dynamicServicePage"]{title, slug}`);
+  console.log('All available pages:', JSON.stringify(allPages, null, 2));
+  
+  // Then fetch the specific page
+  page = await sanityClient.fetch(query, { slug });
+  console.log('Fetched page data:', JSON.stringify(page, null, 2));
+} catch (error) {
+  console.error('Error fetching page data:', error);
+  page = null;
+}
 
-const page = await sanityClient.fetch(query, { slug });
-
+// Handle case where page is not found
+if (!page) {
+  console.warn(`No page found for slug: ${slug}`);
+  // Return 404 if page not found
+  return Astro.redirect('/404');
+}
 ---
 
 <Layout>
   <ServiceHero client:load
-  title="Airport Transfer Services"
-  subtitle="Premium Service"
-  description="Experience luxury and comfort"
+    title={page?.serviceHero?.title || "Premium Service"}
+    subtitle={page?.serviceHero?.subtitle || "Professional Service"}
+    description={page?.serviceHero?.description || "Experience luxury and comfort"}
+    backgroundImage={page?.serviceHero?.backgroundImage}
+    bookButtonText={page?.serviceHero?.bookButtonText}  
+    
   />
-  <ServiceFeatures client:load features={Feature}/>
+  {page?.serviceFeatures?.features && (
+    <ServiceFeatures client:load 
+      features={page?.serviceFeatures?.features || Feature}
+      sectionTitle={page?.serviceFeatures?.sectionTitle}
+    />
+  )}
+
+  {page?.serviceCards?.data && (
+    <ServiceCards client:load data={page?.serviceCards?.data} />
+  )}
+
+  {page?.downloadCTA && (
+    <DownloadCTA client:load data={page?.downloadCTA} />   
+  )}
 </Layout>

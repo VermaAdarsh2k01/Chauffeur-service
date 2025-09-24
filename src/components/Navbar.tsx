@@ -1,6 +1,17 @@
 import { useState, useEffect } from 'react';
 
-const Navbar = () => {
+interface ServicePage {
+  title: string;
+  slug: {
+    current: string;
+  };
+}
+
+interface NavbarProps {
+  servicePages?: ServicePage[];
+}
+
+const Navbar = ({ servicePages = [] }: NavbarProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isServicesOpen, setIsServicesOpen] = useState(false);
 
@@ -35,12 +46,12 @@ const Navbar = () => {
     return () => window.removeEventListener('resize', handleResize);
   }, [isMobile]);
 
-  const serviceDropdownItems = [
-    { name: 'Airport Package', href: '/services/airport-package' },
-    { name: 'Chauffeur Service', href: '/services/chauffeur' },
-    { name: 'Corporate Travel', href: '/services/corporate' },
-    { name: 'Airport Transfer', href: '/services/airport' },
-  ];
+
+  // Create dropdown items from dynamic service pages
+  const serviceDropdownItems = servicePages.map(page => ({
+    name: page.title,
+    href: `/services/${page.slug.current}`
+  }));
 
   const navLinks = [
     { name: 'About Us', href: '/about' },
@@ -115,15 +126,21 @@ const Navbar = () => {
                           : 'opacity-0 transform -translate-y-2 invisible'
                       }`}
                     >
-                      {link.dropdownItems?.map((item) => (
-                        <a
-                          key={item.name}
-                          href={item.href}
-                          className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
-                        >
-                          {item.name}
-                        </a>
-                      ))}
+                      {serviceDropdownItems.length > 0 ? (
+                        serviceDropdownItems.map((item) => (
+                          <a
+                            key={item.name}
+                            href={item.href}
+                            className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                          >
+                            {item.name}
+                          </a>
+                        ))
+                      ) : (
+                        <div className="px-4 py-2 text-sm text-gray-500">
+                          No services available
+                        </div>
+                      )}
                     </div>
                   )}
                 </div>
@@ -218,15 +235,21 @@ const Navbar = () => {
                   )}
                   {link.hasDropdown && isServicesOpen && (
                     <div className="mt-2 space-y-1 px-4 py-2 border border-gray-200 rounded-md mx-3">
-                      {link.dropdownItems?.map((item) => (
-                        <a
-                          key={item.name}
-                          href={item.href}
-                          className="block py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-md pl-4"
-                        >
-                          {item.name}
-                        </a>
-                      ))}
+                      {serviceDropdownItems.length > 0 ? (
+                        serviceDropdownItems.map((item) => (
+                          <a
+                            key={item.name}
+                            href={item.href}
+                            className="block py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-md pl-4"
+                          >
+                            {item.name}
+                          </a>
+                        ))
+                      ) : (
+                        <div className="py-2 text-sm text-gray-500 pl-4">
+                          No services available
+                        </div>
+                      )}
                     </div>
                   )}
                 </div>

@@ -6,7 +6,8 @@ interface ServiceHeroProps {
   title: string;
   subtitle?: string;
   description?: string;
-  backgroundImage?: string;
+  backgroundImage?: string | { src: string; alt: string };
+  bookButtonText?: string;
 }
 
 
@@ -14,8 +15,14 @@ const ServiceHero: React.FC<ServiceHeroProps> = ({
   title, 
   subtitle, 
   description, 
-  backgroundImage = "/hero2.png" 
+  backgroundImage = "/hero2.png",
+  bookButtonText = "Book Now"  // Default value if not provided
 }) => {
+  // Helper function to get image source
+  const getImageSrc = (image: string | { src: string; alt: string } | undefined): string => {
+    if (!image) return '/hero2.png';
+    return typeof image === 'string' ? image : image.src;
+  };
   const containerRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
   const imageRef = useRef<HTMLImageElement>(null);
@@ -98,7 +105,7 @@ const ServiceHero: React.FC<ServiceHeroProps> = ({
          <div className='relative w-full lg:max-w-5xl h-fit lg:h-80 rounded-2xl'>
             <img 
               ref={imageRef}
-              src={backgroundImage} 
+              src={getImageSrc(backgroundImage)} 
               alt="Service Hero" 
               className='w-full lg:w-[80%] mx-auto h-full object-contain'
             />
@@ -137,7 +144,7 @@ const ServiceHero: React.FC<ServiceHeroProps> = ({
             </div>
           </div>
           <div className='mt-12 lg:mt-8 text-white bg-black rounded-full font-semibold text-lg px-6 py-2'>
-              Book Now
+              {bookButtonText}
           </div>
       </div>
     </div>

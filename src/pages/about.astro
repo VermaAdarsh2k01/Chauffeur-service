@@ -8,6 +8,101 @@ import FeatureSection from "@/components/ServiceCards";
 import Advantage from "@/components/Advantage";
 import 'aos/dist/aos.css';
 import DownloadCTA from "@/components/DownloadCTA";
+import { sanityClient } from "../lib/sanity";
+
+// Fetch all about page data in one query
+const query = `*[_type == "aboutPage"][0]{
+  title,
+  aboutHero{
+    title,
+    description,
+    images{
+      primaryImage{
+        "src": src.asset->url,
+        alt
+      },
+      secondaryImage{
+        "src": src.asset->url,
+        alt
+      }
+    }
+  },
+  companyValues{
+    sectionTitle,
+    sectionDescription,
+    values[]{
+      icon,
+      title,
+      description
+    }
+  },
+  advantage{
+    sectionTitle,
+    leftColumn{
+      image{
+        "src": src.asset->url,
+        alt
+      },
+      statistic{
+        value,
+        label,
+        description
+      }
+    },
+    middleColumn{
+      backgroundImage{
+        "src": src.asset->url,
+        alt
+      },
+      testimonial{
+        companyLogo{
+          "src": src.asset->url,
+          alt
+        },
+        companyName,
+        quote,
+        authorName,
+        authorTitle
+      }
+    },
+    rightColumn{
+      statistic{
+        value,
+        label,
+        description
+      },
+      image{
+        "src": src.asset->url,
+        alt
+      }
+    }
+  },
+  keyFeatures{
+    subtitle,
+    sectionTitle,
+    sectionDescription,
+    features[]{
+      icon,
+      title,
+      description
+    }
+  },
+  downloadCTA{
+    backgroundImage{
+      "src": src.asset->url,
+      alt
+    },
+    heading,
+    description,
+    ctaButton{
+      text,
+      link
+    }
+  }
+}`;
+
+// Fetch the data
+const pageData = await sanityClient.fetch(query);
     
 const featureData = [
   {
@@ -122,12 +217,12 @@ const testimonialData = [{
 ---
 
 <Layout>    
-    <AboutHero client:load/>
+    <AboutHero client:load data={pageData?.aboutHero}/>
     <!-- <FeatureSection client:load features={featureData}/> -->
-    <CompanyValues client:load/>
-    <Advantage client:load/>
-    <KeyFeatures client:load/>
+    <CompanyValues client:load data={pageData?.companyValues}/>
+    <Advantage client:load data={pageData?.advantage}/>
+    <KeyFeatures client:load data={pageData?.keyFeatures}/>
     <div class="px-4 ">
-      <DownloadCTA client:load/>
+      <DownloadCTA client:load data={pageData?.downloadCTA}/>
     </div>
 </Layout>

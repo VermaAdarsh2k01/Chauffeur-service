@@ -49,12 +49,13 @@ interface Feature {
   button: string;
   title: string;
   content: string;
-  image: string;
+  image: string | { src: string; alt: string };
   link: FeatureLink;
 }
 
 interface ServiceFeaturesProps {
   features: Feature[];
+  sectionTitle?: string;
   className?: string;
 }
 
@@ -82,8 +83,13 @@ const markdownify = (content: string): string => {
   return content;
 };
 
-const ServiceFeatures: React.FC<ServiceFeaturesProps> = ({ features, className = "" }) => {
+const ServiceFeatures: React.FC<ServiceFeaturesProps> = ({ features, sectionTitle, className = "" }) => {
   const [active, setActive] = useState(0);
+
+  // Helper function to get image source
+  const getImageSrc = (image: string | { src: string; alt: string }): string => {
+    return typeof image === 'string' ? image : image.src;
+  };
 
   if (!features || features.length === 0) {
     return (
@@ -97,9 +103,9 @@ const ServiceFeatures: React.FC<ServiceFeaturesProps> = ({ features, className =
 
   return (
     <div className={cn("w-full max-w-7xl mx-auto my-16 px-4 sm:px-6 lg:px-8", className)}>
-      {/* Debug info - remove this after testing */}
+      {/* Section Title */}
       <div className="text-center mb-10 text-black text-3xl lg:text-5xl font-semibold ">
-        What We Offer in our Airport Package
+        {sectionTitle || "What We Offer in our Airport Package"}
       </div>
       
       {/* Button Container */}
@@ -158,7 +164,7 @@ const ServiceFeatures: React.FC<ServiceFeaturesProps> = ({ features, className =
               )}
             >
               <img
-                src={feature.image}
+                src={getImageSrc(feature.image)}
                 alt={feature.title}
                 width={597}
                 height={603}
