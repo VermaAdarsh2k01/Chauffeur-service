@@ -146,12 +146,12 @@ const Hero = ({ data }: HeroProps) => {
           </div>
 
           {/* Image Section */}
-          <div className="relative overflow-hidden flex items-center justify-center w-full h-fit sm:h-96 lg:h-full lg:m-12 order-first lg:order-last pt-24 sm:pt-6 lg:pt-0 pb-2 sm:pb-4 lg:pb-0">
+          <div className="relative overflow-hidden flex items-center justify-center w-full h-fit sm:h-96 lg:h-full lg:m-0 order-first lg:order-last pt-24 sm:pt-6 lg:pt-0 pb-2 sm:pb-4 lg:pb-0">
             <img
               ref={imageRef}
               src={heroImageSrc}
               alt={heroImageAlt}
-              className="w-full h-full lg:w-auto lg:h-auto lg:max-w-full lg:max-h-full object-contain sm:object-cover lg:object-center"
+              className="w-full h-full lg:w-auto lg:h-auto lg:max-w-[80%] lg:max-h-full object-contain sm:object-cover lg:object-center"
             />
           </div>
         </div>
