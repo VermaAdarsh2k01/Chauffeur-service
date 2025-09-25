@@ -18,14 +18,14 @@ const AutoModalTrigger = () => {
     // Mark timer as started globally to prevent multiple timers
     timerStarted = true;
 
-    // Show modal after 10 seconds of page load
+    // Show modal after 20 seconds of page load
     const timer = setTimeout(() => {
       // Double-check that it hasn't been shown yet
       const hasShownNow = localStorage.getItem('autoModalShown');
       if (!hasShownNow) {
         setShouldShow(true);
       }
-    }, 10000);
+    }, 20000);
 
     // Cleanup
     return () => {
