@@ -185,131 +185,198 @@ export const homePage = defineType({
           title: 'Section Title',
           type: 'string',
           validation: Rule => Rule.required(),
-          initialValue: 'We Believe in Premium Experience'
+          initialValue: 'Experience the Elite Drive Advantage'
         }),
         defineField({
-          name: 'highlights',
-          title: 'Service Highlights',
-          type: 'array',
-          of: [{
-            type: 'object',
-            fields: [
-              defineField({
-                name: 'title',
-                title: 'Highlight Title',
-                type: 'string',
-                validation: Rule => Rule.required()
-              }),
-              defineField({
-                name: 'description',
-                title: 'Highlight Description',
-                type: 'text',
-                validation: Rule => Rule.required()
-              }),
-              defineField({
-                name: 'image',
-                title: 'Highlight Image',
-                type: 'object',
-                fields: [
-                  defineField({
-                    name: 'src',
-                    title: 'Image Source',
-                    type: 'image'
-                  }),
-                  defineField({
-                    name: 'alt',
-                    title: 'Alt Text',
-                    type: 'string'
-                  })
-                ]
-              }),
-              defineField({
-                name: 'type',
-                title: 'Highlight Type',
-                type: 'string',
-                options: {
-                  list: [
-                    { title: 'Image with Text', value: 'image' },
-                    { title: 'Counter Stats', value: 'counter' },
-                    { title: 'Icon Feature', value: 'icon' }
+          name: 'leftColumn',
+          title: 'Left Column',
+          type: 'object',
+          fields: [
+            defineField({
+              name: 'title',
+              title: 'Column Title',
+              type: 'string',
+              validation: Rule => Rule.required(),
+              initialValue: 'Luxury Fleet'
+            }),
+            defineField({
+              name: 'description',
+              title: 'Column Description',
+              type: 'text',
+              validation: Rule => Rule.required(),
+              initialValue: 'Experience the epitome of luxury with our premium collection of high-end vehicles, from sleek sports cars to elegant sedans.'
+            }),
+            defineField({
+              name: 'image',
+              title: 'Column Image',
+              type: 'object',
+              fields: [
+                defineField({
+                  name: 'src',
+                  title: 'Image Source',
+                  type: 'image'
+                }),
+                defineField({
+                  name: 'alt',
+                  title: 'Alt Text',
+                  type: 'string'
+                })
+              ]
+            })
+          ]
+        }),
+        defineField({
+          name: 'middleColumn',
+          title: 'Middle Column (Two Rows)',
+          type: 'object',
+          fields: [
+            defineField({
+              name: 'topRow',
+              title: 'Top Row Content',
+              type: 'object',
+              fields: [
+                defineField({
+                  name: 'title',
+                  title: 'Service Title',
+                  type: 'string',
+                  validation: Rule => Rule.required(),
+                  initialValue: '24/7 Support'
+                }),
+                defineField({
+                  name: 'description',
+                  title: 'Service Description',
+                  type: 'text',
+                  validation: Rule => Rule.required(),
+                  initialValue: 'Round-the-clock assistance for all your rental needs, including roadside support and concierge services.'
+                }),
+                defineField({
+                  name: 'image',
+                  title: 'Service Image (Optional)',
+                  type: 'object',
+                  fields: [
+                    defineField({
+                      name: 'src',
+                      title: 'Image Source',
+                      type: 'image'
+                    }),
+                    defineField({
+                      name: 'alt',
+                      title: 'Alt Text',
+                      type: 'string'
+                    })
                   ]
-                },
-                validation: Rule => Rule.required()
-              }),
-              defineField({
-                name: 'counterData',
-                title: 'Counter Data',
-                type: 'object',
-                fields: [
-                  defineField({
-                    name: 'counter1',
-                    title: 'First Counter',
-                    type: 'object',
-                    fields: [
-                      defineField({
-                        name: 'value',
-                        title: 'Counter Value',
-                        type: 'number',
-                        validation: Rule => Rule.required()
-                      }),
-                      defineField({
-                        name: 'label',
-                        title: 'Counter Label',
-                        type: 'string',
-                        validation: Rule => Rule.required()
-                      }),
-                      defineField({
-                        name: 'suffix',
-                        title: 'Counter Suffix',
-                        type: 'string',
-                        initialValue: '+'
-                      })
-                    ]
-                  }),
-                  defineField({
-                    name: 'counter2',
-                    title: 'Second Counter',
-                    type: 'object',
-                    fields: [
-                      defineField({
-                        name: 'value',
-                        title: 'Counter Value',
-                        type: 'number',
-                        validation: Rule => Rule.required()
-                      }),
-                      defineField({
-                        name: 'label',
-                        title: 'Counter Label',
-                        type: 'string',
-                        validation: Rule => Rule.required()
-                      }),
-                      defineField({
-                        name: 'suffix',
-                        title: 'Counter Suffix',
-                        type: 'string',
-                        initialValue: '+'
-                      })
-                    ]
-                  })
-                ],
-                hidden: ({ parent }) => parent?.type !== 'counter'
-              }),
-              defineField({
-                name: 'backgroundColor',
-                title: 'Background Color',
-                type: 'string',
-                options: {
-                  list: [
-                    { title: 'Light Gray', value: 'bg-gray-200' },
-                    { title: 'Dark Gray', value: 'bg-gray-800' },
-                    { title: 'White', value: 'bg-white' }
+                })
+              ]
+            }),
+            defineField({
+              name: 'bottomRow',
+              title: 'Bottom Row Content',
+              type: 'object',
+              fields: [
+                defineField({
+                  name: 'title',
+                  title: 'Service Title',
+                  type: 'string',
+                  validation: Rule => Rule.required(),
+                  initialValue: 'Verified Expert Drivers'
+                }),
+                defineField({
+                  name: 'description',
+                  title: 'Service Description',
+                  type: 'text',
+                  validation: Rule => Rule.required(),
+                  initialValue: 'Experienced drivers with 10+ years on road and complete police verification, ensuring your safety at every turn.'
+                }),
+                defineField({
+                  name: 'statistics',
+                  title: 'Statistics',
+                  type: 'object',
+                  fields: [
+                    defineField({
+                      name: 'leftStat',
+                      title: 'Left Statistic',
+                      type: 'object',
+                      fields: [
+                        defineField({
+                          name: 'value',
+                          title: 'Statistic Value',
+                          type: 'string',
+                          validation: Rule => Rule.required(),
+                          initialValue: '10+'
+                        }),
+                        defineField({
+                          name: 'label',
+                          title: 'Statistic Label',
+                          type: 'string',
+                          validation: Rule => Rule.required(),
+                          initialValue: 'Years Experience'
+                        })
+                      ]
+                    }),
+                    defineField({
+                      name: 'rightStat',
+                      title: 'Right Statistic',
+                      type: 'object',
+                      fields: [
+                        defineField({
+                          name: 'value',
+                          title: 'Statistic Value',
+                          type: 'string',
+                          validation: Rule => Rule.required(),
+                          initialValue: '100+'
+                        }),
+                        defineField({
+                          name: 'label',
+                          title: 'Statistic Label',
+                          type: 'string',
+                          validation: Rule => Rule.required(),
+                          initialValue: 'Verified Drivers'
+                        })
+                      ]
+                    })
                   ]
-                },
-                initialValue: 'bg-gray-200'
-              })
-            ]
-          }],
-          validation: Rule => Rule.min(1).max(6)
+                })
+              ]
+            })
+          ]
+        }),
+        defineField({
+          name: 'rightColumn',
+          title: 'Right Column',
+          type: 'object',
+          fields: [
+            defineField({
+              name: 'title',
+              title: 'Column Title',
+              type: 'string',
+              validation: Rule => Rule.required(),
+              initialValue: 'No Language Barrier'
+            }),
+            defineField({
+              name: 'description',
+              title: 'Column Description',
+              type: 'text',
+              validation: Rule => Rule.required(),
+              initialValue: 'Our chauffeurs and staff are fluent in English, Hindi, Marathi, Telugu, and Tamil, ensuring smooth communication throughout your journey.'
+            }),
+            defineField({
+              name: 'image',
+              title: 'Column Image',
+              type: 'object',
+              fields: [
+                defineField({
+                  name: 'src',
+                  title: 'Image Source',
+                  type: 'image'
+                }),
+                defineField({
+                  name: 'alt',
+                  title: 'Alt Text',
+                  type: 'string'
+                })
+              ]
+            })
+          ]
         })
       ]
     }),

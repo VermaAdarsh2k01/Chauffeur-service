@@ -56,7 +56,7 @@ const PhoneEnquiryForm = ({ isMobile = false }: PhoneEnquiryFormProps) => {
         <Button
           variant="primary"
           size={isMobile ? "md" : "sm"}
-          className={`group overflow-hidden relative ${
+          className={`group overflow-hidden relative !shadow-none ${
             isMobile ? 'w-full' : ''
           }`}
         >

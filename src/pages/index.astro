@@ -42,27 +42,45 @@ const query = `*[_type == "homePage"][0]{
   serviceHighlights{
     subtitle,
     sectionTitle,
-    highlights[]{
+    leftColumn{
       title,
       description,
-      type,
       image{
         "src": src.asset->url,
         alt
-      },
-      counterData{
-        counter1{
-          value,
-          label,
-          suffix
-        },
-        counter2{
-          value,
-          label,
-          suffix
+      }
+    },
+    middleColumn{
+      topRow{
+        title,
+        description,
+        image{
+          "src": src.asset->url,
+          alt
         }
       },
-      backgroundColor
+      bottomRow{
+        title,
+        description,
+        statistics{
+          leftStat{
+            value,
+            label
+          },
+          rightStat{
+            value,
+            label
+          }
+        }
+      }
+    },
+    rightColumn{
+      title,
+      description,
+      image{
+        "src": src.asset->url,
+        alt
+      }
     }
   },
   keyFeatures{

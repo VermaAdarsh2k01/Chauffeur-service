@@ -108,7 +108,7 @@ const ServiceHero: React.FC<ServiceHeroProps> = ({
             {/* Simple rounded container */}
             <div 
               ref={imageRef}
-              className='relative w-full h-64 lg:h-80 overflow-hidden rounded-full bg-gray-100'
+              className='relative w-full h-64 lg:h-80 overflow-hidden rounded-[7rem] lg:rounded-full bg-gray-100'
             >
               <img 
                 src={getImageSrc(backgroundImage)} 

@@ -11,28 +11,46 @@ if (typeof window !== "undefined") {
 type ServiceHighlightsData = {
   subtitle?: string;
   sectionTitle?: string;
-  highlights?: Array<{
+  leftColumn?: {
     title: string;
     description: string;
-    type: 'image' | 'counter' | 'icon';
     image?: {
       src: string;
       alt: string;
     };
-    counterData?: {
-      counter1: {
-        value: number;
-        label: string;
-        suffix: string;
-      };
-      counter2: {
-        value: number;
-        label: string;
-        suffix: string;
+  };
+  middleColumn?: {
+    topRow: {
+      title: string;
+      description: string;
+      image?: {
+        src: string;
+        alt: string;
       };
     };
-    backgroundColor?: string;
-  }>;
+    bottomRow: {
+      title: string;
+      description: string;
+      statistics: {
+        leftStat: {
+          value: string;
+          label: string;
+        };
+        rightStat: {
+          value: string;
+          label: string;
+        };
+      };
+    };
+  };
+  rightColumn?: {
+    title: string;
+    description: string;
+    image?: {
+      src: string;
+      alt: string;
+    };
+  };
 };
 
 interface ServiceHighlightsProps {
@@ -56,6 +74,10 @@ export default function ServiceHighlights({ data }: ServiceHighlightsProps) {
       // Set initial scale
       gsap.set(images, { scale: 1.1 });
 
+      // Get dynamic counter values
+      const leftStatValue = parseInt(data?.middleColumn?.bottomRow?.statistics?.leftStat?.value || "10");
+      const rightStatValue = parseInt(data?.middleColumn?.bottomRow?.statistics?.rightStat?.value || "100");
+
       // Create single scroll trigger for both animations
       ScrollTrigger.create({
         trigger: containerRef.current,
@@ -70,28 +92,57 @@ export default function ServiceHighlights({ data }: ServiceHighlightsProps) {
             ease: "power2.out",
           });
 
-          // Counter animations
+          // Counter animations with dynamic values
           gsap.to(counter1Ref.current, {
             duration: 2,
-            innerText: 10,
+            innerText: leftStatValue,
             snap: { innerText: 1 },
             ease: "power2.out",
           });
           gsap.to(counter2Ref.current, {
             duration: 2,
-            innerText: 100,
+            innerText: rightStatValue,
             snap: { innerText: 1 },
             ease: "power2.out",
           });
         },
       });
     },
-    { scope: containerRef }
+    { scope: containerRef, dependencies: [data] }
   );
 
   // Use dynamic data or fallback to defaults
   const subtitle = data?.subtitle || "We Believe in Premium Experience";
   const sectionTitle = data?.sectionTitle || "We Believe in Premium Experience";
+  
+  // Column data with fallbacks
+  const leftColumn = data?.leftColumn || {
+    title: "Luxury Fleet",
+    description: "Experience the epitome of luxury with our premium collection of high-end vehicles, from sleek sports cars to elegant sedans.",
+    image: { src: "/chauffeur.jpg", alt: "Luxury car fleet" }
+  };
+  
+  const middleColumn = data?.middleColumn || {
+    topRow: {
+      title: "24/7 Support",
+      description: "Round-the-clock assistance for all your rental needs, including roadside support and concierge services.",
+      image: undefined
+    },
+    bottomRow: {
+      title: "Verified Expert Drivers",
+      description: "Experienced drivers with 10+ years on road and complete police verification, ensuring your safety at every turn.",
+      statistics: {
+        leftStat: { value: "10", label: "Years Experience" },
+        rightStat: { value: "100", label: "Verified Drivers" }
+      }
+    }
+  };
+  
+  const rightColumn = data?.rightColumn || {
+    title: "No Language Barrier",
+    description: "Our chauffeurs and staff are fluent in English, Hindi, Marathi, Telugu, and Tamil, ensuring smooth communication throughout your journey.",
+    image: { src: "/lang.jpg", alt: "Digital platform interface" }
+  };
 
   return (
     <div className="py-0" ref={containerRef}>
@@ -108,12 +159,10 @@ export default function ServiceHighlights({ data }: ServiceHighlightsProps) {
             <div className="relative flex h-full flex-col overflow-hidden rounded-[calc(var(--radius-lg)+1px)] lg:rounded-l-[calc(2rem+1px)]">
               <div className="px-4 sm:px-8 lg:px-10 pt-6 sm:pt-8 lg:pt-10 pb-3 sm:pb-3 lg:pb-0">
                 <p className="mt-2 text-lg sm:text-xl lg:text-lg xl:text-3xl font-medium lg:font-medium xl:font-bold tracking-tight text-black text-center lg:text-left">
-                  Luxury Fleet
+                  {leftColumn.title}
                 </p>
                 <p className="mt-2 max-w-lg text-sm/6 text-black text-center lg:text-left">
-                  Experience the epitome of luxury with our premium collection
-                  of high-end vehicles, from sleek sports cars to elegant
-                  sedans.
+                  {leftColumn.description}
                 </p>
               </div>
               <div className="relative min-h-[250px] sm:min-h-[300px] lg:min-h-[400px] w-full grow overflow-hidden">
@@ -121,8 +170,8 @@ export default function ServiceHighlights({ data }: ServiceHighlightsProps) {
                   <div className="absolute inset-0 bg-gradient-to-b from-gray-200 via-transparent/40 to-transparent z-10"></div>
                   <img
                     ref={image1Ref}
-                    alt="Luxury car fleet"
-                    src="/chauffeur.jpg"
+                    alt={leftColumn.image?.alt || "Luxury car fleet"}
+                    src={leftColumn.image?.src || "/chauffeur.jpg"}
                     className="w-full h-full object-cover object-center transform hover:scale-125"
                     loading="lazy"
                   />
@@ -137,227 +186,26 @@ export default function ServiceHighlights({ data }: ServiceHighlightsProps) {
             <div className="relative flex h-full flex-col overflow-hidden rounded-[calc(var(--radius-lg)+1px)] md:rounded-t-[calc(2rem+1px)] lg:rounded-t-[calc(var(--radius-lg)+1px)]">
               <div className="px-4 sm:px-8 lg:px-10 pt-6 sm:pt-8 lg:pt-10">
                 <p className="mt-2 text-lg font-medium tracking-tight text-white text-center lg:text-left">
-                  24/7 Support
+                  {middleColumn.topRow.title}
                 </p>
                 <p className="mt-2 max-w-lg text-sm/6 text-gray-400 text-center lg:text-left">
-                  Round-the-clock assistance for all your rental needs,
-                  including roadside support and concierge services.
+                  {middleColumn.topRow.description}
                 </p>
               </div>
               <div className="flex flex-1 items-center justify-center px-8 max-lg:pt-10 max-lg:pb-12 sm:px-10 lg:pb-2">
                 <div className="w-full max-lg:max-w-xs flex items-center justify-center">
-                  <svg
-                    width="280"
-                    height="200"
-                    viewBox="0 0 280 200"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="w-full h-auto"
-                  >
-                    {/* Background circle */}
-                    <circle
-                      cx="140"
-                      cy="100"
-                      r="85"
-                      fill="#1f2937"
-                      stroke="#374151"
-                      strokeWidth="2"
-                      opacity="0.3"
+                  {middleColumn.topRow.image?.src ? (
+                    <img
+                      src={middleColumn.topRow.image.src}
+                      alt={middleColumn.topRow.image.alt || "Service illustration"}
+                      className="w-full h-auto max-w-[280px] max-h-[200px] object-contain"
+                      loading="lazy"
                     />
-
-                    {/* Clock face */}
-                    <circle
-                      cx="140"
-                      cy="100"
-                      r="45"
-                      fill="#065f46"
-                      stroke="#10b981"
-                      strokeWidth="3"
-                    />
-                    <circle
-                      cx="140"
-                      cy="100"
-                      r="40"
-                      fill="#064e3b"
-                      stroke="#34d399"
-                      strokeWidth="1"
-                      opacity="0.5"
-                    />
-
-                    {/* Clock numbers */}
-                    <text
-                      x="140"
-                      y="70"
-                      textAnchor="middle"
-                      fill="#10b981"
-                      fontSize="12"
-                      fontWeight="bold"
-                    >
-                      12
-                    </text>
-                    <text
-                      x="165"
-                      y="107"
-                      textAnchor="middle"
-                      fill="#10b981"
-                      fontSize="12"
-                      fontWeight="bold"
-                    >
-                      3
-                    </text>
-                    <text
-                      x="140"
-                      y="135"
-                      textAnchor="middle"
-                      fill="#10b981"
-                      fontSize="12"
-                      fontWeight="bold"
-                    >
-                      6
-                    </text>
-                    <text
-                      x="115"
-                      y="107"
-                      textAnchor="middle"
-                      fill="#10b981"
-                      fontSize="12"
-                      fontWeight="bold"
-                    >
-                      9
-                    </text>
-
-                    {/* Clock hands */}
-                    <line
-                      x1="140"
-                      y1="100"
-                      x2="140"
-                      y2="80"
-                      stroke="#10b981"
-                      strokeWidth="3"
-                      strokeLinecap="round"
-                    />
-                    <line
-                      x1="140"
-                      y1="100"
-                      x2="155"
-                      y2="100"
-                      stroke="#10b981"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                    />
-                    <circle cx="140" cy="100" r="3" fill="#10b981" />
-
-                    {/* Phone icon */}
-                    <rect
-                      x="70"
-                      y="75"
-                      width="20"
-                      height="35"
-                      rx="3"
-                      fill="#065f46"
-                      stroke="#10b981"
-                      strokeWidth="2"
-                    />
-                    <rect
-                      x="73"
-                      y="80"
-                      width="14"
-                      height="20"
-                      fill="#10b981"
-                      opacity="0.3"
-                    />
-                    <circle cx="80" cy="105" r="1.5" fill="#10b981" />
-
-                    {/* Support waves */}
-                    <path
-                      d="M 85 85 Q 95 75 105 85"
-                      stroke="#10b981"
-                      strokeWidth="2"
-                      fill="none"
-                      opacity="0.6"
-                    />
-                    <path
-                      d="M 85 95 Q 95 85 105 95"
-                      stroke="#10b981"
-                      strokeWidth="2"
-                      fill="none"
-                      opacity="0.6"
-                    />
-                    <path
-                      d="M 85 105 Q 95 95 105 105"
-                      stroke="#10b981"
-                      strokeWidth="2"
-                      fill="none"
-                      opacity="0.6"
-                    />
-
-                    {/* Headset icon */}
-                    <path
-                      d="M 195 85 Q 205 75 215 85 L 215 105 Q 205 115 195 105 Z"
-                      fill="#065f46"
-                      stroke="#10b981"
-                      strokeWidth="2"
-                    />
-                    <rect
-                      x="190"
-                      y="90"
-                      width="8"
-                      height="15"
-                      rx="2"
-                      fill="#10b981"
-                    />
-                    <rect
-                      x="217"
-                      y="90"
-                      width="8"
-                      height="15"
-                      rx="2"
-                      fill="#10b981"
-                    />
-                    <path
-                      d="M 198 105 Q 205 110 212 105"
-                      stroke="#10b981"
-                      strokeWidth="2"
-                      fill="none"
-                    />
-
-                    {/* Stars for 24/7 */}
-                    <polygon
-                      points="140,30 142,36 148,36 143,40 145,46 140,42 135,46 137,40 132,36 138,36"
-                      fill="#fbbf24"
-                    />
-                    <polygon
-                      points="110,45 111,48 114,48 112,50 113,53 110,51 107,53 108,50 106,48 109,48"
-                      fill="#fbbf24"
-                      opacity="0.7"
-                    />
-                    <polygon
-                      points="170,45 171,48 174,48 172,50 173,53 170,51 167,53 168,50 166,48 169,48"
-                      fill="#fbbf24"
-                      opacity="0.7"
-                    />
-
-                    {/* 24/7 text */}
-                    <text
-                      x="140"
-                      y="175"
-                      textAnchor="middle"
-                      fill="#10b981"
-                      fontSize="18"
-                      fontWeight="bold"
-                    >
-                      24/7
-                    </text>
-                    <text
-                      x="140"
-                      y="190"
-                      textAnchor="middle"
-                      fill="#6b7280"
-                      fontSize="12"
-                    >
-                      Always Available
-                    </text>
-                  </svg>
+                  ) : (
+                    <div className="w-full max-w-[280px] h-[200px] bg-gray-700 rounded-lg flex items-center justify-center">
+                      <span className="text-gray-400 text-sm">No image available</span>
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
@@ -369,11 +217,10 @@ export default function ServiceHighlights({ data }: ServiceHighlightsProps) {
             <div className="relative flex h-full flex-col overflow-hidden rounded-[calc(var(--radius-lg)+1px)]">
               <div className="px-4 sm:px-8 lg:px-10 pt-6 sm:pt-8 lg:pt-10">
                 <p className="mt-2 text-lg font-medium tracking-tight text-white text-center lg:text-left">
-                  Verified Expert Drivers
+                  {middleColumn.bottomRow.title}
                 </p>
                 <p className="mt-2 max-w-lg text-sm/6 text-gray-400 text-center lg:text-left">
-                  Experienced drivers with 10+ years on road and complete police
-                  verification, ensuring your safety at every turn.
+                  {middleColumn.bottomRow.description}
                 </p>
               </div>
               <div className="flex flex-1 items-center justify-between gap-4 sm:gap-8 py-6 sm:py-8 px-4 sm:px-8">
@@ -382,14 +229,14 @@ export default function ServiceHighlights({ data }: ServiceHighlightsProps) {
                     <span ref={counter1Ref}>0</span>
                     <span>+</span>
                   </div>
-                  <div className="text-sm text-gray-400">Years Experience</div>
+                  <div className="text-sm text-gray-400">{middleColumn.bottomRow.statistics.leftStat.label}</div>
                 </div>
                 <div className="text-center">
                   <div className="text-4xl font-bold text-white mb-2">
                     <span ref={counter2Ref}>0</span>
                     <span>+</span>
                   </div>
-                  <div className="text-sm text-gray-400">Verified Drivers</div>
+                  <div className="text-sm text-gray-400">{middleColumn.bottomRow.statistics.rightStat.label}</div>
                 </div>
               </div>
             </div>
@@ -401,12 +248,10 @@ export default function ServiceHighlights({ data }: ServiceHighlightsProps) {
             <div className="relative flex h-full flex-col overflow-hidden rounded-[calc(var(--radius-lg)+1px)] md:rounded-b-[calc(2rem+1px)] lg:rounded-b-[calc(var(--radius-lg)+1px)] lg:rounded-r-[calc(2rem+1px)]">
               <div className="px-4 sm:px-8 lg:px-10 pt-6 sm:pt-8 lg:pt-10 pb-3 sm:pb-3 lg:pb-0">
                 <p className="mt-2 text-lg sm:text-xl lg:text-lg xl:text-3xl font-medium lg:font-medium xl:font-bold tracking-tight text-black text-center lg:text-left">
-                  No Language Barrier
+                  {rightColumn.title}
                 </p>
                 <p className="mt-2 max-w-lg text-sm/6 text-black text-center lg:text-left">
-                  Our chauffeurs and staff are fluent in English, Hindi,
-                  Marathi, Telugu, and Tamil, ensuring smooth communication
-                  throughout your journey.
+                  {rightColumn.description}
                 </p>
               </div>
               <div className="relative min-h-[250px] sm:min-h-[300px] lg:min-h-[400px] w-full grow overflow-hidden">
@@ -414,8 +259,8 @@ export default function ServiceHighlights({ data }: ServiceHighlightsProps) {
                   <div className="absolute inset-0 bg-gradient-to-b from-gray-200 via-transparent/40 to-transparent z-10"></div>
                   <img
                     ref={image2Ref}
-                    alt="Digital platform interface"
-                    src="/lang.jpg"
+                    alt={rightColumn.image?.alt || "Digital platform interface"}
+                    src={rightColumn.image?.src || "/lang.jpg"}
                     className="w-full h-full object-cover object-center transform hover:scale-125"
                     loading="lazy"
                   />
