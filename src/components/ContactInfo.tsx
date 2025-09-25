@@ -4,10 +4,21 @@ import {
   Mail, 
   MapPin, 
   Clock, 
+  Calendar,
+  Globe,
+  Home,
+  Building,
+  Navigation,
+  MessageCircle,
   Car, 
   Shield, 
   Award, 
   Users,
+  Star,
+  Heart,
+  ThumbsUp,
+  CheckCircle,
+  Zap,
   Facebook,
   Twitter,
   Instagram,
@@ -77,10 +88,10 @@ const ContactInfo: React.FC<ContactInfoProps> = ({ data }) => {
 
   // Fallback/default social links
   const defaultSocialLinks = [
-    { platform: "facebook", url: "#", iconName: "facebook" },
-    { platform: "twitter", url: "#", iconName: "twitter" },
-    { platform: "instagram", url: "#", iconName: "instagram" },
-    { platform: "linkedin", url: "#", iconName: "linkedin" }
+    { platform: "facebook", url: "#" },
+    { platform: "twitter", url: "#" },
+    { platform: "instagram", url: "#" },
+    { platform: "linkedin", url: "#" }
   ];
 
   // Use Sanity data or fallback to default
@@ -92,26 +103,62 @@ const ContactInfo: React.FC<ContactInfoProps> = ({ data }) => {
   };
   const socialMediaText = data?.locationAndSocial?.socialMediaText || "Stay connected with us";
   const visitFollowTitle = data?.locationAndSocial?.sectionTitle || "Visit & Follow Us";
+  
+  // Background images from Sanity or fallback to default
+  const backgroundImages = data?.backgroundImages || {};
 
   // Helper function to get icon component by name
-  const getIconComponent = (iconName: string) => {
-    const iconMap = {
+  const getIconComponent = (iconName: string, className: string = "w-5 h-5") => {
+    // Create a comprehensive iconMap with both camelCase and lowercase keys for robust matching
+    const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
+      // Lowercase versions
       phone: Phone,
       mail: Mail,
-      mapPin: MapPin,
+      mappin: MapPin,
       clock: Clock,
+      calendar: Calendar,
+      globe: Globe,
+      home: Home,
+      building: Building,
+      navigation: Navigation,
+      messagecircle: MessageCircle,
       car: Car,
       shield: Shield,
       award: Award,
       users: Users,
+      star: Star,
+      heart: Heart,
+      thumbsup: ThumbsUp,
+      checkcircle: CheckCircle,
+      zap: Zap,
       facebook: Facebook,
       twitter: Twitter,
       instagram: Instagram,
       linkedin: Linkedin,
+      // CamelCase versions for backward compatibility
+      mapPin: MapPin,
+      messageCircle: MessageCircle,
+      thumbsUp: ThumbsUp,
+      checkCircle: CheckCircle,
     };
     
-    const IconComponent = iconMap[iconName?.toLowerCase() as keyof typeof iconMap] || Phone;
-    return <IconComponent className="w-5 h-5" />;
+    console.log('🔍 Icon Debug - Received:', iconName, 'Normalized:', iconName?.toLowerCase());
+    
+    // Try original name first, then lowercase version
+    let IconComponent = iconMap[iconName];
+    if (!IconComponent) {
+      const normalizedIconName = iconName?.toLowerCase();
+      IconComponent = iconMap[normalizedIconName];
+    }
+    
+    // If icon not found, return a fallback icon that makes sense contextually
+    if (!IconComponent) {
+      console.warn(`❌ Icon "${iconName}" not found in iconMap. Available icons:`, Object.keys(iconMap).filter((key, index, arr) => arr.indexOf(key) === index));
+      return <CheckCircle className={className} />;
+    }
+    
+    console.log('✅ Icon found and rendered:', iconName);
+    return <IconComponent className={className} />;
   };
 
   return (
@@ -120,15 +167,15 @@ const ContactInfo: React.FC<ContactInfoProps> = ({ data }) => {
       <div className="bg-white rounded-2xl p-8 border border-gray-100 relative overflow-hidden">
         {/* Background Pattern */}
         <img
-          src="/card-pattern-1.png"
-          alt="pattern"
+          src={backgroundImages.pattern1Green?.src || "/card-pattern-1-green.png"}
+          alt={backgroundImages.pattern1Green?.alt || "pattern"}
           className="absolute bottom-0 left-0 w-[15%] opacity-20"
           width={0}
           height={0}
         />
         <img
-          src="/card-pattern-2.png"
-          alt="pattern"
+          src={backgroundImages.pattern2Green?.src || "/card-pattern-2-green.png"}
+          alt={backgroundImages.pattern2Green?.alt || "pattern"}
           className="absolute top-0 right-6 w-[15%] opacity-20"
           width={0}
           height={0}
@@ -167,7 +214,7 @@ const ContactInfo: React.FC<ContactInfoProps> = ({ data }) => {
         />
         <img
           src="/card-pattern-2.png"
-          alt="pattern"
+          alt= "pattern"
           className="absolute top-0 right-6 w-[15%] "
           width={0}
           height={0}
@@ -179,9 +226,7 @@ const ContactInfo: React.FC<ContactInfoProps> = ({ data }) => {
             {features.map((feature, index) => (
               <div key={index} className="flex items-start gap-3">
                 <div className="w-8 h-8 border border-blue-800 rounded-full flex items-center justify-center flex-shrink-0">
-                  <svg className="w-4 h-4 text-blue-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
+                  <CheckCircle className="w-4 h-4 text-blue-800" />
                 </div>
                 <div>
                   <h4 className="font-semibold text-gray-900 mb-1">{feature.title}</h4>
@@ -226,7 +271,7 @@ const ContactInfo: React.FC<ContactInfoProps> = ({ data }) => {
                   className="w-10 h-10 bg-gray-100 hover:bg-black hover:text-white rounded-full flex items-center justify-center transition-all duration-200 hover:scale-105"
                   aria-label={social.platform}
                 >
-                  {getIconComponent(social.iconName)}
+                  {getIconComponent(social.platform)}
                 </a>
               ))}
             </div>

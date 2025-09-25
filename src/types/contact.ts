@@ -25,7 +25,6 @@ export interface Location {
 export interface SocialLink {
   platform: string;
   url: string;
-  iconName: string;
 }
 
 export interface LocationAndSocial {
