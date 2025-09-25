@@ -74,8 +74,6 @@ interface AirportPackageAdditionalData {
   tentativeDate: string;
   terminal: string;
   flightNumber: string;
-  pickupLocation: string;
-  dropLocation: string;
   pax: string;
   baggage: string;
   carPreference: string;
@@ -171,8 +169,6 @@ const TabNavigation = () => {
     tentativeDate: "",
     terminal: "",
     flightNumber: "",
-    pickupLocation: "",
-    dropLocation: "",
     pax: "",
     baggage: "",
     carPreference: "",
@@ -344,8 +340,6 @@ const TabNavigation = () => {
       tentativeDate: "",
       terminal: "",
       flightNumber: "",
-      pickupLocation: "",
-      dropLocation: "",
       pax: "",
       baggage: "",
       carPreference: "",
@@ -983,48 +977,6 @@ const TabNavigation = () => {
           </div>
         </div>
 
-        {/* Location Section */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div>
-            <label className="text-sm font-semibold text-gray-800/90 mb-3 block">
-              Pickup Location
-            </label>
-            <div className="relative">
-              <select
-                value={airportPackageAdditional.pickupLocation}
-                onChange={(e) => handleAirportPackageChange("pickupLocation", e.target.value)}
-                className="w-full pl-10 pr-10 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-800/60 focus:border-blue-800/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 text-gray-800 appearance-none cursor-pointer"
-              >
-                <option value="">Select pickup location</option>
-                <option value="home">Home</option>
-                <option value="office">Office</option>
-                <option value="airport">Airport</option>
-              </select>
-              <MapPin className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-blue-800" />
-              <ChevronDown className="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-blue-800" />
-            </div>
-          </div>
-
-          <div>
-            <label className="text-sm font-semibold text-gray-800/90 mb-3 block">
-              Drop Location
-            </label>
-            <div className="relative">
-              <select
-                value={airportPackageAdditional.dropLocation}
-                onChange={(e) => handleAirportPackageChange("dropLocation", e.target.value)}
-                className="w-full pl-10 pr-10 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-800/60 focus:border-blue-800/60 focus:bg-white/80 transition-all duration-300 hover:bg-white/70 hover:border-white/50 text-gray-800 appearance-none cursor-pointer"
-              >
-                <option value="">Select drop location</option>
-                <option value="home">Home</option>
-                <option value="office">Office</option>
-                <option value="airport">Airport</option>
-              </select>
-              <MapPin className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-blue-800" />
-              <ChevronDown className="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-blue-800" />
-            </div>
-          </div>
-        </div>
 
         {/* Passenger and Vehicle Details */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
