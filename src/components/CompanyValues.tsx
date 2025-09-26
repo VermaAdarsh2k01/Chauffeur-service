@@ -1,5 +1,5 @@
 import React from 'react';
-import { Clock, Users, HeartHandshake, Shield, Star, Award, Lightbulb, Target } from 'lucide-react';
+import { Clock, Users, HeartHandshake, Shield, Star, Award, Lightbulb, Target, Car, MapPin, FileCheck, UserCheck } from 'lucide-react';
 import Advantage from './Advantage';
 
 type CompanyValue = {
@@ -32,6 +32,10 @@ const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
   Award,
   Lightbulb,
   Target,
+  Car,
+  MapPin,
+  FileCheck,
+  UserCheck,
 };
 
 const defaultValues: CompanyValue[] = [

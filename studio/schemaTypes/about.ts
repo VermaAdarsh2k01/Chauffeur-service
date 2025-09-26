@@ -124,7 +124,11 @@ export const aboutPage = defineType({
                     { title: 'Star', value: 'Star' },
                     { title: 'Award', value: 'Award' },
                     { title: 'Lightbulb', value: 'Lightbulb' },
-                    { title: 'Target', value: 'Target' }
+                    { title: 'Target', value: 'Target' },
+                    { title: 'Car', value: 'Car' },
+                    { title: 'Map Pin', value: 'MapPin' },
+                    { title: 'File Check', value: 'FileCheck' },
+                    { title: 'User Check', value: 'UserCheck' }
                   ]
                 },
                 validation: Rule => Rule.required()
