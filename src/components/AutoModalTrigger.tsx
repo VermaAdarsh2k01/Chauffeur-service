@@ -25,7 +25,7 @@ const AutoModalTrigger = () => {
       if (!hasShownNow) {
         setShouldShow(true);
       }
-    }, 20000);
+    }, 30000);
 
     // Cleanup
     return () => {

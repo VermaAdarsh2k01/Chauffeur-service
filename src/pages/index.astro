@@ -7,6 +7,7 @@ import KeyFeatures from "../components/KeyFeatures";
 import ServiceHighlights from "../components/ServiceHighlights";
 import DownloadCTA from "../components/DownloadCTA";
 import FAQ from "../components/FAQ";
+import AutoModalTrigger from "../components/AutoModalTrigger";
 import { sanityClient } from "../lib/sanity";
 
 // Fetch all homepage data in one query
@@ -130,4 +131,6 @@ const pageData = await sanityClient.fetch(query);
   <section class="py-4 sm:py-16 lg:py-12 px-4 sm:px-6">
     <DownloadCTA client:load />
   </section>
+  
+  <AutoModalTrigger client:load />
 </Layout>

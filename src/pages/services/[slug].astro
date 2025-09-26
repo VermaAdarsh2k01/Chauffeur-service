@@ -6,6 +6,7 @@ import ServiceFeatures from "@/components/ServiceFeatures";
 import ServiceCards from "@/components/ServiceCards";
 import DownloadCTA from "@/components/DownloadCTA";
 import ServiceForm from "@/components/ServiceForm";
+import AutoModalTrigger from "@/components/AutoModalTrigger";
 
 const { slug } = Astro.params;
 
@@ -182,4 +183,6 @@ if (!page) {
   {page?.downloadCTA && (
     <DownloadCTA client:load data={page?.downloadCTA} />   
   )}
+  
+  <AutoModalTrigger client:load />
 </Layout>

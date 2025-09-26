@@ -2,7 +2,6 @@
 import '../styles/global.css';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import AutoModalTrigger from '../components/AutoModalTrigger';
 import { sanityClient } from '../lib/sanity';
 
 // Fetch service pages for navigation
@@ -30,7 +29,6 @@ const servicePages = await sanityClient.fetch(`
 			<slot />
 		</main>
 		<Footer client:load />
-		<AutoModalTrigger client:load />
 	</body>
 </html>
 
