@@ -8,9 +8,9 @@ interface FAQItem {
 }
 
 interface FAQData {
-  title?: string;
-  subtitle?: string;
-  questions?: FAQItem[];
+  sectionTitle?: string;
+  sectionSubtitle?: string;
+  faqs?: FAQItem[];
 }
 
 interface FAQProps {
@@ -58,9 +58,9 @@ const FAQ: React.FC<FAQProps> = ({
   data
 }) => {
   // Use dynamic data or fallback to props/defaults
-  const displayTitle = data?.title || title;
-  const displaySubtitle = data?.subtitle || subtitle;
-  const displayFaqs = data?.questions || faqs;
+  const displayTitle = data?.sectionTitle || title;
+  const displaySubtitle = data?.sectionSubtitle || subtitle;
+  const displayFaqs = data?.faqs || faqs;
 
   const [openItems, setOpenItems] = useState<Set<string>>(new Set());
 
