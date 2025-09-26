@@ -80,7 +80,7 @@ const CompanyValues: React.FC<CompanyValuesProps> = ({ data }) => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {values.map((value, index) => (
             <div key={index} className="text-center space-y-4">
               <div className="relative w-16 h-16 mx-auto mb-4">
@@ -101,7 +101,9 @@ const CompanyValues: React.FC<CompanyValuesProps> = ({ data }) => {
                   {value.icon}
                 </div>
               </div>
-              <h3 className="text-xl font-semibold">{value.title}</h3>
+              {value.title && (
+                <h3 className="text-xl font-semibold">{value.title}</h3>
+              )}
               <p className="text-gray-600">{value.description}</p>
             </div>
           ))}

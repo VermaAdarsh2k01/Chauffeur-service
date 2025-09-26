@@ -133,7 +133,7 @@ export const aboutPage = defineType({
                 name: 'title',
                 title: 'Value Title',
                 type: 'string',
-                validation: Rule => Rule.required()
+
               }),
               defineField({
                 name: 'description',
