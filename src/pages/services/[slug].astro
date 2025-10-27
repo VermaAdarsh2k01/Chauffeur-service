@@ -28,6 +28,8 @@ const query = `*[_type == "dynamicServicePage" && slug.current == $slug][0]{
     features[]{
       button,
       title,
+      seaterCount,
+      startingPrice,
       content,
       image{
         "src": src.asset->url,

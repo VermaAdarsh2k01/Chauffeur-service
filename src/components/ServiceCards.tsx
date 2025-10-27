@@ -64,8 +64,10 @@ interface MetricData {
 
 interface ServiceCardData {
   heading: string;
+  seaterCount: number;
   description: string;
   featurePoints: FeaturePoint[];
+
   ctaButton: {
     text: string;
     link: string;
@@ -139,6 +141,8 @@ const ServiceCards: React.FC<ServiceCardsProps> = ({ data }) => {
                   <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
                     {card.heading}
                   </h2>
+
+                  <p className="text-lg text-gray-600 leading-relaxed">{card.seaterCount} Seater</p>
 
                   {/* Description */}
                   <p className="text-lg text-gray-600 leading-relaxed">

@@ -3,6 +3,7 @@ import { cn } from "@/lib/utils";
 import { scrollToBookingForm } from "../utils/scrollUtils";
 import { Button } from "./ui/button";
 import { Search } from "lucide-react";
+import PortableText from "./PortableText";
 
 interface MetricCardProps {
   position: 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right';
@@ -51,7 +52,9 @@ interface FeatureLink {
 interface Feature {
   button: string;
   title: string;
-  content: string;
+  startingPrice: number;
+  seaterCount: number;
+  content: unknown; // Changed from string to unknown for blockContent
   image: string | { src: string; alt: string };
   link: FeatureLink;
 }
@@ -63,9 +66,9 @@ interface ServiceFeaturesProps {
 }
 
 
-// Simple markdownify replacement - just returns the HTML string
-const markdownify = (content: string): string => {
-  return content;
+// Helper function to check if content is valid blockContent
+const isValidBlockContent = (content: unknown): boolean => {
+  return Array.isArray(content) && content.length > 0;
 };
 
 const ServiceFeatures: React.FC<ServiceFeaturesProps> = ({ features, sectionTitle, className = "" }) => {
@@ -162,18 +165,21 @@ const ServiceFeatures: React.FC<ServiceFeaturesProps> = ({ features, sectionTitl
         {/* Text Content - Mobile Second Order */}
         <div className="relative w-full lg:w-1/2 p-4 sm:p-6 md:p-8 lg:p-14 transition-all duration-500 ease-in-out order-2 flex flex-col justify-center">
           <div className="transition-opacity duration-500 ease-in-out">
-            <h3
-              dangerouslySetInnerHTML={{
-                __html: markdownify(features[active].title),
-              }}
-              className="text-xl sm:text-2xl md:text-3xl lg:text-4xl mb-3 sm:mb-4 font-bold transform transition-transform duration-500 ease-in-out"
-            />
-            <p
-              dangerouslySetInnerHTML={{
-                __html: markdownify(features[active].content),
-              }}
-              className="text-sm sm:text-base md:text-lg mb-4 sm:mb-6 text-gray-600 transform transition-transform duration-500 ease-in-out leading-relaxed"
-            />
+            <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl mb-3 sm:mb-4 font-bold transform transition-transform duration-500 ease-in-out">
+              {features[active].title}
+            </h3>
+            <p className="text-lg text-blue-800 leading-relaxed my-2">{features[active].seaterCount} Seater</p>
+            <div className="text-sm sm:text-base md:text-lg mb-4 sm:mb-6 text-gray-600 transform transition-transform duration-500 ease-in-out leading-relaxed">
+              {isValidBlockContent(features[active].content) ? (
+                <PortableText 
+                  content={features[active].content} 
+                  className="prose prose-sm sm:prose-base md:prose-lg max-w-none"
+                />
+              ) : (
+                <p>No content available</p>
+              )}
+            </div>
+            <p className="text-lg text-gray-600 leading-relaxed mb-6 italic">*Starting at <span className="text-blue-800">&#8377;</span><span className="text-blue-800">{features[active].startingPrice}</span></p>
             <div className="transform transition-all duration-500 ease-in-out">
               <Button
                 onClick={(e) => {

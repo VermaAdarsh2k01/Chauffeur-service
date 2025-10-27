@@ -110,9 +110,21 @@ export const dynamicServicePage = defineType({
                 validation: Rule => Rule.required()
               }),
               defineField({
+                name: 'seaterCount',
+                title: 'Seater Count',
+                type: 'number',
+                validation: Rule => Rule.required()
+              }),
+              defineField({
                 name: 'content',
                 title: 'Feature Content',
-                type: 'text',
+                type:'blockContent',
+                validation: Rule => Rule.required()
+              }),
+              defineField({
+                name: 'startingPrice',
+                title: 'Starting Price',
+                type: 'number',
                 validation: Rule => Rule.required()
               }),
               defineField({

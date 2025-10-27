@@ -143,16 +143,55 @@ const Hero = ({ data }: HeroProps) => {
             <div className="max-w-sm mt-4 mx-auto lg:mx-0">
               <LogoMarquee className="" />
             </div>
+            
           </div>
 
           {/* Image Section */}
-          <div className="relative overflow-hidden flex items-center justify-center w-full h-fit sm:h-96 lg:h-full lg:m-0 order-first lg:order-last pt-24 sm:pt-6 lg:pt-0 pb-2 sm:pb-4 lg:pb-0">
+          <div className="relative overflow-hidden flex flex-col items-center justify-center w-full h-fit sm:h-96 lg:h-full lg:m-0 order-first lg:order-last pt-24 sm:pt-6 lg:pt-0 pb-2 sm:pb-4 lg:pb-0">
             <img
               ref={imageRef}
               src={heroImageSrc}
               alt={heroImageAlt}
               className="w-full h-full lg:w-auto lg:h-auto lg:max-w-[80%] lg:max-h-full object-contain sm:object-cover lg:object-center"
-            />
+            />  
+            <div className="flex flex-col items-center lg:items-center gap-1 mt-4 lg:mt-8">
+              <div className="flex items-center gap-1">
+                {[1, 2, 3, 4].map((star) => (
+                  <svg
+                    key={star}
+                    className="w-5 h-5 sm:w-6 sm:h-6"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
+                      fill="#FACC15"
+                      stroke="#D97706"
+                      strokeWidth="1"
+                    />
+                  </svg>
+                ))}
+                <svg
+                  className="w-5 h-5 sm:w-6 sm:h-6"
+                  viewBox="0 0 24 24"
+                >
+                  <defs>
+                    <linearGradient id="halfStar">
+                      <stop offset="50%" stopColor="#FACC15" />
+                      <stop offset="50%" stopColor="#D1D5DB" />
+                    </linearGradient>
+                  </defs>
+                  <path
+                    d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
+                    fill="url(#halfStar)"
+                    stroke="#D97706"
+                    strokeWidth="1"
+                  />
+                </svg>
+              </div>
+              <p className="text-sm sm:text-base lg:text-lg text-gray-600 text-center lg:text-left font-semibold">
+                <span className="text-blue-800">4.5/5</span> - Average Rating of our 900+ valued customers
+              </p>
+            </div>
           </div>
         </div>
 
