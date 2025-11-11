@@ -204,7 +204,7 @@ export default function VehicleFleet({ data }: VehicleFleetProps) {
         </div>
 
         {/* Second Row - 4 cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 px-0 md:px-4 lg:px-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-0 md:px-4 lg:px-8">
           {secondRow.map((vehicle) => (
             <div
               key={vehicle.id}

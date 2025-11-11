@@ -90,16 +90,12 @@ const ServiceHero: React.FC<ServiceHeroProps> = ({
 
       <div className='h-full w-full relative flex flex-col justify-center items-center py-8 lg:py-0'> 
         <div ref={contentRef} className='text-center z-10 mb-8 px-4 sm:px-6 lg:px-0'>
-          {/* {subtitle && (
-            <p className='hidden sm:block text-sm sm:text-base lg:text-lg text-gray-600 uppercase tracking-wider mb-2'>
-              {subtitle}
-            </p>
-          )} */}
+          
           <h1 className='text-4xl md:text-5xl font-bold mb-4'>
             {title}
           </h1>
           {description && (
-            <p className='text-base sm:text-lg text-gray-700 max-w-xl sm:max-w-2xl leading-relaxed mx-auto px-2 sm:px-0'>
+            <p className='text-base sm:text-base text-gray-700 max-w-xl sm:max-w-2xl leading-relaxed mx-auto px-2 sm:px-0'>
               {description}
             </p>
           )}
@@ -108,7 +104,7 @@ const ServiceHero: React.FC<ServiceHeroProps> = ({
             {/* Simple rounded container */}
             <div 
               ref={imageRef}
-              className='relative w-full h-64 lg:h-80 xl:h-[25rem] overflow-hidden rounded-[7rem] lg:rounded-full bg-gray-100'
+              className='relative w-full h-64 lg:h-80 xl:h-[22rem] overflow-hidden rounded-[7rem] lg:rounded-full bg-gray-100'
             >
               <img 
                 src={getImageSrc(backgroundImage)} 
